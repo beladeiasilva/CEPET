@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta</title>
+</head>
+<body>
+    
+    <h1>Cadastro de Usuário</h1>
+
+    <form id="cadastroUsuario">
+    
+
+        <!-- Informações de Login -->
+        <p>Nome de Usuário</p>
+        <input type="text" id="usuariologin" placeholder="Digite um nome de usuário" required>
+            
+        <p>Senha</p>
+        <input type="password" id="usuariosenha" placeholder="Digite uma senha" required>
+        <!-- Informações Pessoais -->
+        <p>Nome Completo</p>
+        <input type="text" id="usuarionome" placeholder="Digite seu nome completo" required>
+    
+        <p>Data de Nascimento</p>
+        <input type="date" id="usuarionascimento" required>
+    
+        <p>E-mail</p>
+        <input type="email" id="usuarioemail" placeholder="Digite seu e-mail" required>
+    
+        <p>Telefone</p>
+        <input type="tel" id="usuariotelefone" placeholder="(XX) XXXX-XXXX" required>
+    
+        <!-- Informações de Endereço -->
+        <p>CEP</p>
+        <input type="number" id="usuariocep" placeholder="Digite o CEP" required>
+    
+        <p>Estado</p>
+        <select id="usuarioEstado" required>
+            <option value="">Selecione o estado</option>
+            <option value="AC">Acre (AC)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="AP">Amapá (AP)</option>
+            <option value="AM">Amazonas (AM)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+            <option value="ES">Espírito Santo (ES)</option>
+            <option value="GO">Goiás (GO)</option>
+            <option value="MA">Maranhão (MA)</option>
+            <option value="MT">Mato Grosso (MT)</option>
+            <option value="MS">Mato Grosso do Sul (MS)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="PA">Pará (PA)</option>
+            <option value="PB">Paraíba (PB)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="PI">Piauí (PI)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="RN">Rio Grande do Norte (RN)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="RO">Rondônia (RO)</option>
+            <option value="RR">Roraima (RR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="TO">Tocantins (TO)</option>
+        </select>
+
+        <p>Cidade</p>
+        <input type="text" id="usuariocidade" placeholder="Digite sua cidade" required>
+    
+        <p>Rua</p>
+        <input type="text" id="usuariorua" placeholder="Digite sua rua" required>
+    
+        <p>Número</p>
+        <input type="number" id="usuarionumero" placeholder="Número da residência" required>
+    
+        <p>Bairro</p>
+        <input type="text" id="usuariobairro" placeholder="Digite seu bairro" required>
+    
+        <p>
+        <input type="checkbox" id="termosecondicoes">
+        Aceito os <a>termos e condições</a>
+        </p>
+        <button type="submit">Cadastrar</button>
+    
+    </form>
+    
+    
+</body>
+</html>
