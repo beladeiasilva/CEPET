@@ -21,6 +21,20 @@
         <!-- Informações Pessoais -->
         <p>Nome Completo</p>
         <input type="text" id="usuarionome" placeholder="Digite seu nome completo" required>
+
+        <p>Gênero</p>
+        <select id="usuariogenero" required>
+            <option value="">Selecione o gênero</option>
+            <option value="feminino">Feminino</option>
+            <option value="masculino">Masculino</option>
+            <option value="nao-binario">Não-Binário</option>
+            <option value="agenero">Agênero</option>
+            <option value="generofluido">Gênero Fluido</option>
+            <option value="transgenero">Transgênero</option>
+            <option value="genderqueer">Genderqueer</option>
+            <option value="prefironaoinformar">Prefiro não informar</option>
+        </select>
+
         
 <!---------------------INSERINDO O CAMPO CPF-------------------------------------------------->
         <p>CPF</p>
@@ -41,7 +55,7 @@
         <input type="number" id="usuariocep" placeholder="Digite o CEP" required>
     
         <p>Estado</p>
-        <select id="usuarioEstado" required>
+        <select id="usuarioestado" required>
             <option value="">Selecione o estado</option>
             <option value="AC">Acre (AC)</option>
             <option value="AL">Alagoas (AL)</option>
