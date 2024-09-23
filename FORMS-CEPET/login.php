@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de login</title>
+    <title>Login</title>
 </head>
 <body>
     <div>
@@ -20,8 +20,13 @@
         <br> <br>
         <div class ="d-flex">
             <a href="cadastrousuario.php" type="button" class="btn">Cadastro de usuário</a>
-            <br> <br>
-            <a href="cadastropet.php" type="button" class="btn">Cadastre seu PET aqui!</a>
+            <br>
+            <a href="cadastroong.php" type="button" class="btn"> Cadastre de ONG</a>
+
+           <!--PRECISA COLOCAR EM OUTRA PAGINA SÓ PARA ONG 
+           <a href="cadastropet.php" type="button" class="btn">Cadastre seu PET aqui!</a>
+           -->
+
         </div>
 
         </form> 

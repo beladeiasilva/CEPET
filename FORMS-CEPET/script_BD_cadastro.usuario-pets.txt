@@ -5,15 +5,16 @@ USE CEPET;
 
 CREATE TABLE USUARIOS(
 
+
 ID_USUARIO int not null AUTO_INCREMENT,
 NOME_DE_USUARIO VARCHAR (50) not null,
 SENHA VARCHAR (50) not null,
-CPF varchar(11) not null, 
+CPF VARCHAR(11) not null, 
 NOME_COMPLETO VARCHAR (50) not null, 
 DATA_DE_NASCIMENTO DATE not null,
-GENÊRO VARCHAR null (15),
-EMAIL varchar (60) not null,
-TELEFONE VARCHAR not null (15),
+GENÊRO VARCHAR (15) not NULL,
+EMAIL VARCHAR (60) not null,
+TELEFONE VARCHAR (15) not null,
 ESTADO VARCHAR (50) not null, 
 CIDADE VARCHAR (20) not null,
 BAIRRO VARCHAR (50) not null,
