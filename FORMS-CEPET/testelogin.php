@@ -4,7 +4,7 @@
     //print_r($_REQUEST);
 
 
-    if(isset($_POST['entrar']) && !empty($_POST['email']) && !empty($_POST['senha']))
+    if(isset($_POST['usuarioentrar']) && !empty($_POST['email']) && !empty($_POST['senha']))
     {
         //Acessa
         include_once('conexao.php');

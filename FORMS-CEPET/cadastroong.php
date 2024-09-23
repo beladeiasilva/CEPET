@@ -15,6 +15,22 @@
     <script src="jscript/main.js" defer></script>
 </head>
 <body>
+    <header>
+        <img src="img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
+
+        <a class="cadastro" href="CadastroUsuario.html">
+            Faça login ou cadastre-se 
+            <img src="img/icones variados/perfil.png">
+        </a>
+
+        <!Troca para o nome dos outros htmls para ir para outra página. href="Index.html">
+        <ul class="barra-navegacao">
+            <li><a href="#Adocao">Adoção</a></li>
+            <li><a href="#ONGs">ONGs</a></li>
+            <li><a href="#Doações">Doação</a></li>
+            <li><a href="#Noticias">Noticias e dicas</a></li>
+        </ul>
+    </header>
     
 <h1>Cadastre sua ONG!</h1>
 
@@ -23,6 +39,9 @@
 
 <p>Nome</p>
 <input type="text" id="ongnome" placeholder="Nome da ONG">
+
+<p>Senha</p>
+<input type="password" id="ongsenha" placeholder="Crie uma Senha">
 
 <p>Cartão Sintegra</p>
 <input type="file" id="ongccs">
