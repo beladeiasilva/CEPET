@@ -1,0 +1,133 @@
+<html>
+    <head>
+    <title>ViaCEP Webservice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Adicionando Javascript -->
+    <script>
+    
+        function limpa_formulário_cep() {
+            // Limpa valores do formulário de cep.
+            document.getElementById('ongrua').value = ("");
+            document.getElementById('ongbairro').value = ("");
+            document.getElementById('ongcidade').value = ("");
+            document.getElementById('ongestado').value = ("");
+        }
+    
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                // Atualiza os campos com os valores.
+                document.getElementById('ongrua').value = (conteudo.logradouro);
+                document.getElementById('ongbairro').value = (conteudo.bairro);
+                document.getElementById('ongcidade').value = (conteudo.localidade);
+                document.getElementById('ongestado').value = (conteudo.uf);
+            
+            } else {
+                // CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+    
+        function pesquisacep(valor) {
+            // Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+    
+            // Verifica se campo cep possui valor informado.
+            if (cep != "") {
+    
+                // Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+    
+                // Valida o formato do CEP.
+                if (validacep.test(cep)) {
+    
+                    // Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('ongrua').value = "...";
+                    document.getElementById('ongbairro').value = "...";
+                    document.getElementById('ongcidade').value = "...";
+                    document.getElementById('ongestado').value = "...";
+                
+    
+                    // Cria um elemento javascript.
+                    var script = document.createElement('script');
+    
+                    // Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+    
+                    // Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+    
+                } else {
+                    // cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } else {
+                // cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        }
+    
+    </script>
+    
+    <body>
+        
+        <form method="get" action=".">
+            <label>Cep:
+                <input name="ongcep" type="text" id="ongcep" value="" size="10" maxlength="9"
+                       onblur="pesquisacep(this.value);" />
+            </label><br />
+            
+            <label>Rua:
+                <input name="ongrua" type="text" id="ongrua" size="60" />
+            </label><br />
+            
+            <label>Bairro:
+                <input name="ongbairro" type="text" id="ongbairro" size="40" />
+            </label><br />
+            
+            <label>Cidade:
+                <input name="ongcidade" type="text" id="ongcidade" size="40" />
+            </label><br />
+            
+            <label>Estado:
+                <select name="ongestado" id="ongestado">
+                    <option value="">Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </label><br />
+            
+            
+        </form>
+    </body>
+    
+    </body>
+
+    </html>
