@@ -1,0 +1,69 @@
+CREATE DATABASE CEPET;
+
+USE CEPET;
+
+
+CREATE TABLE USUARIOS(
+
+ID_USUARIO int not null PRIMARY KEY AUTO_INCREMENT,
+NOME_DE_USUARIO VARCHAR (50) not null,
+SENHA VARCHAR (50) not null,
+CPF varchar(11) not null, 
+NOME_COMPLETO VARCHAR (50) not null, 
+DATA_DE_NASCIMENTO DATE not null,
+GENÊRO VARCHAR(15) null,
+EMAIL VARCHAR(60) not null,
+TELEFONE VARCHAR(15) not null,
+UF VARCHAR (50) not null, 
+ENDERECO VARCHAR (100) not null,
+CEP VARCHAR (10) not null,
+Termos_Condições BIT not null);
+
+
+
+
+ CREATE TABLE ONGS(
+
+ID_ONG int not null PRIMARY KEY AUTO_INCREMENT,
+CNPJ VARCHAR (14) not null,
+NOME VARCHAR (40) not null,
+SENHA VARCHAR(50) not null,
+EMAIL VARCHAR (60) not null,
+TELEFONE VARCHAR (15) not null,
+CEP VARCHAR (10) not null,
+ESTADO VARCHAR (15) not null,
+ENDERECO VARCHAR (100) not null,
+REDES_SOCIAIS TEXT null,
+SITE VARCHAR (20) null);
+
+
+
+CREATE TABLE PETS(
+
+ID_PET int not null PRIMARY KEY AUTO_INCREMENT,
+NOME VARCHAR (20) not null,
+TIPO VARCHAR (20) not null,
+COR VARCHAR(20) not null, 
+GENERO VARCHAR (20) not null, 
+PORTE VARCHAR (20) not null, 
+RAÇA VARCHAR (20) not null,
+IDADE VARCHAR (30) not null, 
+HISTÓRICO TEXT null,
+LINK_FOTO TEXT not null,
+FK_ONG_ID INT null,
+
+FOREIGN KEY (FK_ONG_ID) REFERENCES ongs(ID_ONG));
+
+
+
+
+CREATE TABLE Arquivos_ongs(
+
+NOME VARCHAR (50) not null,
+PATH VARCHAR (100) not null,
+DATA_UPLOAD DATETIME not null,
+FK_ONG_ID int  null,
+ 
+FOREIGN KEY (FK_ONG_ID) REFERENCES ongs(ID_ONG));    
+    
+    
