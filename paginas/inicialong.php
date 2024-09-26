@@ -1,15 +1,19 @@
 <?php
 session_start();
-    //print_r($_SESSION);
-    if((!isset($_SESSION['email']) == true)and(!isset($_SESSION['senha'])==true))
 
+    if((!isset($_SESSION['ongcnpj']) == true)and(!isset($_SESSION['ongsenha'])==true))
     {
-        unset($_SESSION['email']);
-        unset($_SESSION['senha']);
-
-        header('Location: login.php');
+        unset($_SESSION['ongcnpj']);
+        unset($_SESSION['ongsenha']);
+       
+      header("Location: login.php");
+        
     }
-    $logado = $_SESSION['email'];
+
+
+   
+    
+    
 ?>    
 <!-----------------------------------HTML DO FORMULÁRIO------------------------------------------------------>
 
@@ -29,7 +33,7 @@ session_start();
     
 
 <div class ="d-flex">
-    <a href="sair.php" type="button" class="btn">Sair</a>
+    <a href="/conexao/configuracao/sair.php" type="button" class="btn">Sair</a>
 </div>
 
     <header>

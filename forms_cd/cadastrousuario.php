@@ -23,12 +23,12 @@
         include_once('conexao.php');
 
         $nomelogin = $_POST['usuariologin'];
-        $senha = $_POST['usuariosenha'];
+        $senhaU = $_POST['usuariosenha'];
         $cpf = $_POST['usuariocpf'];
         $nome = $_POST['usuarionome'];
         $nascimento = $_POST['usuarionascimento'];
         $genero = $_POST['usuariogenero'];
-        $email = $_POST['usuarioemail'];
+        $emailU = $_POST['usuarioemail'];
         $telefone = $_POST['usuariotelefone'];
         $uf = $_POST['usuarioestado'];
         $cidade = $_POST['usuariocidade'];
@@ -39,11 +39,12 @@
         $termosecondicoes = $_POST['termosecondicoes'];
         
 
+    //-------------------------------Inserindo ao banco de dados-----------------------//
 
         $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições) 
-        VALUES ('$nomelogin','$senha','$cpf','$nome','$nascimento','$genero','$email','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes')");
+        VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes')");
         
-        header("Location: login.php");
+        header("Location: /conexao/paginas/login.php");
     }
 
 ?>

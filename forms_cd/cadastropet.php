@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['enviar']))
+if(isset($_POST['enviarpet']))
 {
 //Teste para ver as informações inseridas.
 //if(isset($_POST['enviar']))
@@ -44,7 +44,7 @@ if(isset($_FILES['foto']))
  if($arquivoF['size'] > 10485760)
     die("Arquivo muito grande! Max: 10MB");
 
-    $pasta= "uploads_imagens_pets/";
+    $pasta= "imagens_pets_cadastrados/";
     $nomeDoArquivo = $arquivoF['name'];
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -62,7 +62,7 @@ $result = mysqli_query($mysqli, "INSERT INTO pets (NOME, TIPO, COR, GENERO, PORT
 VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$path')");
 
 
-header('Location: login.php');
+header('Location: /conexao/paginas/login.php');
 
 }
 }
@@ -151,7 +151,7 @@ header('Location: login.php');
 <p>Foto</p>
 <input type="file" name="foto">
 
-<button name="enviar" id="enviarcadastropet">Enviar</button>
+<button name="enviarpet" id="enviarcadastropet">Enviar</button>
 
 <script>
 document.getElementById('tipoanimal').addEventListener('change', function () {
