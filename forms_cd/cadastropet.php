@@ -1,4 +1,14 @@
 <?php
+SESSION_START();
+
+
+if((isset($_SESSION['ongcnpj']) == true)and(isset($_SESSION['ongsenha'])==true))
+
+$ongcnpj = $_SESSION['ongcnpj'];
+    var_dump()
+
+
+
 if(isset($_POST['enviarpet']))
 {
 //Teste para ver as informações inseridas.
@@ -32,6 +42,7 @@ $gatocor = $_POST['gatocor'];
 $historico = $_POST['historico'];
 
 
+
 //------------------------Estrutura da foto dos pets-----------------//
 
 if(isset($_FILES['foto']))
@@ -56,10 +67,15 @@ if(isset($_FILES['foto']))
     $path = $pasta . $novoNomeDoArquivo . "." .  $extensao;
     $deu_certo = move_uploaded_file($arquivoF["tmp_name"], $path);
 
+
     //-------------------------------Inserindo ao banco de dados-----------------------//
     
 $result = mysqli_query($mysqli, "INSERT INTO pets (NOME, TIPO, COR, GENERO, PORTE, RAÇA, IDADE, HISTÓRICO, LINK_FOTO)
 VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$path')");
+
+
+
+
 
 
 header('Location: /conexao/paginas/login.php');

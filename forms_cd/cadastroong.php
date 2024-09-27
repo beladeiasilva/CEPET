@@ -28,9 +28,12 @@ if(isset($_POST['enviar']))
 
         include_once('conexao.php');
 
+        
+
         $cnpj = $_POST['ongcnpj'];
         $nome = $_POST['ongnome'];
         $senha = $_POST['ongsenha'];
+        $check_senha = $_POST['check_senha'];
         $email = $_POST['ongemail'];
         $telefone = $_POST['ongtelefone'];
         $cep = $_POST['ongcep'];
@@ -42,6 +45,11 @@ if(isset($_POST['enviar']))
         $site = $_POST['ongsite'];
         $redes = $_POST['ongredessociais'];
 
+        if($senha != $check_senha)
+        {
+            die("As senhas não correspondem.");
+            Header('Location: cadastroong.php');
+        }
 
 //--------------------------------------------SINTEGRA----------------------------------//
 if(isset($_FILES['sintegra']))
@@ -258,6 +266,9 @@ function pesquisacep(valor) {
 
 <p>Senha</p>
 <input type="password" name="ongsenha" id="ongsenha" placeholder="Crie uma Senha">
+
+<p>Digite sua senha novamente:</p>
+<input type="password" name="check_senha" id="ongsenha" placeholder="Crie uma Senha">
 
 <p>Cartão Sintegra</p>
 <input type="file" name="sintegra" id="ongcartaosintegra">
