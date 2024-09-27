@@ -24,8 +24,7 @@ Termos_Condições BIT not null);
 
  CREATE TABLE ONGS(
 
-ID_ONG int not null PRIMARY KEY AUTO_INCREMENT,
-CNPJ VARCHAR (14) not null,
+CNPJ VARCHAR (14) not null PRIMARY KEY ,
 NOME VARCHAR (40) not null,
 SENHA VARCHAR(50) not null,
 EMAIL VARCHAR (60) not null,
@@ -35,7 +34,7 @@ ESTADO VARCHAR (15) not null,
 ENDERECO VARCHAR (100) not null,
 REDES_SOCIAIS TEXT null,
 SITE VARCHAR (20) null);
-
+DOCUMENTOS_ONGS VARCHAR (100) not null;
 
 
 CREATE TABLE PETS(
@@ -50,20 +49,12 @@ RAÇA VARCHAR (20) not null,
 IDADE VARCHAR (30) not null, 
 HISTÓRICO TEXT null,
 LINK_FOTO TEXT not null,
-FK_ONG_ID INT null,
+FK_ONG_CNPJ VARCHAR (14) not null,
 
-FOREIGN KEY (FK_ONG_ID) REFERENCES ongs(ID_ONG));
-
-
+FOREIGN KEY (FK_ONG_CNPJ) REFERENCES ongs(CNPJ));
 
 
-CREATE TABLE Arquivos_ongs(
 
-NOME VARCHAR (50) not null,
-PATH VARCHAR (100) not null,
-DATA_UPLOAD DATETIME not null,
-FK_ONG_ID int  null,
- 
-FOREIGN KEY (FK_ONG_ID) REFERENCES ongs(ID_ONG));    
-    
+
+
     

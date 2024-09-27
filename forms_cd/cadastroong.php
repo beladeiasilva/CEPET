@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 
 if(isset($_POST['enviar']))
@@ -22,7 +24,7 @@ if(isset($_POST['enviar']))
         //print_r($_POST['ongsite']);
         //print_r($_POST['ongredessociais']);
         
-        //--------------------Insert das variaveis para o MYSQL---------------------//
+        //---------------------------------------Insert das variaveis para o MYSQL-----------------------------------------//
 
         include_once('conexao.php');
 
@@ -40,17 +42,8 @@ if(isset($_POST['enviar']))
         $site = $_POST['ongsite'];
         $redes = $_POST['ongredessociais'];
 
-        $result = mysqli_query($mysqli, "INSERT INTO ongs(CNPJ, NOME, SENHA, EMAIL, TELEFONE, CEP, ESTADO, ENDERECO, REDES_SOCIAIS, SITE) 
-        VALUES ('$cnpj','$nome','$senha','$email','$telefone','$cep','$estado','$cidade / $bairro / $rua / $numero','$redes','$site')");
 
-       header("Location: /conexao/paginas/login.php");
-}
-
- //------------------Estrutura para os Arquivos-------------// 
-
-    include('conexao.php');
-
- //----------------------------Sintegra----------------------------------->
+//--------------------------------------------SINTEGRA----------------------------------//
 if(isset($_FILES['sintegra']))
 {
  $arquivoS = $_FILES ['sintegra'];
@@ -70,24 +63,13 @@ if(isset($_FILES['sintegra']))
     if ($extensao != "pdf")
         die("Tipo de arquivo inválido");
 
-    $path = $pasta . $novoNomeDoArquivo . "." .  $extensao;
-    $deu_certo = move_uploaded_file($arquivoS["tmp_name"], $path);
+    $path1 = $novoNomeDoArquivo . "." .  $extensao;
+    $deu_certo = move_uploaded_file($arquivoS["tmp_name"],$pasta . $path1);
 
-    //Testar o envio dos arquivos
+       
+}
 
-    //if($deu_certo)
-        //echo "<p>Arquivo enviado com sucesso! </p>";
-    //else
-        //echo "<p> Falha ao enviar arquivo </p>";
-
-
-        //----------------------Inserindo ao Banco -----------------//
-        $mysqli->query("INSERT INTO arquivos_ongs(NOME,PATH)
-        VALUES('$nomeDoArquivo','$path')") or die($mysqli->error);
-        //---------------------------------------------------------//
-}  
-
-//----------------------------CCS----------------------------------->
+    //----------------------------CCS----------------------------------->
  if(isset($_FILES['ccs']))
  {
   $arquivoC = $_FILES ['ccs'];
@@ -106,25 +88,12 @@ if(isset($_FILES['sintegra']))
      if ($extensao != "pdf")
          die("Tipo de arquivo inválido");
 
-     $path =  $pasta . $novoNomeDoArquivo . "." .  $extensao;
-     $deu_certo = move_uploaded_file($arquivoC["tmp_name"], $path);
- 
-   //Testar o envio dos arquivos
+     $path2 = $novoNomeDoArquivo . "." .  $extensao;
     
-    //if($deu_certo)
-        //echo "<p>Arquivo enviado com sucesso! </p>";
-    //else
-        //echo "<p> Falha ao enviar arquivo </p>";
+     $deu_certo = move_uploaded_file($arquivoC["tmp_name"],$pasta . $path2);
 
-        
-        
-        //----------------------Inserindo ao Banco -----------------//
-        $mysqli->query("INSERT INTO arquivos_ongs(NOME,PATH)
-        VALUES('$nomeDoArquivo', '$path')") or die($mysqli->error);
-         //---------------------------------------------------------//
-    }
-
-     //----------------------------BACEN----------------------------------->
+ }
+       //----------------------------BACEN----------------------------------->
 if(isset($_FILES['bacen']))
 {
  $arquivoB = $_FILES ['bacen'];
@@ -143,45 +112,23 @@ if(isset($_FILES['bacen']))
     if ($extensao != "pdf")
         die("Tipo de arquivo inválido");
     
-        $path =  $pasta . $novoNomeDoArquivo . "." .  $extensao;
-        $deu_certo = move_uploaded_file($arquivoB["tmp_name"], $path);
+        $path3 = $novoNomeDoArquivo . "." .  $extensao;
+        $deu_certo = move_uploaded_file($arquivoB["tmp_name"], $pasta . $path3);
+ 
+//-----------------------------------------------INSERINDO AO BANCO DE DADOS-------------------------------------------//
 
-   //Testar o envio dos arquivos
-    
-    //if($deu_certo)
-        //echo "<p>Arquivo enviado com sucesso! </p>";
-    //else
-        //echo "<p> Falha ao enviar arquivo </p>";
+        $result = mysqli_query($mysqli, "INSERT INTO ongs(CNPJ, NOME, SENHA, EMAIL, TELEFONE, CEP, ESTADO, ENDERECO, REDES_SOCIAIS, SITE, DOCUMENTOS_ONGS) 
+        VALUES ('$cnpj','$nome','$senha','$email','$telefone','$cep','$estado','$cidade / $bairro / $rua / $numero','$redes','$site', '$path1 / $path2 / $path3')");
 
-        
-        //----------------------Inserindo ao Banco ----------------//
-        $mysqli->query("INSERT INTO arquivos_ongs(NOME,PATH)
-        VALUES('$nomeDoArquivo', '$path')") or die($mysqli->error);
-        //---------------------------------------------------------//
+       header("Location: /conexao/paginas/login.php");
+
+         
+    }
 }
 
 
-
 ?>
-<!--fazer php-->
-
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Cadastro ONG</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="css/estilo.css"> 
-    <link rel="icon" href="img/logos/icon.ico">  
-     <script src="jscript/main.js" defer> </script>
-</head>
-
-
-<!-------------------------------------------SCRIPT DO CEP (INICIO)------------------------------------------->
+<!-----------------------------------------------------SCRIPT DO CEP (INICIO)------------------------------------------->
 <script>
 
 function limpa_formulário_cep() {
@@ -250,10 +197,29 @@ function pesquisacep(valor) {
 }
 
 </script>
+<!-----------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------------------------------->
 
-<!-------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------->
-    
-<body>
+
+
+
+<!-----------------------------------------------HTML DO FORMULÁRIO--------------------------------------------------------------------->
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Cadastro ONG</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="css/estilo.css"> 
+    <link rel="icon" href="img/logos/icon.ico">  
+     <script src="jscript/main.js" defer> </script>
+</head>
+
+    <body>
 
 
     <!--Método "POST" Essencial para a conexão dos dados.----------------------------------->  
@@ -264,11 +230,11 @@ function pesquisacep(valor) {
    
 
     <header>
-        <img src="img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
+        <img src="/conexao/paginas/img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
 
         <a class="cadastro" href="CadastroUsuario.html">
             Faça login ou cadastre-se 
-            <img src="img/icones variados/perfil.png">
+            <img src="/conexao/paginas/img/icones variados/perfil.png">
         </a>
 
         <!Troca para o nome dos outros htmls para ir para outra página. href="Index.html">
@@ -378,6 +344,6 @@ function pesquisacep(valor) {
 
 
 <button type="submit" name="enviar" id="enviarcadastroong">Enviar</button>
-
+</form>
 </body>
 </html>

@@ -5,11 +5,21 @@ session_start();
     {
         unset($_SESSION['ongcnpj']);
         unset($_SESSION['ongsenha']);
+
        
+    
+    }
+    
+    
+    
+        
+    
       header("Location: login.php");
         
-    }
+     
 
+        
+    
 
    
     
@@ -34,6 +44,7 @@ session_start();
 
 <div class ="d-flex">
     <a href="/conexao/configuracao/sair.php" type="button" class="btn">Sair</a>
+   
 </div>
 
     <header>
@@ -50,6 +61,7 @@ session_start();
             <li><a href="#ONGs">ONGs</a></li>
             <li><a href="#Doações">Doação</a></li>
             <li><a href="#Noticias">Noticias e dicas</a></li>
+            <a href="/conexao/forms_cd/cadastropet.php" type="button" class="btn">Cadastrar PET</a>
         </ul>
     </header>
 

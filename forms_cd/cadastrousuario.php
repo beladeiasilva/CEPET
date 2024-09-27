@@ -22,6 +22,7 @@
 
         include_once('conexao.php');
 
+        //--------------------------------------------Declarando váriaveis---------------------------------------------->
         $nomelogin = $_POST['usuariologin'];
         $senhaU = $_POST['usuariosenha'];
         $cpf = $_POST['usuariocpf'];
@@ -39,7 +40,7 @@
         $termosecondicoes = $_POST['termosecondicoes'];
         
 
-    //-------------------------------Inserindo ao banco de dados-----------------------//
+    //------------------------------------------------Inserindo ao banco de dados-------------------------------------->
 
         $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições) 
         VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes')");
@@ -48,6 +49,80 @@
     }
 
 ?>
+<!-----------------------------------------------------SCRIPT DO CEP (INICIO)------------------------------------------->
+<script>
+
+function limpa_formulário_cep() {
+    // Limpa valores do formulário de cep.
+    document.getElementById('usuariorua').value = ("");
+    document.getElementById('usuariobairro').value = ("");
+    document.getElementById('usuariocidade').value = ("");
+    document.getElementById('usuarioestado').value = ("");
+}
+
+function meu_callback(conteudo) {
+    if (!("erro" in conteudo)) {
+        // Atualiza os campos com os valores.
+        document.getElementById('usuariorua').value = (conteudo.logradouro);
+        document.getElementById('usuariobairro').value = (conteudo.bairro);
+        document.getElementById('usuariocidade').value = (conteudo.localidade);
+        document.getElementById('usuarioestado').value = (conteudo.uf);
+    
+    } else {
+        // CEP não Encontrado.
+        limpa_formulário_cep();
+        alert("CEP não encontrado.");
+    }
+}
+
+function pesquisacep(valor) {
+    // Nova variável "cep" somente com dígitos.
+    var cep = valor.replace(/\D/g, '');
+
+    // Verifica se campo cep possui valor informado.
+    if (cep != ""){
+
+        // Expressão regular para validar o CEP.
+        var validacep = /^[0-9]{8}$/;
+
+        // Valida o formato do CEP.
+        if (validacep.test(cep)) {
+
+            // Preenche os campos com "..." enquanto consulta webservice.
+            document.getElementById('usuariorua').value = "...";
+            document.getElementById('usuariobairro').value = "...";
+            document.getElementById('usuariocidade').value = "...";
+            document.getElementById('usuarioestado').value = "...";
+        
+
+            // Cria um elemento javascript.
+            var script = document.createElement('script');
+
+            // Sincroniza com o callback.
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+            // Insere script no documento e carrega o conteúdo.
+            document.body.appendChild(script);
+        }
+         else {
+            // cep é inválido.
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+            }
+        }
+
+         else {
+        // cep sem valor, limpa formulário.
+        limpa_formulário_cep();
+    }
+}
+
+</script>
+<!-----------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------------------------------->
+
+
+
+
 
 <!-----------------------------------------------HTML DO FORMULÁRIO--------------------------------------------------------------------->
 <!DOCTYPE html>
@@ -58,8 +133,8 @@
     <title>Criar Conta</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="css/estilo.css"> 
-    <link rel="icon" href="img/logos/icon.ico">  
+    <link rel="stylesheet" href="/conexao/paginas/css/estilo.css"> 
+    <link rel="icon" href="/conexao/paginas/img/logos/icon.ico">  
     <script src="jscript/main.js" defer></script>
     
 </head>
@@ -99,10 +174,10 @@
         </select>
 
         
-<!---------------------INSERINDO O CAMPO CPF 20/09/24-------------------------------------------------->
+
+       
         <p>CPF</p>
         <input type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" required>
-<!-------------------------------------------------------------------------------------------->       
         
         <p>Data de Nascimento</p>
         <input type="date" name="usuarionascimento" id="usuarionascimento" required>
@@ -115,7 +190,7 @@
     
         <!-- Informações de Endereço -->
         <p>CEP</p>
-        <input type="number" name="usuariocep" id="usuariocep" placeholder="Digite o CEP" required>
+        <input type="number" name="usuariocep" id="usuariocep" placeholder="Digite o CEP" required onblur="pesquisacep(this.value);" >
     
         <p>Estado</p>
         <select name="usuarioestado" id="usuarioestado" required>

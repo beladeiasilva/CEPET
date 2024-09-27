@@ -11,17 +11,22 @@ session_start();
  $cnpjO = $_POST['ongcnpj'];
  $senhaO = $_POST['ongsenha'];
 
+
 // //Testar se o login está mandando infor mações para as variaveis:
 //  print_r('cnpj: ' . $cnpjO);
 //  print_r('senha: ' . $senhaO);
 
  $sql ="SELECT * FROM ongs WHERE CNPJ = '$cnpjO' and SENHA ='$senhaO'";
+ $sqlnome = "SELECT * FROM ongs WHERE NOME != '$cnpjO' and NOME != '$senhaO'";
 
  $result = $mysqli->query($sql);
+ $result2 = $mysqli->query($sqlnome);
+
 
  
  //Verifcar se os dados batem com os do banco:
-    //print_r($result);
+    print_r($result2);
+    
 
 
  if(mysqli_num_rows($result) < 1)
@@ -37,9 +42,11 @@ else
     $_SESSION['ongcnpj'] = $cnpjO;
     $_SESSION['ongsenha'] = $senhaO;
 
+    
+
     header('Location: /conexao/paginas/inicialong.php');
 }
-}
+ }
 
 else
 {
@@ -54,11 +61,7 @@ else
 ?>
 
 
-if((!isset($_SESSION['ongcnpj']) == true)and(!isset($_SESSION['ongsenha'])==true))
-    {
-        unset($_SESSION['ongcnpj']);
-        unset($_SESSION['ongsenha']);
-       
+
       
         
     }
