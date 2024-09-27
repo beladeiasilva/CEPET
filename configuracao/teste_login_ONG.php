@@ -17,15 +17,15 @@ session_start();
 //  print_r('senha: ' . $senhaO);
 
  $sql ="SELECT * FROM ongs WHERE CNPJ = '$cnpjO' and SENHA ='$senhaO'";
- $sqlnome = "SELECT * FROM ongs WHERE NOME != '$cnpjO' and NOME != '$senhaO'";
+
 
  $result = $mysqli->query($sql);
- $result2 = $mysqli->query($sqlnome);
+
 
 
  
  //Verifcar se os dados batem com os do banco:
-    print_r($result2);
+    //print_r($result);
     
 
 

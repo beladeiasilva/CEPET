@@ -6,6 +6,8 @@ session_start();
         unset($_SESSION['ongcnpj']);
         unset($_SESSION['ongsenha']);
 
+        header("Location: login.php");
+
        
     
     }
@@ -14,7 +16,7 @@ session_start();
     
         
     
-      header("Location: login.php");
+      
         
      
 
