@@ -5,7 +5,7 @@ SESSION_START();
 if((isset($_SESSION['ongcnpj']) == true)and(isset($_SESSION['ongsenha'])==true))
 
 $ongcnpj = $_SESSION['ongcnpj'];
-    var_dump()
+    var_dump($ongcnpj);
 
 
 
