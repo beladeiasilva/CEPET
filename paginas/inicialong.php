@@ -11,9 +11,15 @@ session_start();
     }
     else{
 
-        echo $_SESSION['ong'],
-        "<a href='/conexao/configuracao/sair.php'>
-        <button> Sair </button></a>";
+    
+
+        echo '<h2>',$_SESSION['ong'],'</h2>';
+
+        echo "<button class = 'link_sair'>
+        <a class='link_sair' href='/conexao/configuracao/sair.php'><h4> Sair </h4>
+        </a>
+        </button>";
+
 
     }
     
@@ -43,7 +49,9 @@ session_start();
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="css/estilo.css"> 
-    <link rel="icon" href="img/logos/icon.ico">  
+    <link rel="icon" href="img/logos/icon.ico"> 
+    <link rel="stylesheet" href="css/inicialong_botao_sair.css"> 
+     
     <script src="jscript/main.js" defer></script>
 </head>
 <body>

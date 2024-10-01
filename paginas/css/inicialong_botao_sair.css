@@ -2,10 +2,11 @@
     display:block;
     padding: 4px 15px;
     border-radius: 20px;
+    font-family: cursive;
     text-decoration:none;
-    margin-left: auto;
-    font-family:cursive;
     border:none;
-    background-color: rgb(34, 121, 148);
+    margin-left: auto;
+    
+    background-color: rgb(30, 119, 146);
     color: rgb(255, 255, 255);
 }  
