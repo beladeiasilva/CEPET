@@ -1,15 +1,20 @@
 <?php
 session_start();
 
-    if((!isset($_SESSION['ongcnpj']) == true)and(!isset($_SESSION['ongsenha'])==true))
+    if((!isset($_SESSION['cnpj']) == true)and(!isset($_SESSION['senha'])==true))
     {
-        unset($_SESSION['ongcnpj']);
-        unset($_SESSION['ongsenha']);
+        unset($_SESSION['cnpj']);
+        unset($_SESSION['senha']);
+        unset($_SESSION['ong']);
 
         header("Location: login.php");
+    }
+    else{
 
-       
-    
+        echo $_SESSION['ong'],
+        "<a href='/conexao/configuracao/sair.php'>
+        <button> Sair </button></a>";
+
     }
     
     
@@ -45,7 +50,7 @@ session_start();
     
 
 <div class ="d-flex">
-    <a href="/conexao/configuracao/sair.php" type="button" class="btn">Sair</a>
+    
    
 </div>
 

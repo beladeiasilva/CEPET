@@ -1,4 +1,11 @@
 button {
-    width: 420px;
-    height: 55px;
-}
+    display:block;
+ 
+    margin-left:auto;
+    box-align:right;
+    border-radius: 150px;
+    width: 70px;
+    height: 40px;
+    background-color: red;
+    color: white;
+}  
