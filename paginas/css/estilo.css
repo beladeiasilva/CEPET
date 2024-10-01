@@ -34,3 +34,9 @@
 .slick-next {
     right: 40px; /* Posição da seta próxima */
 }
+
+
+button{
+    width: 420px;
+    height: 55px;
+}

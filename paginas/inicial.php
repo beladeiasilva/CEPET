@@ -10,9 +10,17 @@ session_start();
     }
     else
     {
-        echo $_SESSION['usuario'];
-        echo "<a href= /conexao/configuracao/sair.php type= button  class= btn > Sair</a>
-</div>";
+        echo  $_SESSION['usuario'],"
+
+        
+    
+        <a href='/conexao/configuracao/sair.php'>
+        <button> Sair </button></a>
+
+        
+        
+       
+        ";
     }
     
     

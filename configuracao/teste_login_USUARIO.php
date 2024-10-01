@@ -26,15 +26,22 @@
 
         $usuario = $result->fetch_assoc();
 
-        if (password_verify($senhaU, $usuario['SENHA']))
+        if (password_verify($senhaU, $usuario['SENHA']) ==true)
          {
             session_start();
-                  
-                $_SESSION['usuario'] = $usuario2['NOME_DE_USUARIO'];
-                $_SESSION['email'] = $usuario2['EMAIL'];
-                $_SESSION['senha'] = $usuario2['SENHA'];
             
-                 header("Location: /conexao/paginas/inicial.php");
+            $sql ="SELECT * FROM usuarios WHERE EMAIL='$emailU'";
+            $result = $mysqli->query($sql);
+            $usuario = $result->fetch_assoc();
+        
+            
+            $_SESSION['usuario'] = $usuario['NOME_DE_USUARIO'];
+            $_SESSION['senha'] = password_verify($senhaU, $usuario['SENHA']);
+            $_SESSION['email'] = $emailU;
+             
+            
+            
+             header("Location: /conexao/paginas/inicial.php");
         } 
         else
         {
@@ -43,31 +50,15 @@
                  header("Location: /conexao/paginas/login.php");
     //         
         }
-    
-        //Verifcar se os dados batem com os do banco:
-        //print_r($result);
 
-    //   
-    //     else
-    //     {
-
-            
-    //      $sql2 ="SELECT * FROM usuarios WHERE EMAIL='$emailU' AND SENHA = '$senhaU'";
-    //      $result2 = $mysqli->query($sql2);
-    //     $usuario2 = $result2->fetch_assoc();
-            
-    //        
-            
-            
-    //     }
-    // }
-    // else
-    // {
-    //     //Não acessa
-    //     header("Location: /conexao/paginas/login.php");
-   
+    }
+    else
+    {
+        //Não acessa
+        header("Location: /conexao/paginas/login.php");
+    }
      
-}
+
   ?>
    
 
