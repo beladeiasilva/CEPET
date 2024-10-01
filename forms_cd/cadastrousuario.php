@@ -24,7 +24,7 @@
 
         //--------------------------------------------Declarando váriaveis---------------------------------------------->
         $nomelogin = $_POST['usuariologin'];
-        $senhaU = $_POST['usuariosenha'];
+        $senhaU = password_hash($_POST['usuariosenha'], PASSWORD_DEFAULT);
         $cpf = $_POST['usuariocpf'];
         $nome = $_POST['usuarionome'];
         $nascimento = $_POST['usuarionascimento'];
@@ -39,13 +39,38 @@
         $numero = $_POST['usuarionumero'];
         $termosecondicoes = $_POST['termosecondicoes'];
         
+      
 
-    //------------------------------------------------Inserindo ao banco de dados-------------------------------------->
+        //------------------------------------Verifica se há um email já cadastrado----------------------------------------------
+        $sqlVCD="SELECT EMAIL FROM usuarios where EMAIL= '$emailU'";
 
-        $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições) 
-        VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes')");
-        
-        header("Location: /conexao/paginas/login.php");
+        if($rvc=mysqli_query($mysqli,$sqlVCD))
+        {
+            $qtdLinhas = mysqli_num_rows($rvc);
+
+            if($qtdLinhas>0)
+            {
+               
+              
+             echo "
+             <div class='alert alert-danger' role='alert'>
+                A simple danger alert—check it out!
+                </div>";
+
+            }
+            else
+            {
+                $hash =sprintf('%07X', mt_rand(0,0xFFFFFFF));
+                
+        //------------------------------------Inserindo ao banco de dados:-------------------------------------------------------//
+
+                $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições, HASH) 
+                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes','$hash')");
+
+              
+                header('Location: /conexao/paginas/login.php');
+            }
+        }       
     }
 
 ?>
@@ -117,6 +142,7 @@ function pesquisacep(valor) {
     }
 }
 
+
 </script>
 <!-----------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------------------------------->
 
@@ -140,6 +166,9 @@ function pesquisacep(valor) {
 </head>
 <body>
 
+<?php
+
+ ?>    
 
 <!--Método "POST" Essencial para a conexão dos dados.----------------------------------->    
 <form action="cadastrousuario.php" method="POST">
@@ -153,6 +182,10 @@ function pesquisacep(valor) {
     <!-- Informações de Login -->
         <p>Nome de Usuário</p>
         <input type="text" name="usuariologin" id="usuariologin" placeholder="Digite um nome de usuário" required>
+
+
+           
+        
             
         <p>Senha</p>
         <input type="password" name="usuariosenha" id="usuariosenha" placeholder="Digite uma senha" required>
@@ -241,7 +274,17 @@ function pesquisacep(valor) {
         Aceito os <a>termos e condições</a>
         </p>
         <button type="submit" name="cadastrar" id="usuariocadastrar">Cadastrar</button>
-    
+
+        <div class='alert alert-danger' role='alert'>
+             
+                </div>";
+
+                
+
+
+
+        <div>
+
     </form>
     
     

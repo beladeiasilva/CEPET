@@ -7,7 +7,7 @@ CREATE TABLE USUARIOS(
 
 ID_USUARIO int not null PRIMARY KEY AUTO_INCREMENT,
 NOME_DE_USUARIO VARCHAR (50) not null,
-SENHA VARCHAR (50) not null,
+SENHA VARCHAR (255) not null,
 CPF varchar(11) not null, 
 NOME_COMPLETO VARCHAR (50) not null, 
 DATA_DE_NASCIMENTO DATE not null,
@@ -26,7 +26,7 @@ Termos_Condições BIT not null);
 
 CNPJ VARCHAR (14) not null PRIMARY KEY ,
 NOME VARCHAR (40) not null,
-SENHA VARCHAR(50) not null,
+SENHA VARCHAR(255) not null,
 EMAIL VARCHAR (60) not null,
 TELEFONE VARCHAR (15) not null,
 CEP VARCHAR (10) not null,

@@ -1,7 +1,7 @@
 <?php
 //-------------------------------SESSÃO DO USUARIO-----------------//
 
-    session_start();
+  
 
 
 
@@ -13,7 +13,7 @@
     
     {
         //Acessa
-        include_once('conexao.php');
+        include('conexao.php');
         $emailU = $_POST['email'];
         $senhaU = $_POST['senha'];
 
@@ -21,36 +21,54 @@
         //print_r('email: ' . $email);
         //print_r('senha: ' . $senha);
         
-        $sql ="SELECT * FROM usuarios WHERE EMAIL ='$emailU' and SENHA ='$senhaU'";
-
+        $sql ="SELECT * FROM usuarios WHERE EMAIL='$emailU'";
         $result = $mysqli->query($sql);
 
+        $usuario = $result->fetch_assoc();
+
+        if (password_verify($senhaU, $usuario['SENHA']))
+         {
+            session_start();
+                  
+                $_SESSION['usuario'] = $usuario2['NOME_DE_USUARIO'];
+                $_SESSION['email'] = $usuario2['EMAIL'];
+                $_SESSION['senha'] = $usuario2['SENHA'];
+            
+                 header("Location: /conexao/paginas/inicial.php");
+        } 
+        else
+        {
+                 unset($_SESSION['email']);
+                 unset($_SESSION['senha']);
+                 header("Location: /conexao/paginas/login.php");
+    //         
+        }
+    
         //Verifcar se os dados batem com os do banco:
         //print_r($result);
 
-        if(mysqli_num_rows($result) < 1)
+    //   
+    //     else
+    //     {
 
-        {
-           unset($_SESSION['email']);
-           unset($_SESSION['senha']);
-
-            header("Location: /conexao/paginas/login.php");
-        }
-        else
-        {
-           $_SESSION['email'] = $emailU;
-           $_SESSION['senha'] = $senhaU;
-
-            header("Location: /conexao/paginas/inicial.php");
-        }
-    }
-    else
-    {
-        //Não acessa
-        header('Location: /conexao/paginas/login.php');
+            
+    //      $sql2 ="SELECT * FROM usuarios WHERE EMAIL='$emailU' AND SENHA = '$senhaU'";
+    //      $result2 = $mysqli->query($sql2);
+    //     $usuario2 = $result2->fetch_assoc();
+            
+    //        
+            
+            
+    //     }
+    // }
+    // else
+    // {
+    //     //Não acessa
+    //     header("Location: /conexao/paginas/login.php");
    
-    }
-   
+     
+}
+  ?>
    
 
      
@@ -60,4 +78,3 @@
 
 
 
-?>

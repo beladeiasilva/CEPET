@@ -31,17 +31,23 @@
 
     <div>
 
+       
         <form action="/conexao/configuracao/teste_login_USUARIO.php"  method= "POST">
-          
+            
         <h1>Login Usuário</h1>
-        <input type="text" name="email" placeholder="Email">
-        <br>
-        <input type="password" name="senha" placeholder="Senha">
-        <br> 
-        <input type="submit" name="usuarioentrar" value="Entrar">
+      
+        <input type="email" name="email"  id="email" placeholder="Email">
+      
+        <br><br> 
+       
+        <input type="password" name="senha"  id="senha" placeholder="Senha">
+
+        <br><br> 
+        
+        <input type="submit" name="usuarioentrar"  id="entrar" value="Entrar">
         
         </form>
-        <br>
+       
         
         <form action="/conexao/configuracao/teste_login_ONG.php"  method= "POST">
 
@@ -68,3 +74,5 @@
     </div>
 </body>
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

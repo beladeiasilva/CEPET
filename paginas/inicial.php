@@ -6,12 +6,21 @@ session_start();
     {
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
-       
-       header("Location: login.php");
-    
-
-        
+        unset($_SESSION['usuario']);
     }
+    else
+    {
+        echo $_SESSION['usuario'];
+        echo "<a href= /conexao/configuracao/sair.php type= button  class= btn > Sair</a>
+</div>";
+    }
+    
+    
+        
+        
+    
+      
+  
 
 ?>    
 <!-----------------------------------HTML DO FORMULÁRIO------------------------------------------------------>
@@ -31,15 +40,16 @@ session_start();
 <body>
 
 
-<div class ="d-flex">
-    <a href="/conexao/configuracao/sair.php" type="button"  class="btn">Sair</a>
-</div>
+
 
     <header>
         <img src="img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
 
-        <a class="cadastro" href="CadastroUsuario.html">
-            Faça login ou cadastre-se 
+        <a class="login" href="login.php">
+            Faça o login    </a>
+            ou
+        <a class="cadastro" href="/conexao/forms_cd/cadastrousuario.php">
+             Cadastre-se!
             <img src="img/icones variados/perfil.png">
         </a>
 

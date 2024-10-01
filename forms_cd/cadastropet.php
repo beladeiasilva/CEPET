@@ -4,9 +4,8 @@ SESSION_START();
 
 if((isset($_SESSION['ongcnpj']) == true)and(isset($_SESSION['ongsenha'])==true))
 
-$ongcnpj = $_SESSION['ongcnpj'];
-    var_dump($ongcnpj);
-
+ $ongcnpj = $_SESSION['ongcnpj'];
+   
 
 
 if(isset($_POST['enviarpet']))
@@ -40,7 +39,7 @@ $porte = $_POST['porte'];
 $cachorrocor = $_POST['cachorrocor'];
 $gatocor = $_POST['gatocor'];
 $historico = $_POST['historico'];
-
+$ongcnpj = $_SESSION['ongcnpj'];
 
 
 //------------------------Estrutura da foto dos pets-----------------//
@@ -70,8 +69,8 @@ if(isset($_FILES['foto']))
 
     //-------------------------------Inserindo ao banco de dados-----------------------//
     
-$result = mysqli_query($mysqli, "INSERT INTO pets (NOME, TIPO, COR, GENERO, PORTE, RAÇA, IDADE, HISTÓRICO, LINK_FOTO)
-VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$path')");
+$result = mysqli_query($mysqli, "INSERT INTO pets (NOME, TIPO, COR, GENERO, PORTE, RAÇA, IDADE, HISTÓRICO, LINK_FOTO, FK_ONG_CNPJ)
+VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$path','$ongcnpj')");
 
 
 
