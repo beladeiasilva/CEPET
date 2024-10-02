@@ -2,11 +2,17 @@
 SESSION_START();
 
 
-if((isset($_SESSION['ongcnpj']) == true)and(isset($_SESSION['ongsenha'])==true))
-
- $ongcnpj = $_SESSION['ongcnpj'];
-   
-
+//==========Puxando CNPJ para inserir na chave estrangeira-----//
+if((isset($_SESSION['cnpj']) == true)and(isset($_SESSION['senha'])==true))
+{
+ $ongcnpj = $_SESSION['cnpj'];
+}
+else
+//==========Impedindo o usuário acessar este FORM ou qualquer ONG não cadastrada!====//
+{
+        header('Location: /conexao/paginas/login.php');
+} 
+//===================================================================================//
 
 if(isset($_POST['enviarpet']))
 {
@@ -39,7 +45,7 @@ $porte = $_POST['porte'];
 $cachorrocor = $_POST['cachorrocor'];
 $gatocor = $_POST['gatocor'];
 $historico = $_POST['historico'];
-$ongcnpj = $_SESSION['ongcnpj'];
+$ongcnpj = $_SESSION['cnpj'];
 
 
 //------------------------Estrutura da foto dos pets-----------------//
