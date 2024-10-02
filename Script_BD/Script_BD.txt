@@ -17,7 +17,8 @@ TELEFONE VARCHAR(15) not null,
 UF VARCHAR (50) not null, 
 ENDERECO VARCHAR (100) not null,
 CEP VARCHAR (10) not null,
-Termos_Condições BIT not null);
+Termos_Condições BIT not null,
+HASH VARCHAR(100) not null);
 
 
 
