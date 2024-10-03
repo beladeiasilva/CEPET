@@ -146,11 +146,27 @@ function pesquisacep(valor) {
 </script>
 <!-----------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------------------------------->
 
+<!-----------------------------------------------SCRIPT DO CPF (INICIO)---------------------------------------------------------------->
+<script>
+                function mascara(i){
+                        
+                 var v = i.value;
+                        
+                 if(isNaN(v[v.length-1])){ 
+                     i.value = v.substring(0, v.length-1);
+                            return;
+                 }
+                    
+                i.setAttribute("maxlength", "14");
+                 if (v.length == 3 || v.length == 7) i.value += ".";
+                 if (v.length == 11) i.value += "-";
+            }
+</script>    
+
+<!-----------------------------------------------SCRIPT DO CPF (FIM)---------------------------------------------------------------->
 
 
-
-
-<!-----------------------------------------------HTML DO FORMULÁRIO--------------------------------------------------------------------->
+<!--------------------*HTML DO FORMULÁRIO*----------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -206,11 +222,9 @@ function pesquisacep(valor) {
             <option value="prefironaoinformar">Prefiro não informar</option>
         </select>
 
-        
-
        
         <p>CPF</p>
-        <input type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" required>
+        <input oninput="mascara(this)" type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" max length="11" required>
         
         <p>Data de Nascimento</p>
         <input type="date" name="usuarionascimento" id="usuarionascimento" required>
