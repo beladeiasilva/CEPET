@@ -15,25 +15,6 @@ session_start();
         <a class='link_sair' href='/conexao/configuracao/sair.php'><h4> Sair </h4>
         </a>
         </button>";
-        
-       
-
-        
-    
-        
-
-        
-        
-       
-        
-    }
-    
-    
-        
-        
-    
-      
-  
 
 ?>    
 <!-----------------------------------HTML DO FORMULÁRIO------------------------------------------------------>
@@ -49,6 +30,9 @@ session_start();
     <link rel="stylesheet" href="css/estilo.css"> 
     <link rel="icon" href="img/logos/icon.ico"> 
     <link rel="stylesheet" href="css/inicial_botao_sair.css"> 
+
+    <link rel="stylesheet" href="css/estilos.css"> 
+
     <script src="jscript/main.js" defer></script>
 </head>
 <body>
