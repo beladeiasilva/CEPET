@@ -1,5 +1,20 @@
 <?php
-if(isset($_POST['enviar']))
+SESSION_START();
+
+
+//==========Puxando CNPJ para inserir na chave estrangeira-----//
+if((isset($_SESSION['cnpj']) == true)and(isset($_SESSION['senha'])==true))
+{
+ $ongcnpj = $_SESSION['cnpj'];
+}
+else
+//==========Impedindo o usuário acessar este FORM ou qualquer ONG não cadastrada!====//
+{
+        header('Location: /conexao/paginas/login.php');
+} 
+//===================================================================================//
+
+if(isset($_POST['enviarpet']))
 {
 //Teste para ver as informações inseridas.
 //if(isset($_POST['enviar']))
@@ -30,6 +45,7 @@ $porte = $_POST['porte'];
 $cachorrocor = $_POST['cachorrocor'];
 $gatocor = $_POST['gatocor'];
 $historico = $_POST['historico'];
+$ongcnpj = $_SESSION['cnpj'];
 
 
 //------------------------Estrutura da foto dos pets-----------------//
@@ -44,7 +60,7 @@ if(isset($_FILES['foto']))
  if($arquivoF['size'] > 10485760)
     die("Arquivo muito grande! Max: 10MB");
 
-    $pasta= "uploads_imagens_pets/";
+    $pasta= "imagens_pets_cadastrados/";
     $nomeDoArquivo = $arquivoF['name'];
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -56,13 +72,18 @@ if(isset($_FILES['foto']))
     $path = $pasta . $novoNomeDoArquivo . "." .  $extensao;
     $deu_certo = move_uploaded_file($arquivoF["tmp_name"], $path);
 
+
     //-------------------------------Inserindo ao banco de dados-----------------------//
     
-$result = mysqli_query($mysqli, "INSERT INTO pets (NOME, TIPO, COR, GENERO, PORTE, RAÇA, IDADE, HISTÓRICO, LINK_FOTO)
-VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$path')");
+$result = mysqli_query($mysqli, "INSERT INTO pets (NOME, TIPO, COR, GENERO, PORTE, RAÇA, IDADE, HISTÓRICO, LINK_FOTO, FK_ONG_CNPJ)
+VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$path','$ongcnpj')");
 
 
-header('Location: login.php');
+
+
+
+
+header('Location: /conexao/paginas/login.php');
 
 }
 }
@@ -111,7 +132,7 @@ header('Location: login.php');
 <input type="text" name="nome" id="inputnome" placeholder="Digite o nome do pet">
 
 <p>Idade</p>
-<input type="number" name="idade" max="25" min="0" placeholder="Digite a idade">
+<input type="text" name="idade" max="25"  placeholder="Digite a idade">
 
 <p id="pCachorroRaca">Raça Cachorro</p>
 <select type="text" name ="cachorroraca" id="cachorroRaca">
@@ -151,7 +172,7 @@ header('Location: login.php');
 <p>Foto</p>
 <input type="file" name="foto">
 
-<button name="enviar" id="enviarcadastropet">Enviar</button>
+<button name="enviarpet" id="enviarcadastropet">Enviar</button>
 
 <script>
 document.getElementById('tipoanimal').addEventListener('change', function () {

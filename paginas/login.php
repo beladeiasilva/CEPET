@@ -31,29 +31,38 @@
 
     <div>
 
-        <form action="testelogin.php" method= "POST">
-
+       
+        <form action="/conexao/configuracao/teste_login_USUARIO.php"  method= "POST">
+            
         <h1>Login Usuário</h1>
-        <input type="text" name="email" placeholder="Email">
-        <br>
-        <input type="password" name="senha" placeholder="Senha">
-        <br> 
-        <input type="submit" name="usuarioentrar" value="Entrar">
+      
+        <input type="email" name="email"  id="email" placeholder="Email">
+      
+        <br><br> 
+       
+        <input type="password" name="senha"  id="senha" placeholder="Senha">
 
-        <br>
+        <br><br> 
+        
+        <input type="submit" name="usuarioentrar"  id="entrar" value="Entrar">
+        
+        </form>
+       
+        
+        <form action="/conexao/configuracao/teste_login_ONG.php"  method= "POST">
 
         <h1>Login ONG</h1>
-        <input type="number" id="ongcnpj" placeholder="CNPJ">
+        <input type="number" name="ongcnpj" id="ongcnpj" placeholder="Cnpj">
         <br> 
-        <input type="password" id="ongsenha" placeholder="Senha">
+        <input type="password" name="ongsenha" id="ongsenha" placeholder="Senha">
         <br>
-        <input type="submit" name="ongentrar" value="Entrar">
-        
+        <input type="submit" name="ongentrar" id="entrar" value="Entrar">
+        </form>
         
         <div class ="d-flex">
-            <a href="cadastrousuario.php" type="button" class="btn">Cadastro de usuário</a>
+            <a href="/conexao/forms_cd/cadastrousuario.php" type="button" class="btn">Cadastro de usuário</a>
             <br>
-            <a href="cadastroong.php" type="button" class="btn"> Cadastre de ONG</a>
+            <a href="/conexao/forms_cd/cadastroong.php" type="button" class="btn"> Cadastre de ONG</a>
 
            <!--PRECISA COLOCAR EM OUTRA PAGINA SÓ PARA ONG 
            <a href="cadastropet.php" type="button" class="btn">Cadastre seu PET aqui!</a>
@@ -65,3 +74,5 @@
     </div>
 </body>
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

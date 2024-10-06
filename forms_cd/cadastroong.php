@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 
 if(isset($_POST['enviar']))
@@ -22,13 +24,16 @@ if(isset($_POST['enviar']))
         //print_r($_POST['ongsite']);
         //print_r($_POST['ongredessociais']);
         
-        //--------------------Insert das variaveis para o MYSQL---------------------//
+        //---------------------------------------Insert das variaveis para o MYSQL-----------------------------------------//
 
         include_once('conexao.php');
 
+        
+
         $cnpj = $_POST['ongcnpj'];
         $nome = $_POST['ongnome'];
-        $senha = $_POST['ongsenha'];
+        $senha = password_hash($_POST['ongsenha'], PASSWORD_DEFAULT);
+        $check_senha = $_POST['check_senha'];
         $email = $_POST['ongemail'];
         $telefone = $_POST['ongtelefone'];
         $cep = $_POST['ongcep'];
@@ -40,17 +45,8 @@ if(isset($_POST['enviar']))
         $site = $_POST['ongsite'];
         $redes = $_POST['ongredessociais'];
 
-        $result = mysqli_query($mysqli, "INSERT INTO ongs(CNPJ, NOME, SENHA, EMAIL, TELEFONE, CEP, ESTADO, ENDERECO, REDES_SOCIAIS, SITE) 
-        VALUES ('$cnpj','$nome','$senha','$email','$telefone','$cep','$estado','$cidade / $bairro / $rua / $numero','$redes','$site')");
 
-       header("Location: login.php");
-}
-
- //------------------Estrutura para os Arquivos-------------// 
-
-    include('conexao.php');
-
- //----------------------------Sintegra----------------------------------->
+//--------------------------------------------SINTEGRA----------------------------------//
 if(isset($_FILES['sintegra']))
 {
  $arquivoS = $_FILES ['sintegra'];
@@ -61,7 +57,7 @@ if(isset($_FILES['sintegra']))
  if($arquivoS['size'] > 2097152)
     die("Arquivo muito grande! Max: 2MB");
 
-    $pasta= "uploads_arquivos_ongs/sintegra/";
+    $pasta= "documentos_cadastrados/sintegra/";
     $nomeDoArquivo = $arquivoS['name'];
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -70,24 +66,13 @@ if(isset($_FILES['sintegra']))
     if ($extensao != "pdf")
         die("Tipo de arquivo inválido");
 
-    $path = $pasta . $novoNomeDoArquivo . "." .  $extensao;
-    $deu_certo = move_uploaded_file($arquivoS["tmp_name"], $path);
+    $path1 = $novoNomeDoArquivo . "." .  $extensao;
+    $deu_certo = move_uploaded_file($arquivoS["tmp_name"],$pasta . $path1);
 
-    //Testar o envio dos arquivos
+       
+}
 
-    //if($deu_certo)
-        //echo "<p>Arquivo enviado com sucesso! </p>";
-    //else
-        //echo "<p> Falha ao enviar arquivo </p>";
-
-
-        //----------------------Inserindo ao Banco -----------------//
-        $mysqli->query("INSERT INTO arquivos_ongs(NOME,PATH)
-        VALUES('$nomeDoArquivo','$path')") or die($mysqli->error);
-        //---------------------------------------------------------//
-}  
-
-//----------------------------CCS----------------------------------->
+    //----------------------------CCS----------------------------------->
  if(isset($_FILES['ccs']))
  {
   $arquivoC = $_FILES ['ccs'];
@@ -98,7 +83,7 @@ if(isset($_FILES['sintegra']))
   if($arquivoC['size'] > 2097152)
      die("Arquivo muito grande! Max: 2MB");
  
-     $pasta= "uploads_arquivos_ongs/ccs/";
+     $pasta= "documentos_cadastrados/ccs/";
      $nomeDoArquivo = $arquivoC['name'];
      $novoNomeDoArquivo = uniqid();
      $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -106,25 +91,12 @@ if(isset($_FILES['sintegra']))
      if ($extensao != "pdf")
          die("Tipo de arquivo inválido");
 
-     $path =  $pasta . $novoNomeDoArquivo . "." .  $extensao;
-     $deu_certo = move_uploaded_file($arquivoC["tmp_name"], $path);
- 
-   //Testar o envio dos arquivos
+     $path2 = $novoNomeDoArquivo . "." .  $extensao;
     
-    //if($deu_certo)
-        //echo "<p>Arquivo enviado com sucesso! </p>";
-    //else
-        //echo "<p> Falha ao enviar arquivo </p>";
+     $deu_certo = move_uploaded_file($arquivoC["tmp_name"],$pasta . $path2);
 
-        
-        
-        //----------------------Inserindo ao Banco -----------------//
-        $mysqli->query("INSERT INTO arquivos_ongs(NOME,PATH)
-        VALUES('$nomeDoArquivo', '$path')") or die($mysqli->error);
-         //---------------------------------------------------------//
-    }
-
-     //----------------------------BACEN----------------------------------->
+ }
+       //----------------------------BACEN----------------------------------->
 if(isset($_FILES['bacen']))
 {
  $arquivoB = $_FILES ['bacen'];
@@ -135,7 +107,7 @@ if(isset($_FILES['bacen']))
  if($arquivoB['size'] > 2097152)
     die("Arquivo muito grande! Max: 2MB");
 
-    $pasta= "uploads_arquivos_ongs/bacen/";
+    $pasta= "documentos_cadastrados/bacen/";
     $nomeDoArquivo = $arquivoB['name'];
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -143,42 +115,112 @@ if(isset($_FILES['bacen']))
     if ($extensao != "pdf")
         die("Tipo de arquivo inválido");
     
-        $path =  $pasta . $novoNomeDoArquivo . "." .  $extensao;
-        $deu_certo = move_uploaded_file($arquivoB["tmp_name"], $path);
+        $path3 = $novoNomeDoArquivo . "." .  $extensao;
+        $deu_certo = move_uploaded_file($arquivoB["tmp_name"], $pasta . $path3);
+ 
+//-----------------------------------------------INSERINDO AO BANCO DE DADOS-------------------------------------------//
 
-   //Testar o envio dos arquivos
-    
-    //if($deu_certo)
-        //echo "<p>Arquivo enviado com sucesso! </p>";
-    //else
-        //echo "<p> Falha ao enviar arquivo </p>";
+        $result = mysqli_query($mysqli, "INSERT INTO ongs(CNPJ, NOME, SENHA, EMAIL, TELEFONE, CEP, ESTADO, ENDERECO, REDES_SOCIAIS, SITE, DOCUMENTOS_ONGS) 
+        VALUES ('$cnpj','$nome','$senha','$email','$telefone','$cep','$estado','$cidade / $bairro / $rua / $numero','$redes','$site', '$path1 / $path2 / $path3')");
 
-        
-        //----------------------Inserindo ao Banco ----------------//
-        $mysqli->query("INSERT INTO arquivos_ongs(NOME,PATH)
-        VALUES('$nomeDoArquivo', '$path')") or die($mysqli->error);
-        //---------------------------------------------------------//
+       header("Location: /conexao/paginas/login.php");
+
+         
+    }
 }
 
 
-
 ?>
-<!--fazer php-->
+<!-----------------------------------------------------SCRIPT DO CEP (INICIO)------------------------------------------->
+<script>
 
+function limpa_formulário_cep() {
+    // Limpa valores do formulário de cep.
+    document.getElementById('ongrua').value = ("");
+    document.getElementById('ongbairro').value = ("");
+    document.getElementById('ongcidade').value = ("");
+    document.getElementById('ongestado').value = ("");
+}
+
+function meu_callback(conteudo) {
+    if (!("erro" in conteudo)) {
+        // Atualiza os campos com os valores.
+        document.getElementById('ongrua').value = (conteudo.logradouro);
+        document.getElementById('ongbairro').value = (conteudo.bairro);
+        document.getElementById('ongcidade').value = (conteudo.localidade);
+        document.getElementById('ongestado').value = (conteudo.uf);
+    
+    } else {
+        // CEP não Encontrado.
+        limpa_formulário_cep();
+        alert("CEP não encontrado.");
+    }
+}
+
+function pesquisacep(valor) {
+    // Nova variável "cep" somente com dígitos.
+    var cep = valor.replace(/\D/g, '');
+
+    // Verifica se campo cep possui valor informado.
+    if (cep != ""){
+
+        // Expressão regular para validar o CEP.
+        var validacep = /^[0-9]{8}$/;
+
+        // Valida o formato do CEP.
+        if (validacep.test(cep)) {
+
+            // Preenche os campos com "..." enquanto consulta webservice.
+            document.getElementById('ongrua').value = "...";
+            document.getElementById('ongbairro').value = "...";
+            document.getElementById('ongcidade').value = "...";
+            document.getElementById('ongestado').value = "...";
+        
+
+            // Cria um elemento javascript.
+            var script = document.createElement('script');
+
+            // Sincroniza com o callback.
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+            // Insere script no documento e carrega o conteúdo.
+            document.body.appendChild(script);
+        }
+         else {
+            // cep é inválido.
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+            }
+        }
+
+         else {
+        // cep sem valor, limpa formulário.
+        limpa_formulário_cep();
+    }
+}
+
+</script>
+<!-----------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------------------------------->
+
+
+<!-----------------------------------------------HTML DO FORMULÁRIO--------------------------------------------------------------------->
+<!DOCTYPE html>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Cadastro ONG</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="css/estilo.css"> 
     <link rel="icon" href="img/logos/icon.ico">  
-    <script src="jscript/main.js" defer></script>
+     <script src="jscript/main.js" defer> </script>
 </head>
-<body>
+
+    <body>
 
 
     <!--Método "POST" Essencial para a conexão dos dados.----------------------------------->  
@@ -186,12 +228,14 @@ if(isset($_FILES['bacen']))
     <!-------------------------------------------------------------------------------------->  
 
 
+   
+
     <header>
-        <img src="img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
+        <img src="/conexao/paginas/img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
 
         <a class="cadastro" href="CadastroUsuario.html">
             Faça login ou cadastre-se 
-            <img src="img/icones variados/perfil.png">
+            <img src="/conexao/paginas/img/icones variados/perfil.png">
         </a>
 
         <!Troca para o nome dos outros htmls para ir para outra página. href="Index.html">
@@ -208,7 +252,18 @@ if(isset($_FILES['bacen']))
 <h1>Cadastre sua ONG!</h1>
 
 <p>CNPJ</p>
-<input type="number" name="ongcnpj" id="ongcnpj" placeholder="Digite o CNPJ">
+<input type="text" name="ongcnpj" class="form-control rounded-form"  id="ongcnpj" placeholder="Digite o CNPJ" maxlength="18"/>
+
+<!-----------------------------------------------SCRIPT DO CNPJ (INICIO)------------------------------------------------------------------->
+
+<script>
+document.getElementById('ongcnpj').addEventListener('input', function (e) {
+      var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+      e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+    });
+</script>
+
+<!-----------------------------------------------SCRIPT DO CNPJ (FIM)------------------------------------------------------------------->
 
 <p>Nome</p>
 <input type="text" name="ongnome" id="ongnome" placeholder="Nome da ONG">
@@ -231,9 +286,14 @@ if(isset($_FILES['bacen']))
 <p>Telefone</p>
 <input type="tel" name="ongtelefone" id="ongtelefone" placeholder="(XX) XXXXX-XXXX">
 
-<p>CEP</p>
-<input type="number" name="ongcep" id="ongcep" placeholder="Digite o CEP">
 
+<label>
+<p>CEP</p> 
+<input name="ongcep" type="text" id="ongcep" placeholder="Digite o CEP" value="" size="10" maxlength="9"
+                       onblur="pesquisacep(this.value);" >
+</label>
+
+<label>
 <p>Estado</p>
 <select name="ongestado" id="ongestado">
     <option value="">Selecione o estado</option>
@@ -265,18 +325,27 @@ if(isset($_FILES['bacen']))
     <option value="SE">Sergipe (SE)</option>
     <option value="TO">Tocantins (TO)</option>
 </select>
+</label>
 
+<label>
 <p>Cidade</p>
-<input type="text" name="ongcidade" id="ongcidade" placeholder="Digite a cidade">
+<input type="text" name="ongcidade" id="ongcidade" placeholder="Digite a cidade" size="40">
+</label>
 
+<label>
 <p>Bairro</p>
-<input type="text" name="ongbairro" id="ongbairro" placeholder="Digite o bairro">
+<input type="text" name="ongbairro" id="ongbairro" placeholder="Digite o bairro" size="40">
+</label>
 
+<label>
 <p>Rua</p>
-<input type="text" name="ongrua" id="ongrua" placeholder="Digite a rua">
+<input type="text" name="ongrua" id="ongrua" placeholder="Digite a rua " size="60" >
+</label>
 
+<label>
 <p>Número</p>
 <input type="number" name="ongnumero" id="ongnumero" placeholder="Número do imóvel">
+</label>
 
 <!-- Campo opcional -->
 <p>Site</p>
@@ -287,6 +356,6 @@ if(isset($_FILES['bacen']))
 
 
 <button type="submit" name="enviar" id="enviarcadastroong">Enviar</button>
-
+</form>
 </body>
 </html>

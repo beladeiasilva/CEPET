@@ -1,0 +1,11 @@
+.link_sair {
+    display:block;
+    padding: 4px 15px;
+    border-radius: 20px;
+    text-decoration:none;
+    margin-left: auto;
+    font-family:cursive;
+    border:none;
+    background-color: rgb(34, 121, 148);
+    color: rgb(255, 255, 255);
+}  

@@ -22,13 +22,14 @@
 
         include_once('conexao.php');
 
+        //--------------------------------------------Declarando váriaveis---------------------------------------------->
         $nomelogin = $_POST['usuariologin'];
-        $senha = $_POST['usuariosenha'];
+        $senhaU = password_hash($_POST['usuariosenha'], PASSWORD_DEFAULT);
         $cpf = $_POST['usuariocpf'];
         $nome = $_POST['usuarionome'];
         $nascimento = $_POST['usuarionascimento'];
         $genero = $_POST['usuariogenero'];
-        $email = $_POST['usuarioemail'];
+        $emailU = $_POST['usuarioemail'];
         $telefone = $_POST['usuariotelefone'];
         $uf = $_POST['usuarioestado'];
         $cidade = $_POST['usuariocidade'];
@@ -38,17 +39,134 @@
         $numero = $_POST['usuarionumero'];
         $termosecondicoes = $_POST['termosecondicoes'];
         
+      
 
+        //------------------------------------Verifica se há um email já cadastrado----------------------------------------------
+        $sqlVCD="SELECT EMAIL FROM usuarios where EMAIL= '$emailU'";
 
-        $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições) 
-        VALUES ('$nomelogin','$senha','$cpf','$nome','$nascimento','$genero','$email','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes')");
-        
-        header("Location: login.php");
+        if($rvc=mysqli_query($mysqli,$sqlVCD))
+        {
+            $qtdLinhas = mysqli_num_rows($rvc);
+
+            if($qtdLinhas>0)
+            {
+               
+              
+             echo "
+             <div class='alert alert-danger' role='alert'>
+                A simple danger alert—check it out!
+                </div>";
+
+            }
+            else
+            {
+                $hash =sprintf('%07X', mt_rand(0,0xFFFFFFF));
+                
+        //------------------------------------Inserindo ao banco de dados:-------------------------------------------------------//
+
+                $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições, HASH) 
+                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes','$hash')");
+
+              
+                header('Location: /conexao/paginas/login.php');
+            }
+        }       
     }
 
 ?>
+<!-----------------------------------------------------SCRIPT DO CEP (INICIO)------------------------------------------->
+<script>
 
-<!-----------------------------------------------HTML DO FORMULÁRIO--------------------------------------------------------------------->
+function limpa_formulário_cep() {
+    // Limpa valores do formulário de cep.
+    document.getElementById('usuariorua').value = ("");
+    document.getElementById('usuariobairro').value = ("");
+    document.getElementById('usuariocidade').value = ("");
+    document.getElementById('usuarioestado').value = ("");
+}
+
+function meu_callback(conteudo) {
+    if (!("erro" in conteudo)) {
+        // Atualiza os campos com os valores.
+        document.getElementById('usuariorua').value = (conteudo.logradouro);
+        document.getElementById('usuariobairro').value = (conteudo.bairro);
+        document.getElementById('usuariocidade').value = (conteudo.localidade);
+        document.getElementById('usuarioestado').value = (conteudo.uf);
+    
+    } else {
+        // CEP não Encontrado.
+        limpa_formulário_cep();
+        alert("CEP não encontrado.");
+    }
+}
+
+function pesquisacep(valor) {
+    // Nova variável "cep" somente com dígitos.
+    var cep = valor.replace(/\D/g, '');
+
+    // Verifica se campo cep possui valor informado.
+    if (cep != ""){
+
+        // Expressão regular para validar o CEP.
+        var validacep = /^[0-9]{8}$/;
+
+        // Valida o formato do CEP.
+        if (validacep.test(cep)) {
+
+            // Preenche os campos com "..." enquanto consulta webservice.
+            document.getElementById('usuariorua').value = "...";
+            document.getElementById('usuariobairro').value = "...";
+            document.getElementById('usuariocidade').value = "...";
+            document.getElementById('usuarioestado').value = "...";
+        
+
+            // Cria um elemento javascript.
+            var script = document.createElement('script');
+
+            // Sincroniza com o callback.
+            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+            // Insere script no documento e carrega o conteúdo.
+            document.body.appendChild(script);
+        }
+         else {
+            // cep é inválido.
+            limpa_formulário_cep();
+            alert("Formato de CEP inválido.");
+            }
+        }
+
+         else {
+        // cep sem valor, limpa formulário.
+        limpa_formulário_cep();
+    }
+}
+
+
+</script>
+<!-----------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------------------------------->
+
+<!-----------------------------------------------SCRIPT DO CPF (INICIO)---------------------------------------------------------------->
+<script>
+                function mascara(i){
+                        
+                 var v = i.value;
+                        
+                 if(isNaN(v[v.length-1])){ 
+                     i.value = v.substring(0, v.length-1);
+                            return;
+                 }
+                    
+                i.setAttribute("maxlength", "14");
+                 if (v.length == 3 || v.length == 7) i.value += ".";
+                 if (v.length == 11) i.value += "-";
+            }
+</script>    
+
+<!-----------------------------------------------SCRIPT DO CPF (FIM)---------------------------------------------------------------->
+
+
+<!--------------------*HTML DO FORMULÁRIO*----------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -57,13 +175,16 @@
     <title>Criar Conta</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="css/estilo.css"> 
-    <link rel="icon" href="img/logos/icon.ico">  
+    <link rel="stylesheet" href="/conexao/paginas/css/estilo.css"> 
+    <link rel="icon" href="/conexao/paginas/img/logos/icon.ico">  
     <script src="jscript/main.js" defer></script>
     
 </head>
 <body>
 
+<?php
+
+ ?>    
 
 <!--Método "POST" Essencial para a conexão dos dados.----------------------------------->    
 <form action="cadastrousuario.php" method="POST">
@@ -77,6 +198,10 @@
     <!-- Informações de Login -->
         <p>Nome de Usuário</p>
         <input type="text" name="usuariologin" id="usuariologin" placeholder="Digite um nome de usuário" required>
+
+
+           
+        
             
         <p>Senha</p>
         <input type="password" name="usuariosenha" id="usuariosenha" placeholder="Digite uma senha" required>
@@ -97,11 +222,9 @@
             <option value="prefironaoinformar">Prefiro não informar</option>
         </select>
 
-        
-<!---------------------INSERINDO O CAMPO CPF 20/09/24-------------------------------------------------->
+       
         <p>CPF</p>
-        <input type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" required>
-<!-------------------------------------------------------------------------------------------->       
+        <input oninput="mascara(this)" type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" max length="11" required>
         
         <p>Data de Nascimento</p>
         <input type="date" name="usuarionascimento" id="usuarionascimento" required>
@@ -114,7 +237,7 @@
     
         <!-- Informações de Endereço -->
         <p>CEP</p>
-        <input type="number" name="usuariocep" id="usuariocep" placeholder="Digite o CEP" required>
+        <input type="number" name="usuariocep" id="usuariocep" placeholder="Digite o CEP" required onblur="pesquisacep(this.value);" >
     
         <p>Estado</p>
         <select name="usuarioestado" id="usuarioestado" required>
@@ -165,7 +288,17 @@
         Aceito os <a>termos e condições</a>
         </p>
         <button type="submit" name="cadastrar" id="usuariocadastrar">Cadastrar</button>
-    
+
+        <div class='alert alert-danger' role='alert'>
+             
+                </div>";
+
+                
+
+
+
+        <div>
+
     </form>
     
     

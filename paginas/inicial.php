@@ -1,15 +1,24 @@
 <?php
 session_start();
+
     //print_r($_SESSION);
     if((!isset($_SESSION['email']) == true)and(!isset($_SESSION['senha'])==true))
-
     {
         unset($_SESSION['email']);
         unset($_SESSION['senha']);
-
-        header('Location: login.php');
+        unset($_SESSION['usuario']);
     }
-    $logado = $_SESSION['email'];
+    else
+    {
+        echo  '<h2>',$_SESSION['usuario'],'<h2>';
+        echo "<button class = 'link_sair'>
+        <a class='link_sair' href='/conexao/configuracao/sair.php'><h4> Sair </h4>
+        </a>
+        </button>";
+       
+        
+    }
+
 ?>    
 <!-----------------------------------HTML DO FORMULÁRIO------------------------------------------------------>
 
@@ -22,21 +31,24 @@ session_start();
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="css/estilo.css"> 
-    <link rel="icon" href="img/logos/icon.ico">  
+    <link rel="icon" href="img/logos/icon.ico"> 
+    <link rel="stylesheet" href="css/inicial_botao_sair.css"> 
+    <link rel="stylesheet" href="css/estilos.css"> 
     <script src="jscript/main.js" defer></script>
 </head>
 <body>
-    
 
-<div class ="d-flex">
-    <a href="sair.php" type="button" class="btn">Sair</a>
-</div>
+
+
 
     <header>
         <img src="img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
 
-        <a class="cadastro" href="CadastroUsuario.html">
-            Faça login ou cadastre-se 
+        <a class="login" href="login.php">
+            Faça o login    </a>
+            ou
+        <a class="cadastro" href="/conexao/forms_cd/cadastrousuario.php">
+             Cadastre-se!
             <img src="img/icones variados/perfil.png">
         </a>
 
