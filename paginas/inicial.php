@@ -30,7 +30,7 @@ session_start();
     <link rel="stylesheet" href="css/estilo.css"> 
     <link rel="icon" href="img/logos/icon.ico"> 
     <link rel="stylesheet" href="css/inicial_botao_sair.css"> 
-    <link rel="stylesheet" href="css/estilos.css"> 
+    <link rel="stylesheet" href="css/estilo.css"> 
 
     <script src="jscript/main.js" defer></script>
 </head>
@@ -71,21 +71,20 @@ session_start();
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <div class="banner" id="banner">
-        <div>
-        <article class="article1">
-        <h2>Amor de verdade não se compra, se encontra</h2>
+    <div>    
+    <article class="article1">
+            <h2>Amor de verdade não se compra, se encontra</h2>
+            <button>Acesse para Adotar</button>    
         </article>
-        <div>
-            <img src="img/teste/1.jpeg" />
-            </div>
+        <img src="img/animais/dog (3).png" />
     </div>
     <div>
         <article>
         <h2>Título do Artigo</h2>
-        <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
-        </article>
-            <img src="img/teste/2.jpeg" />
-    </div>
+        <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>    
+    </article>
+            <img src="img/teste/2.jpeg" />  
+        </div>
     <div>
         <article>
         <h2>Título do Artigo</h2>

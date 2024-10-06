@@ -98,15 +98,12 @@ nav ul li a {
     height: 400px; 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
 }
 
 article {
-    display: flex; /* Adicionado para habilitar flexbox */
-    justify-content: flex-start;
     width: 60%;
-    flex-direction: column; /* Adiciona direção em coluna, se necessário */
 }
 
 .article1 h2 {
@@ -132,9 +129,22 @@ article p {
     font-size: 10px;
     text-align: center;
 }
-
-.banner img {
-    width: 200px;
+article button {
+    background-color: #fffbf3;
+    color: #3d9f9b;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.banner div img {
+    width: 700px;
+    margin-left: 70%; /* Espaço entre o artigo e a imagem */
+    margin-top: -30%;
 }
 
 
