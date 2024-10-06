@@ -6,6 +6,8 @@ body {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
 }
 
 header {
@@ -14,16 +16,19 @@ header {
     justify-content: space-between; /* Distribui os elementos */
     align-items: center; /* Alinha verticalmente ao centro */
     padding: 10px;
+    height:50px ;
 }
 
 .logoimg {
     flex-grow: 1;
     display: flex;
-    justify-content: center; /* Centraliza o logo */
+    justify-content: center;
 }
 
-.logoimg a {
-    float: left;
+.logoimg img {
+    position:relative;
+    right: -5%;
+    
 }
 
 .logoimg img {
@@ -35,6 +40,16 @@ header {
     display: flex;
     align-items: center;
 }
+.headerlogin a {
+    text-decoration: none;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px; 
+    }
+    
+
 
 .imagemlogin {
     display: flex;
@@ -72,24 +87,64 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: #fffbf3;
-    font-family: Coco Gothic;
     font-family: "Poppins", sans-serif;
-    font-weight: 800;
+    font-weight: 700;
     font-style: normal;
 }
+.banner div {
+    background-color: #3d9f9b;
+    margin: 20px; 
+    border-radius: 20px; 
+    height: 400px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+}
+
+article {
+    display: flex; /* Adicionado para habilitar flexbox */
+    justify-content: flex-start;
+    width: 60%;
+    flex-direction: column; /* Adiciona direção em coluna, se necessário */
+}
+
+.article1 h2 {
+    color: #fffbf3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+
+article h2 {
+    color: #fffbf3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+}
+
+article p {
+    color: #fffbf3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    text-align: center;
+}
 
 .banner img {
-    display: block;
-    margin-left:auto;
-    width: auto;
-    height: 400px;
+    width: 200px;
 }
+
+
+
 
 .imagem-arredondada {
     width: 150px;
     height: auto;
     border-radius: 100px;
+    
 }
 
 .slick-prev,

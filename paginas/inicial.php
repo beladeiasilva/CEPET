@@ -14,7 +14,7 @@ session_start();
         echo "<button class = 'link_sair'>
         <a class='link_sair' href='/conexao/configuracao/sair.php'><h4> Sair </h4>
         </a>
-        </button>";
+        </button>";}
 
 ?>    
 <!-----------------------------------HTML DO FORMULÁRIO------------------------------------------------------>
@@ -30,7 +30,6 @@ session_start();
     <link rel="stylesheet" href="css/estilo.css"> 
     <link rel="icon" href="img/logos/icon.ico"> 
     <link rel="stylesheet" href="css/inicial_botao_sair.css"> 
-
     <link rel="stylesheet" href="css/estilos.css"> 
 
     <script src="jscript/main.js" defer></script>
@@ -41,42 +40,77 @@ session_start();
 
 
     <header>
-        <img src="img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
+        <div class="logoimg">
+            <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
+        </div>
+        <div class="headerlogin">
+        <a href="login.php">
+            Faça o login </a>
+             <p> ou </p>
+        <a href="/conexao/forms_cd/cadastrousuario.php">
+              Cadastre-se!</a>
+             </div>
+            <img class="pessoa" src="img/icones variados/perfil.png">
+        
+        
+        </header>
 
-        <a class="login" href="login.php">
-            Faça o login    </a>
-            ou
-        <a class="cadastro" href="/conexao/forms_cd/cadastrousuario.php">
-             Cadastre-se!
-            <img src="img/icones variados/perfil.png">
-        </a>
-
-        <!Troca para o nome dos outros htmls para ir para outra página. href="Index.html">
+        <nav>
+        <!--Troca para o nome dos outros htmls para ir para outra página. href="Index.html"-->
         <ul class="barra-navegacao">
             <li><a href="#Adocao">Adoção</a></li>
             <li><a href="#ONGs">ONGs</a></li>
             <li><a href="#Doações">Doação</a></li>
             <li><a href="#Noticias">Noticias e dicas</a></li>
         </ul>
-    </header>
+        </nav>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <div class="banner" id="banner">
-        <div><img src="img/teste/1.jpeg" /></div>
-        <div><img src="img/teste/2.jpeg" /></div>
-        <div><img src="img/teste/3.jpeg" /></div>
-        <div><img src="img/teste/4.jpeg" /></div>
-        <div><img src="img/teste/5.jpeg" /></div>
+        <div>
+        <article class="article1">
+        <h2>Amor de verdade não se compra, se encontra</h2>
+        </article>
+        <div>
+            <img src="img/teste/1.jpeg" />
+            </div>
+    </div>
+    <div>
+        <article>
+        <h2>Título do Artigo</h2>
+        <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
+        </article>
+            <img src="img/teste/2.jpeg" />
+    </div>
+    <div>
+        <article>
+        <h2>Título do Artigo</h2>
+        <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
+        </article>
+            <img src="img/teste/3.jpeg" />
+    </div>
+    <div>
+        <article>
+        <h2>Título do Artigo</h2>
+        <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
+        </article>
+            <img src="img/teste/4.jpeg" />
+    </div>
+    <div>
+        <article>
+        <h2>Título do Artigo</h2>
+        <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
+        </article>
+            <img src="img/teste/5.jpeg" /></div>
     </div>
 
-<!CONHEÇA AS ONGs>
-    <div>
-        <p>Conheça as ONGs</p>
-    </div>
-        <div class="carrosel-ONG">
+    <div class="carrosel-ONG">
+        <h3>Conheça as ONGs</h3>
+        
             <a href=""><img src="img/foto ongs/ong-das-patinhas.jpg" class="imagem-arredondada"></a>
             <a href=""><img src="img/foto ongs/patinhas-que-brilham.png" class="imagem-arredondada"></a>
             <a href=""><img src="img/foto ongs/sempre-ao-seu-lado.png" class="imagem-arredondada"></a>
