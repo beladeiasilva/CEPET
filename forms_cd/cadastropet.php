@@ -132,7 +132,7 @@ header('Location: /conexao/paginas/login.php');
 <input type="text" name="nome" id="inputnome" placeholder="Digite o nome do pet">
 
 <p>Idade</p>
-<input type="number" name="idade" max="25" min="0" placeholder="Digite a idade">
+<input type="text" name="idade" max="25"  placeholder="Digite a idade">
 
 <p id="pCachorroRaca">Raça Cachorro</p>
 <select type="text" name ="cachorroraca" id="cachorroRaca">

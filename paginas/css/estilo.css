@@ -7,6 +7,8 @@
 }
 
 .banner img {
+    display: block;
+    margin-left:auto;
     width: auto;
     height: 400px;
 }
