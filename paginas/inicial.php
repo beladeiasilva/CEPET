@@ -23,15 +23,12 @@ session_start();
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cepet</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="css/estilo.css"> 
     <link rel="icon" href="img/logos/icon.ico"> 
-    <link rel="stylesheet" href="css/inicial_botao_sair.css"> 
-    <link rel="stylesheet" href="css/estilo.css"> 
-
     <script src="jscript/main.js" defer></script>
 </head>
 <body>
@@ -83,28 +80,28 @@ session_start();
         <h2>Título do Artigo</h2>
         <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>    
     </article>
-            <img src="img/teste/2.jpeg" />  
+            <img src="img/animais/dog(1).png">  
         </div>
     <div>
         <article>
         <h2>Título do Artigo</h2>
         <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
         </article>
-            <img src="img/teste/3.jpeg" />
+            <img src="img/animais/dog (2).png" />
     </div>
     <div>
         <article>
         <h2>Título do Artigo</h2>
         <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
         </article>
-            <img src="img/teste/4.jpeg" />
+            <img src="img/animais/dog (4).png" />
     </div>
     <div>
         <article>
         <h2>Título do Artigo</h2>
         <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
         </article>
-            <img src="img/teste/5.jpeg" /></div>
+            <img src="img/animais/dog (5).png" /></div>
     </div>
 
     <div class="carrosel-ONG">

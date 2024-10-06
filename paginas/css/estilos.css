@@ -91,6 +91,9 @@ nav ul li a {
     font-weight: 700;
     font-style: normal;
 }
+
+
+
 .banner div {
     background-color: #3d9f9b;
     margin: 20px; 
@@ -99,11 +102,11 @@ nav ul li a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 article {
-    width: 60%;
+    width: 40%;
+
 }
 
 .article1 h2 {
@@ -118,7 +121,7 @@ article h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -126,7 +129,7 @@ article p {
     color: #fffbf3;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 20px;
     text-align: center;
 }
 article button {
@@ -142,12 +145,11 @@ article button {
     cursor: pointer;
 }
 .banner div img {
-    width: 700px;
-    margin-left: 70%; /* Espaço entre o artigo e a imagem */
-    margin-top: -30%;
+    width:600px;
+    position:relative;
+    left: 50%;
+    bottom: 350px;
 }
-
-
 
 
 .imagem-arredondada {
