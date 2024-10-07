@@ -129,3 +129,12 @@ form input{
     align-items: center;
     align-content: center;
 }
+select{
+    width: 300px;
+    height: 35px;
+    display: flexbox;
+    border-width: 2px;
+    border-color: #14948e;
+    border-style: solid;
+    border-radius: 10px;
+}

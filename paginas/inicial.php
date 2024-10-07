@@ -34,22 +34,17 @@ session_start();
 <body>
 
     <header>
-        <div class="logoimg">
-            <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
-        </div>
-        <div class="headerlogin">
-        <a href="login.php">
-            Faça o login </a>
-             <p> ou </p>
-        <a href="/conexao/forms_cd/cadastrousuario.php">
-              Cadastre-se!</a>
-             </div>
+            <div class="logoimg">
+                <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
+            </div>
+            <div class="headerlogin">
+                <a href="login.php">Faça o login </a>
+                    <p> ou </p>
+                <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
+            </div>
             <img class="pessoa" src="img/icones variados/perfil.png">
-        
-        
-        </header>
-
-        <nav>
+    </header>
+    <nav>
         <!--Troca para o nome dos outros htmls para ir para outra página. href="Index.html"-->
         <ul class="barra-navegacao">
             <li><a href="#Adocao">Adoção</a></li>
@@ -57,7 +52,7 @@ session_start();
             <li><a href="#Doações">Doação</a></li>
             <li><a href="#Noticias">Noticias e dicas</a></li>
         </ul>
-        </nav>
+    </nav>
 
 
     <!-- jQuery -->
