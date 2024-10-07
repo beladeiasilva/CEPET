@@ -173,14 +173,33 @@ function pesquisacep(valor) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="/conexao/paginas/css/estilo.css"> 
-    <link rel="icon" href="/conexao/paginas/img/logos/icon.ico">  
-    <script src="jscript/main.js" defer></script>
-    
+    <link rel="stylesheet" href="estilocadastro.css"> 
+    <link rel="icon" href="img/logos/icon.ico">  
+     <script src="jscript/main.js" defer> </script>
 </head>
-<body>
+
+    <body>
+    <header>
+        <div class="logoimg">
+            <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
+        </div>
+        <div class="headerlogin">
+            <a href="login.php">
+                Faça o login </a>
+                <p> ou </p>
+            <a href="/conexao/forms_cd/cadastrousuario.php">
+                Cadastre-se!</a>
+        </div>
+        <img class="pessoa" src="img/icones variados/perfil.png">
+    </header>
+    <nav>
+        <ul class="barra-navegacao">
+            <li><a href="#Adocao">Adoção</a></li>
+            <li><a href="#ONGs">ONGs</a></li>
+            <li><a href="#Doações">Doação</a></li>
+            <li><a href="#Noticias">Noticias e dicas</a></li>
+        </ul>
+    </nav>
 
 <?php
 
@@ -283,10 +302,11 @@ function pesquisacep(valor) {
         <p>Bairro</p>
         <input type="text" name="usuariobairro" id="usuariobairro" placeholder="Digite seu bairro" required>
     
-        <p>
-        <input type="checkbox" name="termosecondicoes" id="termosecondicoes">
-        Aceito os <a>termos e condições</a>
-        </p>
+        <br>
+        <p class="termos1">
+            <input class="termos2" type="radio" required>
+        Aceito os Termos e Condições</p>
+        <br>
         <button type="submit" name="cadastrar" id="usuariocadastrar">Cadastrar</button>
 
         <div class='alert alert-danger' role='alert'>

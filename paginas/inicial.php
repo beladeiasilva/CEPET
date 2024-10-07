@@ -23,7 +23,7 @@ session_start();
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cepet</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -32,9 +32,6 @@ session_start();
     <script src="jscript/main.js" defer></script>
 </head>
 <body>
-
-
-
 
     <header>
         <div class="logoimg">
@@ -104,9 +101,8 @@ session_start();
             <img src="img/animais/dog (5).png" /></div>
     </div>
 
+    <h3>Conheça as ONGs</h3>
     <div class="carrosel-ONG">
-        <h3>Conheça as ONGs</h3>
-        
             <a href=""><img src="img/foto ongs/ong-das-patinhas.jpg" class="imagem-arredondada"></a>
             <a href=""><img src="img/foto ongs/patinhas-que-brilham.png" class="imagem-arredondada"></a>
             <a href=""><img src="img/foto ongs/sempre-ao-seu-lado.png" class="imagem-arredondada"></a>

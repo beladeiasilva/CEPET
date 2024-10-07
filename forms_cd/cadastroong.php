@@ -204,7 +204,6 @@ function pesquisacep(valor) {
 
 
 <!-----------------------------------------------HTML DO FORMULÁRIO--------------------------------------------------------------------->
-<!DOCTYPE html>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -213,46 +212,40 @@ function pesquisacep(valor) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Cadastro ONG</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="css/estilo.css"> 
+    <link rel="stylesheet" href="estilocadastro.css"> 
     <link rel="icon" href="img/logos/icon.ico">  
      <script src="jscript/main.js" defer> </script>
 </head>
 
     <body>
-
-
-    <!--Método "POST" Essencial para a conexão dos dados.----------------------------------->  
-    <form action="cadastroong.php" method="POST" enctype="multipart/form-data">
-    <!-------------------------------------------------------------------------------------->  
-
-
-   
-
     <header>
-        <img src="/conexao/paginas/img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
-
-        <a class="cadastro" href="CadastroUsuario.html">
-            Faça login ou cadastre-se 
-            <img src="/conexao/paginas/img/icones variados/perfil.png">
-        </a>
-
-        <!Troca para o nome dos outros htmls para ir para outra página. href="Index.html">
+        <div class="logoimg">
+            <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
+        </div>
+        <div class="headerlogin">
+            <a href="login.php">
+                Faça o login </a>
+                <p> ou </p>
+            <a href="/conexao/forms_cd/cadastrousuario.php">
+                Cadastre-se!</a>
+        </div>
+        <img class="pessoa" src="img/icones variados/perfil.png">
+    </header>
+    <nav>
         <ul class="barra-navegacao">
             <li><a href="#Adocao">Adoção</a></li>
             <li><a href="#ONGs">ONGs</a></li>
             <li><a href="#Doações">Doação</a></li>
             <li><a href="#Noticias">Noticias e dicas</a></li>
         </ul>
-    </header>
-
-
+    </nav>
+<!--Método "POST" Essencial para a conexão dos dados.----------------------------------->  
+        <form action="cadastroong.php" method="POST" enctype="multipart/form-data">
     <!-- Não apagar "name" nos campos de input ou select. PHP precisa dos names para puxar as informações para as variaveis-->
-<h1>Cadastre sua ONG!</h1>
+        <h1>Cadastre sua ONG!</h1>
 
-<p>CNPJ</p>
-<input type="text" name="ongcnpj" class="form-control rounded-form"  id="ongcnpj" placeholder="Digite o CNPJ" maxlength="18"/>
+        <p>CNPJ</p>
+        <input type="text" name="ongcnpj" class="form-control rounded-form"  id="ongcnpj" placeholder="Digite o CNPJ" maxlength="18"/>
 
 <!-----------------------------------------------SCRIPT DO CNPJ (INICIO)------------------------------------------------------------------->
 
@@ -265,97 +258,98 @@ document.getElementById('ongcnpj').addEventListener('input', function (e) {
 
 <!-----------------------------------------------SCRIPT DO CNPJ (FIM)------------------------------------------------------------------->
 
-<p>Nome</p>
-<input type="text" name="ongnome" id="ongnome" placeholder="Nome da ONG">
+        <p>Nome</p>
+        <input type="text" name="ongnome" id="ongnome" placeholder="Nome da ONG">
 
-<p>Senha</p>
-<input type="password" name="ongsenha" id="ongsenha" placeholder="Crie uma Senha">
+        <p>Senha</p>
+        <input type="password" name="ongsenha" id="ongsenha" placeholder="Crie uma Senha">
 
-<p>Cartão Sintegra</p>
-<input type="file" name="sintegra" id="ongcartaosintegra">
+        <p>Cartão Sintegra</p>
+        <input type="file" name="sintegra" id="ongcartaosintegra">
 
-<p>CCS</p>
-<input type="file" name="ccs" id="ongccs">
+        <p>CCS</p>
+        <input type="file" name="ccs" id="ongccs">
 
-<p>Bacen</p>
-<input type="file" name="bacen" id="ongbacen">
+        <p>Bacen</p>
+        <input type="file" name="bacen" id="ongbacen">
 
-<p>E-mail</p>
-<input type="email" name="ongemail" id="ongemail" placeholder="Digite o e-mail da ONG">
+        <p>E-mail</p>
+        <input type="email" name="ongemail" id="ongemail" placeholder="Digite o e-mail da ONG">
 
-<p>Telefone</p>
-<input type="tel" name="ongtelefone" id="ongtelefone" placeholder="(XX) XXXXX-XXXX">
-
-
-<label>
-<p>CEP</p> 
-<input name="ongcep" type="text" id="ongcep" placeholder="Digite o CEP" value="" size="10" maxlength="9"
-                       onblur="pesquisacep(this.value);" >
-</label>
-
-<label>
-<p>Estado</p>
-<select name="ongestado" id="ongestado">
-    <option value="">Selecione o estado</option>
-    <option value="AC">Acre (AC)</option>
-    <option value="AL">Alagoas (AL)</option>
-    <option value="AP">Amapá (AP)</option>
-    <option value="AM">Amazonas (AM)</option>
-    <option value="BA">Bahia (BA)</option>
-    <option value="CE">Ceará (CE)</option>
-    <option value="DF">Distrito Federal (DF)</option>
-    <option value="ES">Espírito Santo (ES)</option>
-    <option value="GO">Goiás (GO)</option>
-    <option value="MA">Maranhão (MA)</option>
-    <option value="MT">Mato Grosso (MT)</option>
-    <option value="MS">Mato Grosso do Sul (MS)</option>
-    <option value="MG">Minas Gerais (MG)</option>
-    <option value="PA">Pará (PA)</option>
-    <option value="PB">Paraíba (PB)</option>
-    <option value="PR">Paraná (PR)</option>
-    <option value="PE">Pernambuco (PE)</option>
-    <option value="PI">Piauí (PI)</option>
-    <option value="RJ">Rio de Janeiro (RJ)</option>
-    <option value="RN">Rio Grande do Norte (RN)</option>
-    <option value="RS">Rio Grande do Sul (RS)</option>
-    <option value="RO">Rondônia (RO)</option>
-    <option value="RR">Roraima (RR)</option>
-    <option value="SC">Santa Catarina (SC)</option>
-    <option value="SP">São Paulo (SP)</option>
-    <option value="SE">Sergipe (SE)</option>
-    <option value="TO">Tocantins (TO)</option>
-</select>
-</label>
-
-<label>
-<p>Cidade</p>
-<input type="text" name="ongcidade" id="ongcidade" placeholder="Digite a cidade" size="40">
-</label>
-
-<label>
-<p>Bairro</p>
-<input type="text" name="ongbairro" id="ongbairro" placeholder="Digite o bairro" size="40">
-</label>
-
-<label>
-<p>Rua</p>
-<input type="text" name="ongrua" id="ongrua" placeholder="Digite a rua " size="60" >
-</label>
-
-<label>
-<p>Número</p>
-<input type="number" name="ongnumero" id="ongnumero" placeholder="Número do imóvel">
-</label>
-
-<!-- Campo opcional -->
-<p>Site</p>
-<input type="url" name="ongsite" id="ongsite" placeholder="URL do site da ONG (opcional)">
-
-<p>Redes Sociais</p>
-<input type="url" name="ongredessociais" id="ongredessociais" placeholder="URL das redes sociais da ONG (opcional)">
+        <p>Telefone</p>
+        <input type="tel" name="ongtelefone" id="ongtelefone" placeholder="(XX) XXXXX-XXXX">
 
 
-<button type="submit" name="enviar" id="enviarcadastroong">Enviar</button>
-</form>
+        <label>
+        <p>CEP</p> 
+        <input name="ongcep" type="text" id="ongcep" placeholder="Digite o CEP" value="" size="10" maxlength="9"
+                            onblur="pesquisacep(this.value);" >
+        </label>
+
+        <label>
+        <p>Estado</p>
+        <select name="ongestado" id="ongestado">
+            <option value="">Selecione o estado</option>
+            <option value="AC">Acre (AC)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="AP">Amapá (AP)</option>
+            <option value="AM">Amazonas (AM)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+            <option value="ES">Espírito Santo (ES)</option>
+            <option value="GO">Goiás (GO)</option>
+            <option value="MA">Maranhão (MA)</option>
+            <option value="MT">Mato Grosso (MT)</option>
+            <option value="MS">Mato Grosso do Sul (MS)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="PA">Pará (PA)</option>
+            <option value="PB">Paraíba (PB)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="PI">Piauí (PI)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="RN">Rio Grande do Norte (RN)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="RO">Rondônia (RO)</option>
+            <option value="RR">Roraima (RR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="TO">Tocantins (TO)</option>
+        </select>
+        </label>
+
+        <label>
+        <p>Cidade</p>
+        <input type="text" name="ongcidade" id="ongcidade" placeholder="Digite a cidade" size="40">
+        </label>
+
+        <label>
+        <p>Bairro</p>
+        <input type="text" name="ongbairro" id="ongbairro" placeholder="Digite o bairro" size="40">
+        </label>
+
+        <label>
+        <p>Rua</p>
+        <input type="text" name="ongrua" id="ongrua" placeholder="Digite a rua " size="60" >
+        </label>
+
+        <label>
+        <p>Número</p>
+        <input type="number" name="ongnumero" id="ongnumero" placeholder="Número do imóvel">
+        </label>
+
+        <!-- Campo opcional -->
+        <p>Site</p>
+        <input type="url" name="ongsite" id="ongsite" placeholder="URL do site da ONG (opcional)">
+
+        <p>Redes Sociais</p>
+        <input type="url" name="ongredessociais" id="ongredessociais" placeholder="URL das redes sociais da ONG (opcional)">
+        <br>
+        <p class="termos1"><input class="termos2" type="radio" required>Aceito os Termos e Condições</p>
+        <br>
+        <button type="submit" name="enviar" id="enviarcadastroong">Enviar</button>
+    </form>
 </body>
 </html>

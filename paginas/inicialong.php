@@ -48,37 +48,30 @@ session_start();
     <title>Cepet</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="css/estilo.css"> 
-    <link rel="icon" href="img/logos/icon.ico"> 
-    <link rel="stylesheet" href="css/inicialong_botao_sair.css"> 
-     
-    <script src="jscript/main.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css"> 
+    <link rel="icon" href="img/logos/icon.ico">  
 </head>
 <body>
-    
 
 <div class ="d-flex">
     
-   
 </div>
 
     <header>
-        <img src="img/logos/cepet-preto.png" width="10%" alt="Logo Cepet">
-
-        <a class="cadastro" href="CadastroUsuario.html">
-            Faça login ou cadastre-se 
-            <img src="img/icones variados/perfil.png">
-        </a>
-
-        <!Troca para o nome dos outros htmls para ir para outra página. href="Index.html">
-        <ul class="barra-navegacao">
-            <li><a href="#Adocao">Adoção</a></li>
-            <li><a href="#ONGs">ONGs</a></li>
-            <li><a href="#Doações">Doação</a></li>
-            <li><a href="#Noticias">Noticias e dicas</a></li>
-            <a href="/conexao/forms_cd/cadastropet.php" type="button" class="btn">Cadastrar PET</a>
-        </ul>
-    </header>
+        <div class="logoimg">
+            <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
+        </div>
+        <div class="headerlogin">
+        <a href="login.php">
+            Faça o login </a>
+             <p> ou </p>
+        <a href="/conexao/forms_cd/cadastrousuario.php">
+              Cadastre-se!</a>
+             </div>
+            <img class="pessoa" src="img/icones variados/perfil.png">
+        
+        
+        </header>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
