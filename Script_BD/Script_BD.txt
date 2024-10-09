@@ -6,7 +6,7 @@ USE CEPET;
 CREATE TABLE USUARIOS(
 
 ID_USUARIO int not null PRIMARY KEY AUTO_INCREMENT,
-NOME_DE_USUARIO VARCHAR (20) not null,
+NOME_DE_USUARIO VARCHAR (50) not null,
 SENHA VARCHAR (50) not null,
 CPF varchar(11) not null, 
 NOME_COMPLETO VARCHAR (50) not null, 
@@ -24,8 +24,7 @@ Termos_Condições BIT not null);
 
  CREATE TABLE ONGS(
 
-ID_ONG int not null PRIMARY KEY AUTO_INCREMENT,
-CNPJ VARCHAR (14) not null,
+CNPJ VARCHAR (14) not null PRIMARY KEY ,
 NOME VARCHAR (40) not null,
 SENHA VARCHAR(50) not null,
 EMAIL VARCHAR (60) not null,
@@ -35,7 +34,7 @@ ESTADO VARCHAR (15) not null,
 ENDERECO VARCHAR (100) not null,
 REDES_SOCIAIS TEXT null,
 SITE VARCHAR (20) null);
-
+DOCUMENTOS_ONGS VARCHAR (100) not null;
 
 
 CREATE TABLE PETS(
@@ -50,24 +49,12 @@ RAÇA VARCHAR (20) not null,
 IDADE VARCHAR (30) not null, 
 HISTÓRICO TEXT null,
 LINK_FOTO TEXT not null,
-FK_ONG_ID INT null,
+FK_ONG_CNPJ VARCHAR (14) not null,
 
-FOREIGN KEY (FK_ONG_ID) REFERENCES ongs(ID_ONG));
-
-    
+FOREIGN KEY (FK_ONG_CNPJ) REFERENCES ongs(CNPJ));
 
 
-CREATE TABLE DOACAO(
-    
-    ID_DOAÇÃO int not null PRIMARY KEY AUTO_INCREMENT,
-    FORM_PAG varchar (30) not null,
-    VALOR_PAG numeric not null,
-    DATA_PAG DATE not null,
-    HORA_PAG TIME (0) not null,
-    FK_USUARIO_ID int not null,
-    FK_ONG_ID VARCHAR (18) not null,
 
-    FOREIGN KEY (FK_USUARIO_ID) REFERENCES usuarios(ID_USUARIO),
-    FOREIGN KEY (FK_ONG_ID) REFERENCES ongs(CNPJ));
+
 
     

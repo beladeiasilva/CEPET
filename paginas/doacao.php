@@ -1,3 +1,58 @@
+<?php
+session_start();
+//-------------------------------------SESSÃO DO USUÁRIO CADASTRADO--------------------------------------------//
+if((!isset($_SESSION['email']) == true)and(!isset($_SESSION['senha'])==true))
+{
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        unset($_SESSION['usuario']);
+        header('Location: login.php');
+}
+else
+{
+    echo  '<h2>',$_SESSION['usuario'],'<h2>';
+    echo "<button class = 'link_sair'>
+    <a class='link_sair' href='/conexao/configuracao/sair.php'><h4> Sair </h4>
+    </a>
+    </button>";
+}
+//-------------------------------------SESSÃO DO USUÁRIO CADASTRADO--------------------------------------------//
+
+
+if(isset($_POST['doar'])) 
+{
+  include('conexao.php');
+//----------------Declarando váriaveis pelo método POST-------//
+$ongs = $_POST['ongs'];
+$form_pag =$_POST['paymentMethod1'];
+$dinheiro  =$_POST['valor'];
+$nomeU = $_SESSION['usuario'];
+//------------------------------------------------------------//
+
+//----------------Utilizando da váriavel "$ongs" o nome registrado do BD, para pesquisar o CNPJ---------------//
+$sql2 = "SELECT * FROM ongs WHERE NOME = '$ongs'";
+$vcnpj = mysqli_query($mysqli, $sql2);
+$cnpjO = mysqli_fetch_assoc($vcnpj);
+$cnpj = $cnpjO['CNPJ'];
+//------------------------------------------------------------------------------------------------------------//
+
+//-----------------Utilizando da váriavel "$nomeU" o nome registrado da SESSÃO, para pesquisar o ID_USUARIO---//
+ $sql3 = "SELECT * FROM usuarios WHERE NOME_DE_USUARIO = '$nomeU'";
+ $vidU = mysqli_query($mysqli, $sql3);
+ $idU = mysqli_fetch_assoc($vidU);
+ $id = $idU['ID_USUARIO'];
+//------------------------------------------------------------------------------------------------------------//
+
+
+//----------------------------------------INSERINDO AO BANCO DE DADOS-----------------------------------------//
+ $result2 = mysqli_query($mysqli, "INSERT INTO DOACAO(FORM_PAG, VALOR_PAG, DATA_PAG, HORA_PAG, FK_USUARIO_ID, FK_ONG_CNPJ)
+ VALUES ('$form_pag','$dinheiro',now(),now(),'$id','$cnpj')");
+//------------------------------------------------------------------------------------------------------------//
+
+header('Location: login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,35 +64,55 @@
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 <body>
+
+
     <!--NÃO TERMINADO-->
+
+
+    <!--Método "POST" Essencial para a conexão dos dados.----------------------------------->    
+    <form action="doacao.php" method="POST">
+    <!-------------------------------------------------------------------------------------->    
+
 
     <h1>Faça sua Doação para as ONGs Cadastradas</h1>
     <main>
         <form id="donationForm">
 
-            <h3>Escolha a ONG que deseja apoiar:</h3>
-            <div id="ongList">
-                <select name="ong" required>
-                    <option value="">Selecione uma ONG</option>
-                    <option value="ONG1">Cuidadores de Animais</option>
-                    <option value="ONG2">Amigo dos Pets</option>
-                    <option value="ONG3">Patinhas Felizes</option>
-                </select>
-            </div>
+        <label> <h3>Escolha a ONG que deseja apoiar: </h3></label> 
+      
+            <!---------------------------CÓDIGO PHP INTEGRADO COM HTML PARA PESQUISAR ONGS CADASTRADAS (INICIO)-------------------------------->
+           <?php
+            include('conexao.php');
 
+                $sql="SELECT * FROM ongs;";
+                $result= mysqli_query($mysqli, $sql);
+            ?>
+
+            
+            <select name="ongs">
+                <option value="Selecione" selected>Selecione...</option>
+                <?php while ($dados = mysqli_fetch_assoc($result)){ ?>
+                <option value="<?php echo $dados['NOME'] ?>"> 
+                <?php echo $dados['NOME']?>
+                </option> 
+                <?php }   ?>
+            </select>   
+            <!---------------------------CÓDIGO PHP INTEGRADO COM HTML PARA PESQUISAR ONGS CADASTRADAS (FIM)-------------------------------->
+            <br>      <br>
+           
             <h3>Escolha a forma de pagamento:</h3>
             <div id="opcaopagamento">
                 <label>
-                    <input type="radio" name="paymentMethod" value="cartaocredito" required> Cartão de Crédito
+                    <input type="radio" name="paymentMethod1" value="credito" required> Cartão de Crédito
                 </label>
                 <label>
-                    <input type="radio" name="paymentMethod" value="cartaodebito"> Cartão de Débito
+                    <input type="radio" name="paymentMethod2" value="debito"> Cartão de Débito
                 </label>
                 <label>
-                    <input type="radio" name="paymentMethod" value="transferencia"> Transferência Bancária
+                    <input type="radio" name="paymentMethod3" value="transferencia"> Transferência Bancária
                 </label>
                 <label>
-                    <input type="radio" name="paymentMethod" value="pix"> Pix
+                    <input type="radio" name="paymentMethod4" value="pix"> Pix
                 </label>
             </div>
 
@@ -49,9 +124,9 @@
                 <button type="button" class="suggested-btn" data-value="100">R$100</button>
             </div>
 
-            <input type="number" id="donationAmount" placeholder="Digite outro valor" min="1" required>
+            <input type="number" name="valor" id="donationAmount" placeholder="Digite outro valor" min="1" required>
 
-            <button type="submit" id="payButton">Doar</button>
+            <button type="submit" name="doar" id="payButton">Doar</button>
         </form>
 
         <div id="paymentResponse"></div>

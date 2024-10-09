@@ -54,7 +54,7 @@
               
              echo "
              <div class='alert alert-danger' role='alert'>
-                A simple danger alert—check it out!
+                Este Email já está cadastrado!
                 </div>";
 
             }
@@ -65,7 +65,7 @@
         //------------------------------------Inserindo ao banco de dados:-------------------------------------------------------//
 
                 $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições, HASH) 
-                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero', $cep, '$termosecondicoes','$hash')");
+                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero','$cep', '$termosecondicoes','$hash')");
 
               
                 header('Location: /conexao/paginas/login.php');
@@ -184,7 +184,7 @@ function pesquisacep(valor) {
             <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
         </div>
         <div class="headerlogin">
-            <a href="/conexao/paginas/login.php">
+            <a href="login.php">
                 Faça o login </a>
                 <p> ou </p>
             <a href="/conexao/forms_cd/cadastrousuario.php">
@@ -216,17 +216,13 @@ function pesquisacep(valor) {
 
     <!-- Informações de Login -->
         <p>Nome de Usuário</p>
-        <input type="text" name="usuariologin" id="usuariologin" placeholder="Digite um nome de usuário" required>
-
-
-           
-        
+        <input type="text" name="usuariologin" id="usuariologin" maxlength="20" placeholder="Digite um nome de usuário" required>
             
         <p>Senha</p>
-        <input type="password" name="usuariosenha" id="usuariosenha" placeholder="Digite uma senha" required>
+        <input type="password" name="usuariosenha" id="usuariosenha" maxlength="30" placeholder="Digite uma senha" required>
         <!-- Informações Pessoais -->
         <p>Nome Completo</p>
-        <input type="text" name="usuarionome" id="usuarionome" placeholder="Digite seu nome completo" required>
+        <input type="text" name="usuarionome" id="usuarionome" maxlength="50"  placeholder="Digite seu nome completo" required>
 
         <p>Gênero</p>
         <select name="usuariogenero" id="usuariogenero" required>
@@ -249,15 +245,50 @@ function pesquisacep(valor) {
         <input type="date" name="usuarionascimento" id="usuarionascimento" required>
     
         <p>E-mail</p>
-        <input type="email" name="usuarioemail" id="usuarioemail" placeholder="Digite seu e-mail" required>
+        <input type="email" name="usuarioemail" id="usuarioemail" maxlength="30" placeholder="Digite seu e-mail" required>
     
         <p>Telefone</p>
-        <input type="tel" name="usuariotelefone" id="usuariotelefone" placeholder="(XX) XXXX-XXXX" required>
+        <input type="tel" onkeyup="formatartelefone(this)" name="usuariotelefone" maxlength="11" id="usuariotelefone" placeholder="(XX) XXXX-XXXX" required>
+
+        <!-----------------------------------------------SCRIPT DO TELEFONE "MASCARA" (INICIO)-------------------------------------------------------->
+        <script>
+
+         function formatartelefone(input) {
+        // Remove todos os caracteres não numéricos
+        var telefone = input.value.replace(/\D/g, '');
+
+        // Insere os parênteses, espaço e traço nos lugares corretos
+        telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3');
+
+        // Atualiza o valor do campo de entrada com o telefone formatado
+        input.value = telefone;
+        }
+        </script>
+        <!-----------------------------------------------SCRIPT DO TELEFONE "MASCARA" (FIM)------------------------------------------------------------>
+
+
     
         <!-- Informações de Endereço -->
         <p>CEP</p>
-        <input type="number" name="usuariocep" id="usuariocep" placeholder="Digite o CEP" required onblur="pesquisacep(this.value);" >
-    
+        <input type="text" name="usuariocep" id="usuariocep" onkeyup="cep(event)" maxlength="9" placeholder="Digite o CEP" required onblur="pesquisacep(this.value);">
+        
+        <!-----------------------------------------------SCRIPT DO CEP "MASCARA" (INCIO)--------------------------------------------------------------->
+        <script>
+
+        const cep = (event) => {
+        let input = event.target
+         input.value = zipCodeMask(input.value)
+        }
+
+        const zipCodeMask = (value) => {
+        if (!value) return ""
+        value = value.replace(/\D/g,'')
+        value = value.replace(/(\d{5})(\d)/,'$1-$2')
+        return value
+        }
+        </script>
+        <!-----------------------------------------------SCRIPT DO CEP "MASCARA" (FIM)---------------------------------------------------------------->
+
         <p>Estado</p>
         <select name="usuarioestado" id="usuarioestado" required>
             <option value="">Selecione o estado</option>
@@ -304,7 +335,7 @@ function pesquisacep(valor) {
     
         <br>
         <p class="termos1">
-            <input class="termos2" type="radio" required>
+            <input class="termos2" name="termosecondicoes" type="radio" required>
         Aceito os Termos e Condições</p>
         <br>
         <button type="submit" name="cadastrar" id="usuariocadastrar">Cadastrar</button>

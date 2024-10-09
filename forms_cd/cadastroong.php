@@ -33,7 +33,6 @@ if(isset($_POST['enviar']))
         $cnpj = $_POST['ongcnpj'];
         $nome = $_POST['ongnome'];
         $senha = password_hash($_POST['ongsenha'], PASSWORD_DEFAULT);
-        $check_senha = $_POST['check_senha'];
         $email = $_POST['ongemail'];
         $telefone = $_POST['ongtelefone'];
         $cep = $_POST['ongcep'];
@@ -46,6 +45,23 @@ if(isset($_POST['enviar']))
         $redes = $_POST['ongredessociais'];
 
 
+        $sqlVCD="SELECT CNPJ FROM ongs where CNPJ= '$cnpj'";
+
+        if($rvc=mysqli_query($mysqli,$sqlVCD))
+        {
+            $qtdLinhas = mysqli_num_rows($rvc);
+
+            if($qtdLinhas>0)
+            {
+               
+            
+
+            }
+            else
+            {
+                header('Location: /conexao/paginas/login.php');
+            }
+        }
 //--------------------------------------------SINTEGRA----------------------------------//
 if(isset($_FILES['sintegra']))
 {
@@ -200,6 +216,8 @@ function pesquisacep(valor) {
 }
 
 </script>
+
+           
 <!-----------------------------------------------SCRIPT DO CEP (FIM)------------------------------------------------------------------->
 
 
@@ -277,14 +295,47 @@ document.getElementById('ongcnpj').addEventListener('input', function (e) {
         <input type="email" name="ongemail" id="ongemail" placeholder="Digite o e-mail da ONG">
 
         <p>Telefone</p>
-        <input type="tel" name="ongtelefone" id="ongtelefone" placeholder="(XX) XXXXX-XXXX">
+        <input type="tel" onkeyup="formatartelefone(this)" maxlength="11" name="ongtelefone" id="ongtelefone" placeholder="(XX) XXXXX-XXXX">
+<!-----------------------------------------------SCRIPT DO TELEFONE (INICIO)------------------------------------------------------------------->
+<script>
+
+function formatartelefone(input) {
+// Remove todos os caracteres não numéricos
+var telefone = input.value.replace(/\D/g, '');
+
+// Insere os parênteses, espaço e traço nos lugares corretos
+telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3');
+
+// Atualiza o valor do campo de entrada com o telefone formatado
+input.value = telefone;
+}
+</script>
+<!-----------------------------------------------SCRIPT DO TELEFONE (FIM)------------------------------------------------------------------->
+
+
+
 
 
         <label>
         <p>CEP</p> 
-        <input name="ongcep" type="text" id="ongcep" placeholder="Digite o CEP" value="" size="10" maxlength="9"
+        <input name="ongcep" type="text" onkeyup="cep(event)" id="ongcep" placeholder="Digite o CEP" value="" size="10" maxlength="9"
                             onblur="pesquisacep(this.value);" >
         </label>
+
+        <script>
+
+        const cep = (event) => {
+        let input = event.target
+        input.value = zipCodeMask(input.value)
+        }
+
+        const zipCodeMask = (value) => {
+        if (!value) return ""
+        value = value.replace(/\D/g,'')
+        value = value.replace(/(\d{5})(\d)/,'$1-$2')
+        return value
+        }
+        </script>
 
         <label>
         <p>Estado</p>
@@ -349,7 +400,10 @@ document.getElementById('ongcnpj').addEventListener('input', function (e) {
         <br>
         <p class="termos1"><input class="termos2" type="radio" required>Aceito os Termos e Condições</p>
         <br>
+        
         <button type="submit" name="enviar" id="enviarcadastroong">Enviar</button>
+        
+        
     </form>
 </body>
 </html>

@@ -59,7 +59,16 @@
         <form action="/conexao/configuracao/teste_login_ONG.php"  method= "POST">
 
         <h1>Login ONG</h1>
-        <input type="number" name="ongcnpj" id="ongcnpj" placeholder="Cnpj">
+        <input type="text" name="ongcnpj" id="ongcnpj" placeholder="Cnpj">
+
+        <script>
+        document.getElementById('ongcnpj').addEventListener('input', function (e) {
+        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+        e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
+        });
+        </script>
+
+
         <br> 
         <input type="password" name="ongsenha" id="ongsenha" placeholder="Senha">
         <br>
