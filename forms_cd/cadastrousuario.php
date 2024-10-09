@@ -184,7 +184,7 @@ function pesquisacep(valor) {
             <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
         </div>
         <div class="headerlogin">
-            <a href="login.php">
+            <a href="/conexao/paginas/login.php">
                 Faça o login </a>
                 <p> ou </p>
             <a href="/conexao/forms_cd/cadastrousuario.php">
