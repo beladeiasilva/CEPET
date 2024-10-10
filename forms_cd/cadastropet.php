@@ -72,6 +72,13 @@ if(isset($_FILES['foto']))
     $path = $pasta . $novoNomeDoArquivo . "." .  $extensao;
     $deu_certo = move_uploaded_file($arquivoF["tmp_name"], $path);
 
+  
+      $_SESSION['pet'] = $arquivoF;
+
+      print_r($arquivoF);
+
+    
+   
 
     //-------------------------------Inserindo ao banco de dados-----------------------//
     
@@ -83,7 +90,7 @@ VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','
 
 
 
-header('Location: /conexao/paginas/login.php');
+ //header('Location: /conexao/paginas/login.php');
 
 }
 }
@@ -108,6 +115,7 @@ header('Location: /conexao/paginas/login.php');
 
 <!--- Método "POST" Essencial para a conexão dos dados ------------>
 <form action ="cadastropet.php" method = "POST" enctype="multipart/form-data">
+
 <!----------------------------------------------------------------->
 
 

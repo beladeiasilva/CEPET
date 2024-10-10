@@ -80,10 +80,10 @@ header('Location: login.php');
 
         <label> <h3>Escolha a ONG que deseja apoiar: </h3></label> 
       
-            <!---------------------------CÓDIGO PHP INTEGRADO COM HTML PARA PESQUISAR ONGS CADASTRADAS (INICIO)-------------------------------->
+            <!---------------------------CÓDIGO PHP INTEGRADO COM HTML PARA PESQUISAR ONGS CADASTRADAS (INICIO)----------->
            <?php
             include('conexao.php');
-
+        
                 $sql="SELECT * FROM ongs;";
                 $result= mysqli_query($mysqli, $sql);
             ?>
@@ -97,7 +97,7 @@ header('Location: login.php');
                 </option> 
                 <?php }   ?>
             </select>   
-            <!---------------------------CÓDIGO PHP INTEGRADO COM HTML PARA PESQUISAR ONGS CADASTRADAS (FIM)-------------------------------->
+            <!---------------------------CÓDIGO PHP INTEGRADO COM HTML PARA PESQUISAR ONGS CADASTRADAS (FIM)-------------->
             <br>      <br>
            
             <h3>Escolha a forma de pagamento:</h3>
