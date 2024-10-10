@@ -47,7 +47,7 @@ session_start();
     <nav>
         <!--Troca para o nome dos outros htmls para ir para outra página. href="Index.html"-->
         <ul class="barra-navegacao">
-            <li><a href="#Adocao">Adoção</a></li>
+            <li><a href="adocao.php">Adoção</a></li>
             <li><a href="#ONGs">ONGs</a></li>
             <li><a href="doacao.php">Doação</a></li>
             <li><a href="#Noticias">Noticias e dicas</a></li>
@@ -93,11 +93,11 @@ session_start();
         <h2>Título do Artigo</h2>
         <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
         </article>
-            <img src="img/animais/dog (5).png" /></div>
+        
+        <div>
+        <p>Conheça as ONGs</p>
     </div>
-
-    <h3>Conheça as ONGs</h3>
-    <div class="carrosel-ONG">
+        <div class="carrosel-ONG">
             <a href=""><img src="img/foto ongs/ong-das-patinhas.jpg" class="imagem-arredondada"></a>
             <a href=""><img src="img/foto ongs/patinhas-que-brilham.png" class="imagem-arredondada"></a>
             <a href=""><img src="img/foto ongs/sempre-ao-seu-lado.png" class="imagem-arredondada"></a>
@@ -106,5 +106,12 @@ session_start();
             <a href=""><img src="img/foto ongs/vira-lata-e-dez.jpeg" class="imagem-arredondada"></a>
         </div>
 
+
+        <footer> 
+            
+        
+        
+        </footer>
+    
 </body>
 </html>

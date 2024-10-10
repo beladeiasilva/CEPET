@@ -85,7 +85,7 @@ session_start();
         <div><img src="img/teste/5.jpeg" /></div>
     </div>
 
-<!CONHEÇA AS ONGs>
+
     <div>
         <p>Conheça as ONGs</p>
     </div>
