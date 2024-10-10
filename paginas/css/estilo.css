@@ -94,7 +94,11 @@ nav ul li a {
 
 
 footer{
-   
+   background-color: #fffbf3;
+   display: block;
+   width: 500px;
+   position: relative;
+   bottom: 100%;
 }
 
 /*Carrosel*/
@@ -154,13 +158,13 @@ article button {
 }
 
 .conhecaongs{
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .conhecaongs h3{
     color: #3d9f9b;
     font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+    font-weight: 800;
+    font-style:oblique;
 }
 .imagem-arredondada {
     width: 150px;

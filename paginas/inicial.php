@@ -23,7 +23,7 @@ session_start();
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cepet</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -111,7 +111,7 @@ session_start();
 
         <footer> 
             
-        
+        <p> teste</p>
         
         </footer>
     
