@@ -93,10 +93,12 @@ session_start();
         <h2>Título do Artigo</h2>
         <p>Este é o conteúdo do artigo, que pode incluir texto, imagens e outros elementos.</p>
         </article>
-        
-        <div>
-        <p>Conheça as ONGs</p>
-    </div>
+        </div>
+</div>
+
+        <div class="conhecaongs">
+        <h3>Conheça as ONGs</h3>
+        </div>
         <div class="carrosel-ONG">
             <a href=""><img src="img/foto ongs/ong-das-patinhas.jpg" class="imagem-arredondada"></a>
             <a href=""><img src="img/foto ongs/patinhas-que-brilham.png" class="imagem-arredondada"></a>
