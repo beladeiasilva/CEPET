@@ -1,29 +1,20 @@
 <?php
 session_start();
 
-    //print_r($_SESSION);
-    if((!isset($_SESSION['email']) == true)and(!isset($_SESSION['senha'])==true))
-    {
-        unset($_SESSION['email']);
-        unset($_SESSION['senha']);
-        unset($_SESSION['usuario']);
-    }
-    else
-    {
-        echo  '<h2>',$_SESSION['usuario'],'<h2>';
-        echo "<button class = 'link_sair'>
-        <a class='link_sair' href='/conexao/configuracao/sair.php'><h4> Sair </h4>
-        </a>
-        </button>";}
-
-?>    
-<!-----------------------------------HTML DO FORMULÁRIO------------------------------------------------------>
+// Verifica se o usuário está logado
+if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+    $logado = false;
+} else {
+    $logado = true;
+    $usuario = $_SESSION['usuario'];  // Nome do usuário
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cepet</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -34,18 +25,28 @@ session_start();
 <body>
 
     <header>
-            <div class="logoimg">
-                <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
-            </div>
-            <div class="headerlogin">
+        <div class="logoimg">
+            <a href="/conexao/paginas/inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
+        </div>
+        <div class="headerlogin">
+            <?php if ($logado): ?>
+                <span class="user-name">Olá, <?php echo $usuario; ?> !</span>
+                
+                    <a class="link_sair" href="/conexao/configuracao/sair.php">
+                        <button class="link_sairbt">Sair</button>
+                    </a>
+                
+            <?php else: ?>
                 <a href="login.php">Faça o login </a>
-                    <p> ou </p>
+                <p> ou </p>
                 <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
-            </div>
-            <img class="pessoa" src="img/icones variados/perfil.png">
+            
+        </div>
+        <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
+        <?php endif; ?>
     </header>
+
     <nav>
-        <!--Troca para o nome dos outros htmls para ir para outra página. href="Index.html"-->
         <ul class="barra-navegacao">
             <li><a href="adocao.php">Adoção</a></li>
             <li><a href="#ONGs">ONGs</a></li>
@@ -63,7 +64,7 @@ session_start();
     <div>    
     <article class="article1">
             <h2>Amor de verdade não se compra, se encontra</h2>
-            <button>Acesse para Adotar</button>    
+            <a href="adocao.php"><button>Acesse para Adotar</button></a> 
         </article>
         <img src="img/animais/dog (3).png" />
     </div>
