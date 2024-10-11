@@ -1,3 +1,7 @@
+<?php
+SESSION_START()
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -108,12 +112,61 @@
             <button onclick="filtrar()">Filtrar</button>
         </div>
 
+
+
+        <!----------------------------Form ESSENCIAL para puxar o botão de CADASTRO do PET--------------->
+        
+        <!----------------------------------------------------------------------------------------------->
+
+
+
         <!-- Grid de Animais -->
         <div class="animal-grid" id="animal-grid">
             <div class="animal-card" data-tipo="cachorro" data-genero="Macho" data-nome="Fred" data-idade="3" data-raca="labrador" data-porte="medio" data-cor="marrom">
-                <img src="img/animais/dog (3).png" alt="Fred">
-                <h4>Fred</h4>
-                <p>não sei oq colocar</p>
+               <?php 
+                    
+                    $_SESSION['pet'];
+                    $foto = $_SESSION['pet'];
+
+                    echo "/conexao/forms_cd/imagens_pets_cadastrados/6707f5c08ed0d.jpg;"
+                   
+                    
+                ?>
+
+            
+                <!-------- Nome do PET com o código PHP para puxar do BD (INICIO)------------------->
+                <h4><?php 
+                    if(isset($_POST['enviarpet'])) {
+               
+                include ("conexao.php");
+               
+                $sql= "SELECT * FROM pets";
+                $result = mysqli_query($mysqli, $sql);
+                $desc = mysqli_fetch_assoc($result);
+                $desc['NOME'];
+                print_r($desc['NOME']);
+                    }
+                //}
+                // else{
+                //     echo "Nenhum pet cadastrado ainda.";
+                // }
+
+                ?></h4>
+                <!-------- Nome do PET com o código PHP para puxar do BD (FIM)------------------->
+                <p> <?php 
+                include ("conexao.php");
+
+                $sql= "SELECT IDADE FROM pets";
+                $result = mysqli_query($mysqli, $sql);
+
+                $desc = mysqli_fetch_assoc($result);
+                $desc['IDADE'];
+
+                print_r($desc['IDADE']);
+
+                
+                
+                ?></p>
             </div>
             <div class="animal-card" data-tipo="gato" data-genero="Fêmea" data-nome="Luna" data-idade="2" data-raca="persa" data-porte="pequeno" data-cor="branco">
                 <img src="img/luna.jpg" alt="Luna">
