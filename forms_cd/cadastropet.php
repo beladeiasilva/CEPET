@@ -69,13 +69,14 @@ if(isset($_FILES['foto']))
     if ($extensao != "jpeg" && $extensao != "png" && $extensao != "jpg")
         die("Tipo de arquivo inválido");
 
-    $path = $pasta . $novoNomeDoArquivo . "." .  $extensao;
+    $path = $pasta . $novoNomeDoArquivo .".". $extensao;
     $deu_certo = move_uploaded_file($arquivoF["tmp_name"], $path);
 
-  
-      $_SESSION['pet'] = $arquivoF;
+   
 
-      print_r($arquivoF);
+  
+   
+      
 
     
    
@@ -83,7 +84,7 @@ if(isset($_FILES['foto']))
     //-------------------------------Inserindo ao banco de dados-----------------------//
     
 $result = mysqli_query($mysqli, "INSERT INTO pets (NOME, TIPO, COR, GENERO, PORTE, RAÇA, IDADE, HISTÓRICO, LINK_FOTO, FK_ONG_CNPJ)
-VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$path','$ongcnpj')");
+VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','$cachorroraca $gatoraca','$idade','$historico','$novoNomeDoArquivo.$extensao','$ongcnpj')");
 
 
 
@@ -174,13 +175,18 @@ VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','
     <!-- opções de cores de gato -->
 </select>
 
+
+
 <p>Histórico</p>
 <input type="text" name="historico" id="inputhistorico" placeholder="Digite o histórico do pet">
+
 
 <p>Foto</p>
 <input type="file" name="foto">
 
+
 <button name="enviarpet" id="enviarcadastropet">Enviar</button>
+
 
 <script>
 document.getElementById('tipoanimal').addEventListener('change', function () {

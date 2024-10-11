@@ -111,84 +111,172 @@ SESSION_START()
             <br>
             <button onclick="filtrar()">Filtrar</button>
         </div>
-
-
-
-        <!----------------------------Form ESSENCIAL para puxar o botão de CADASTRO do PET--------------->
-        
-        <!----------------------------------------------------------------------------------------------->
-
-
+>
 
         <!-- Grid de Animais -->
+
+
+                <!------------------==============================PET(1)=================================---------------------------->
+
         <div class="animal-grid" id="animal-grid">
             <div class="animal-card" data-tipo="cachorro" data-genero="Macho" data-nome="Fred" data-idade="3" data-raca="labrador" data-porte="medio" data-cor="marrom">
-               <?php 
-                    
-                    $_SESSION['pet'];
-                    $foto = $_SESSION['pet'];
-
-                    echo "/conexao/forms_cd/imagens_pets_cadastrados/6707f5c08ed0d.jpg;"
-                   
-                    
-                ?>
-
-            
-                <!-------- Nome do PET com o código PHP para puxar do BD (INICIO)------------------->
+                <!---------------------------------IMAGEM DO PET (1)-------------------------------------------------------->
+                 <?php
+                    include('conexao.php');
+                    $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 1";
+                    $result2 = mysqli_query($mysqli, $sql2);
+                    $foto = mysqli_fetch_assoc($result2);
+                    $foto['LINK_FOTO'];
+                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+           
+                    ?>
+                <!------------------------------------NOME DO PET (1)------------------------------------------------------->
                 <h4><?php 
-                    if(isset($_POST['enviarpet'])) {
-               
-                include ("conexao.php");
-               
-                $sql= "SELECT * FROM pets";
-                $result = mysqli_query($mysqli, $sql);
-                $desc = mysqli_fetch_assoc($result);
-                $desc['NOME'];
-                print_r($desc['NOME']);
-                    }
-                //}
-                // else{
-                //     echo "Nenhum pet cadastrado ainda.";
-                // }
-
+                    include ("conexao.php");
+                    $sql= "SELECT NOME FROM pets WHERE ID_PET = 1";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['NOME'];
+                    print_r($desc['NOME']);
                 ?></h4>
-                <!-------- Nome do PET com o código PHP para puxar do BD (FIM)------------------->
-                <p> <?php 
-                include ("conexao.php");
-
-                $sql= "SELECT IDADE FROM pets";
-                $result = mysqli_query($mysqli, $sql);
-
-                $desc = mysqli_fetch_assoc($result);
-                $desc['IDADE'];
-
-                print_r($desc['IDADE']);
-
-                
-                
-                ?></p>
+                <!------------------------------------IDADE DO PET (1)------------------------------------------------------->
+                    <p> <?php 
+                    include ("conexao.php");
+                    $sql= "SELECT IDADE FROM pets WHERE ID_PET = 1";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['IDADE'];
+                    print_r($desc['IDADE']);
+                    ?></p>
             </div>
+
+        <!------------------==============================PET(2)=================================---------------------------->
+
             <div class="animal-card" data-tipo="gato" data-genero="Fêmea" data-nome="Luna" data-idade="2" data-raca="persa" data-porte="pequeno" data-cor="branco">
-                <img src="img/luna.jpg" alt="Luna">
-                <h4>Luna</h4>
-                <p>não sei oq colocar</p>
-            </div>
+                 <!---------------------------------IMAGEM DO PET (2)-------------------------------------------------------->
+                    <?php
+                    include('conexao.php');
+                    $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 2";
+                    $result2 = mysqli_query($mysqli, $sql2);
+                    $foto = mysqli_fetch_assoc($result2);
+                    $foto['LINK_FOTO'];
+                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    ?>
+                <!------------------------------------NOME DO PET (2)------------------------------------------------------->
+                    <h4><?php 
+                    include ("conexao.php");
+                    $sql= "SELECT NOME FROM pets WHERE ID_PET = 2";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['NOME'];
+                    print_r($desc['NOME']);
+                    ?></h4>
+                <!------------------------------------IDADE DO PET (2)------------------------------------------------------->
+                    <p> <?php 
+                    include ("conexao.php");
+                    $sql= "SELECT IDADE FROM pets WHERE ID_PET = 2";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['IDADE'];
+                    print_r($desc['IDADE']);
+                    ?></p>
+
+        <!------------------==============================PET(3)=================================---------------------------->
+        </div>
             <div class="animal-card" data-tipo="cachorro" data-genero="Fêmea" data-nome="Bella" data-idade="5" data-raca="beagle" data-porte="medio" data-cor="preto">
-                <img src="img/animais/dog (1).png" alt="Bella">
-                <h4>Bella</h4>
-                <p>não sei oq colocar</p>
+                 <!---------------------------------IMAGEM DO PET (3)-------------------------------------------------------->
+                 <?php
+                    include('conexao.php');
+                    $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 3";
+                    $result2 = mysqli_query($mysqli, $sql2);
+                    $foto = mysqli_fetch_assoc($result2);
+                    $foto['LINK_FOTO'];
+                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    ?>
+                <!------------------------------------NOME DO PET (3)------------------------------------------------------->
+                    <h4><?php 
+                    include ("conexao.php");
+                    $sql= "SELECT NOME FROM pets WHERE ID_PET = 3";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['NOME'];
+                    print_r($desc['NOME']);
+                    ?></h4>
+               <!------------------------------------IDADE DO PET (3)------------------------------------------------------->
+               <p> <?php 
+                    include ("conexao.php");
+                    $sql= "SELECT IDADE FROM pets WHERE ID_PET = 3";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['IDADE'];
+                    print_r($desc['IDADE']);
+                    ?></p>
             </div>
-            
+
+        <!------------------==============================PET(4)=================================---------------------------->
             <div class="animal-card" data-tipo="gato" data-genero="Macho" data-nome="Tom" data-idade="4" data-raca="siames" data-porte="pequeno" data-cor="cinza">
-                <img src="img/animais/cat (1).png" alt="Tom">
-                <h4>Tom</h4>
-                <p>não sei oq colocar</p>
+                <!---------------------------------IMAGEM DO PET (4)-------------------------------------------------------->
+
+                <?php
+                    include('conexao.php');
+                    $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 4";
+                    $result2 = mysqli_query($mysqli, $sql2);
+                    $foto = mysqli_fetch_assoc($result2);
+                    $foto['LINK_FOTO'];
+                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    ?>
+      
+                <!------------------------------------NOME DO PET (4)------------------------------------------------------->
+                <h4><?php 
+                    include ("conexao.php");
+                    $sql= "SELECT NOME FROM pets WHERE ID_PET = 4";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['NOME'];
+                    print_r($desc['NOME']);
+                    ?></h4>
+                <!------------------------------------IDADE DO PET (4)------------------------------------------------------->
+               <p> <?php 
+                    include ("conexao.php");
+                    $sql= "SELECT IDADE FROM pets WHERE ID_PET = 4";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['IDADE'];
+                    print_r($desc['IDADE']);
+                    ?></p>
             </div>
             
-            <div class="animal-card" data-tipo="cachorro" data-genero="Macho" data-nome="Max" data-idade="7" data-raca="golden" data-porte="grande" data-cor="marrom">
-                <img src="img/animais/dog (2).png" alt="Max">
-                <h4>Max</h4>
-                <p>não sei oq colocar</p>
+        <!------------------==============================PET(5)=================================---------------------------->
+        <div class="animal-card" data-tipo="cachorro" data-genero="Macho" data-nome="Max" data-idade="7" data-raca="golden" data-porte="grande" data-cor="marrom">
+                <!---------------------------------IMAGEM DO PET (5)-------------------------------------------------------->
+
+                <?php
+                        include('conexao.php');
+                    $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 5";
+                    $result2 = mysqli_query($mysqli, $sql2);
+                    $foto = mysqli_fetch_assoc($result2);
+                    $foto['LINK_FOTO'];
+                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    ?>
+               
+                <!------------------------------------NOME DO PET (5)------------------------------------------------------->
+                <h4><?php 
+                    include ("conexao.php");
+                    $sql= "SELECT NOME FROM pets WHERE ID_PET = 5";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['NOME'];
+                    print_r($desc['NOME']);
+                    ?></h4>
+                <!------------------------------------IDADE DO PET (5)------------------------------------------------------->
+               <p> <?php 
+                    include ("conexao.php");
+                    $sql= "SELECT IDADE FROM pets WHERE ID_PET = 5";
+                    $result = mysqli_query($mysqli, $sql);
+                    $desc = mysqli_fetch_assoc($result);
+                    $desc['IDADE'];
+                    print_r($desc['IDADE']);
+                    ?></p>
             </div>
             
             <div class="animal-card" data-tipo="gato" data-genero="Fêmea" data-nome="Mimi" data-idade="1" data-raca="angora" data-porte="pequeno" data-cor="branco">

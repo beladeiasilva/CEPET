@@ -28,7 +28,7 @@
         <nav>
         <!--Troca para o nome dos outros htmls para ir para outra página. href="Index.html"-->
         <ul class="barra-navegacao">
-            <li><a href="#Adocao">Adoção</a></li>
+            <li><a href="adocao.php">Adoção</a></li>
             <li><a href="#ONGs">ONGs</a></li>
             <li><a href="#Doações">Doação</a></li>
             <li><a href="#Noticias">Noticias e dicas</a></li>
