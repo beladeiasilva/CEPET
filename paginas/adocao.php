@@ -143,30 +143,36 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                 <!---------------------------------IMAGEM DO PET (1)-------------------------------------------------------->
                  <?php
                     include('conexao.php');
-                    $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 1";
-                    $result2 = mysqli_query($mysqli, $sql2);
-                    $foto = mysqli_fetch_assoc($result2);
-                    $foto['LINK_FOTO'];
-                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
-           
+                    $sql1= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 1";
+                    $result1 = mysqli_query($mysqli, $sql1);
+                    $foto = mysqli_fetch_assoc($result1);
+                    if(isset($foto['LINK_FOTO'])) {
+                    $foto['LINK_FOTO'];            
+                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    else{echo" Não há nenhum pet cadastrado.";}
+                        
                     ?>
                 <!------------------------------------NOME DO PET (1)------------------------------------------------------->
                 <h4><?php 
                     include ("conexao.php");
-                    $sql= "SELECT NOME FROM pets WHERE ID_PET = 1";
-                    $result = mysqli_query($mysqli, $sql);
-                    $desc = mysqli_fetch_assoc($result);
-                    $desc['NOME'];
-                    print_r($desc['NOME']);
+                    $sql2= "SELECT NOME FROM pets WHERE ID_PET = 1";
+                    $result2 = mysqli_query($mysqli, $sql2);
+                    $desc1 = mysqli_fetch_assoc($result2);
+                    if(isset($desc1['NOME'])) {
+                    $desc1['NOME'];
+                    print_r($desc1['NOME']);}
+                    else{echo"";}
                 ?></h4>
                 <!------------------------------------IDADE DO PET (1)------------------------------------------------------->
                     <p> <?php 
                     include ("conexao.php");
-                    $sql= "SELECT IDADE FROM pets WHERE ID_PET = 1";
-                    $result = mysqli_query($mysqli, $sql);
-                    $desc = mysqli_fetch_assoc($result);
-                    $desc['IDADE'];
-                    print_r($desc['IDADE']);
+                    $sql3= "SELECT IDADE FROM pets WHERE ID_PET = 1";
+                    $result3 = mysqli_query($mysqli, $sql3);
+                    $desc2 = mysqli_fetch_assoc($result3);
+                    if(isset($desc2['IDADE'])) {
+                    $desc2['IDADE'];
+                    echo"$desc2[IDADE]";}
+                     else{echo"";}
                     ?></p>
             </div>
 
@@ -179,8 +185,13 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 2";
                     $result2 = mysqli_query($mysqli, $sql2);
                     $foto = mysqli_fetch_assoc($result2);
-                    $foto['LINK_FOTO'];
-                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    if(isset($foto['LINK_FOTO'])) {
+                    $foto['LINK_FOTO'];            
+                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    else{echo" Não há nenhum pet cadastrado.";}
+                    
+                        
+                    
                     ?>
                 <!------------------------------------NOME DO PET (2)------------------------------------------------------->
                     <h4><?php 
@@ -188,8 +199,16 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT NOME FROM pets WHERE ID_PET = 2";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['NOME'])) {
                     $desc['NOME'];
-                    print_r($desc['NOME']);
+                    print_r($desc['NOME']);}
+                    else{echo"";}
+                    
+                   
+                    
+                       
+                   
+                    
                     ?></h4>
                 <!------------------------------------IDADE DO PET (2)------------------------------------------------------->
                     <p> <?php 
@@ -197,8 +216,11 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT IDADE FROM pets WHERE ID_PET = 2";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['IDADE'])) {
                     $desc['IDADE'];
-                    print_r($desc['IDADE']);
+                    print_r($desc['IDADE']);}
+                    else{echo"";}
+                   
                     ?></p>
 
         <!------------------==============================PET(3)=================================---------------------------->
@@ -210,8 +232,12 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 3";
                     $result2 = mysqli_query($mysqli, $sql2);
                     $foto = mysqli_fetch_assoc($result2);
-                    $foto['LINK_FOTO'];
-                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    if(isset($foto['LINK_FOTO'])) {
+                    $foto['LINK_FOTO'];            
+                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    else{echo" Não há nenhum pet cadastrado.";}
+                        
+                    
                     ?>
                 <!------------------------------------NOME DO PET (3)------------------------------------------------------->
                     <h4><?php 
@@ -219,8 +245,11 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT NOME FROM pets WHERE ID_PET = 3";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['NOME'])) {
                     $desc['NOME'];
-                    print_r($desc['NOME']);
+                    print_r($desc['NOME']);}
+                    else{echo"";}
+                        
                     ?></h4>
                <!------------------------------------IDADE DO PET (3)------------------------------------------------------->
                <p> <?php 
@@ -228,8 +257,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT IDADE FROM pets WHERE ID_PET = 3";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['IDADE'])) {
                     $desc['IDADE'];
-                    print_r($desc['IDADE']);
+                    print_r($desc['IDADE']);}
+                    else{echo"";}
                     ?></p>
             </div>
 
@@ -242,8 +273,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 4";
                     $result2 = mysqli_query($mysqli, $sql2);
                     $foto = mysqli_fetch_assoc($result2);
-                    $foto['LINK_FOTO'];
-                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    if(isset($foto['LINK_FOTO'])) {
+                    $foto['LINK_FOTO'];            
+                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    else{echo" Não há nenhum pet cadastrado.";}
                     ?>
       
                 <!------------------------------------NOME DO PET (4)------------------------------------------------------->
@@ -252,8 +285,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT NOME FROM pets WHERE ID_PET = 4";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['NOME'])) {
                     $desc['NOME'];
-                    print_r($desc['NOME']);
+                    print_r($desc['NOME']);}
+                    else{echo"";}
                     ?></h4>
                 <!------------------------------------IDADE DO PET (4)------------------------------------------------------->
                <p> <?php 
@@ -261,8 +296,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT IDADE FROM pets WHERE ID_PET = 4";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['IDADE'])) {
                     $desc['IDADE'];
-                    print_r($desc['IDADE']);
+                    print_r($desc['IDADE']);}
+                    else{echo"";}
                     ?></p>
             </div>
             
@@ -275,8 +312,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql2= "SELECT LINK_FOTO FROM pets WHERE ID_PET = 5";
                     $result2 = mysqli_query($mysqli, $sql2);
                     $foto = mysqli_fetch_assoc($result2);
-                    $foto['LINK_FOTO'];
-                     echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";
+                    if(isset($foto['LINK_FOTO'])) {
+                    $foto['LINK_FOTO'];            
+                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    else{echo" Não há nenhum pet cadastrado.";}
                     ?>
                
                 <!------------------------------------NOME DO PET (5)------------------------------------------------------->
@@ -285,8 +324,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT NOME FROM pets WHERE ID_PET = 5";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['NOME'])) {
                     $desc['NOME'];
-                    print_r($desc['NOME']);
+                    print_r($desc['NOME']);}
+                    else{echo"";}
                     ?></h4>
                 <!------------------------------------IDADE DO PET (5)------------------------------------------------------->
                <p> <?php 
@@ -294,27 +335,29 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $sql= "SELECT IDADE FROM pets WHERE ID_PET = 5";
                     $result = mysqli_query($mysqli, $sql);
                     $desc = mysqli_fetch_assoc($result);
+                    if(isset($desc['IDADE'])) {
                     $desc['IDADE'];
-                    print_r($desc['IDADE']);
+                    print_r($desc['IDADE']);}
+                    else{echo"";}
                     ?></p>
             </div>
             
             <div class="animal-card" data-tipo="gato" data-genero="Fêmea" data-nome="Mimi" data-idade="1" data-raca="angora" data-porte="pequeno" data-cor="branco">
-                <img src="img/animais/cat (2).png" alt="Mimi">
-                <h4>Mimi</h4>
-                <p>não sei oq colocar</p>
+                <img src="" alt="">
+                <h4></h4>
+                <p></p>
             </div>
             
             <div class="animal-card" data-tipo="cachorro" data-genero="Fêmea" data-nome="Daisy" data-idade="3" data-raca="poodle" data-porte="pequeno" data-cor="branco">
-                <img src="img/animais/dog (4).png" alt="Daisy">
-                <h4>Daisy</h4>
-                <p>não sei oq colocar</p>
+                <img src="" alt="">
+                <h4></h4>
+                <p></p>
             </div>
             
             <div class="animal-card" data-tipo="gato" data-genero="Macho" data-nome="Simba" data-idade="2" data-raca="bengal" data-porte="medio" data-cor="marrom">
-                <img src="img/animais/cat (3).png" alt="Simba">
-                <h4>Simba</h4>
-                <p>não sei oq colocar</p>
+                <img src="img/animais/cat (3).png" alt="">
+                <h4></h4>
+                <p></p>
             </div>
             <div class="animal-card" >
                 <img src="" alt="">
