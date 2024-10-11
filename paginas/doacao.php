@@ -24,7 +24,7 @@ if(isset($_POST['doar']))
   include('conexao.php');
 //----------------Declarando váriaveis pelo método POST-------//
 $ongs = $_POST['ongs'];
-$form_pag =$_POST['paymentMethod1'];
+$form_pag =$_POST['paymentMethod'];
 $dinheiro  =$_POST['valor'];
 $nomeU = $_SESSION['usuario'];
 //------------------------------------------------------------//
@@ -60,6 +60,7 @@ header('Location: login.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doações para ONGs</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="icon" href="img/logos/icon.ico">  
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
@@ -103,16 +104,16 @@ header('Location: login.php');
             <h3>Escolha a forma de pagamento:</h3>
             <div id="opcaopagamento">
                 <label>
-                    <input type="radio" name="paymentMethod1" value="credito" required> Cartão de Crédito
+                    <input type="radio" name="paymentMethod" value="credito"> Cartão de Crédito
                 </label>
                 <label>
-                    <input type="radio" name="paymentMethod2" value="debito"> Cartão de Débito
+                    <input type="radio" name="paymentMethod" value="debito"> Cartão de Débito
                 </label>
                 <label>
-                    <input type="radio" name="paymentMethod3" value="transferencia"> Transferência Bancária
+                    <input type="radio" name="paymentMethod" value="transferencia"> Transferência Bancária
                 </label>
                 <label>
-                    <input type="radio" name="paymentMethod4" value="pix"> Pix
+                    <input type="radio" name="paymentMethod" value="pix"> Pix
                 </label>
             </div>
 
