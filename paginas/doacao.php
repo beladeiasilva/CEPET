@@ -1,22 +1,6 @@
 <?php
 session_start();
 //-------------------------------------SESSÃO DO USUÁRIO CADASTRADO--------------------------------------------//
-if((!isset($_SESSION['email']) == true)and(!isset($_SESSION['senha'])==true))
-{
-        unset($_SESSION['email']);
-        unset($_SESSION['senha']);
-        unset($_SESSION['usuario']);
-        header('Location: login.php');
-}
-else
-{
-    echo  '<h2>',$_SESSION['usuario'],'<h2>';
-    echo "<button class = 'link_sair'>
-    <a class='link_sair' href='/conexao/configuracao/sair.php'><h4> Sair </h4>
-    </a>
-    </button>";
-}
-//-------------------------------------SESSÃO DO USUÁRIO CADASTRADO--------------------------------------------//
 
 
 if(isset($_POST['doar'])) 
@@ -51,6 +35,14 @@ $cnpj = $cnpjO['CNPJ'];
 
 header('Location: login.php');
 }
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+    $logado = false;
+} else {
+    $logado = true;
+    $usuario = $_SESSION['usuario'];  // Nome do usuário
+}
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +53,40 @@ header('Location: login.php');
     <title>Doações para ONGs</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="img/logos/icon.ico">  
+    <link rel="stylesheet" href="css/estilodoacao.css">
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 <body>
+<header>
+        <div class="logoimg">
+            <a href="/conexao/paginas/inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
+        </div>
+        <div class="headerlogin">
+            <?php if ($logado): ?>
+                <span class="user-name">Olá, <?php echo $usuario; ?> !</span>
+                
+                    <a class="link_sair" href="/conexao/configuracao/sair.php">
+                        <button class="link_sairbt">Sair</button>
+                    </a>
+                
+            <?php else: ?>
+                <a href="login.php">Faça o login </a>
+                <p> ou </p>
+                <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
+            
+        </div>
+        <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
+        <?php endif; ?>
+    </header>
 
+    <nav>
+        <ul class="barra-navegacao">
+            <li><a href="adocao.php">Adoção</a></li>
+            <li><a href="#ONGs">ONGs</a></li>
+            <li><a href="doacao.php">Doação</a></li>
+            <li><a href="#Noticias">Noticias e dicas</a></li>
+        </ul>
+    </nav>
 
     <!--NÃO TERMINADO-->
 
