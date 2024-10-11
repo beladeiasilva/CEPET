@@ -91,7 +91,7 @@ VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','
 
 
 
- //header('Location: /conexao/paginas/login.php');
+ header('Location: /conexao/paginas/login.php');
 
 }
 }
@@ -107,7 +107,7 @@ VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','
     <title>Cadastro Pet</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <link rel="stylesheet" href="css/estilo.css"> 
+    <link rel="stylesheet" href="estilocadastro.css"> 
     <link rel="icon" href="img/logos/icon.ico"> 
 </head>
 <body>

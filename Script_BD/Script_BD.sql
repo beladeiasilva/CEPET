@@ -47,10 +47,10 @@ TIPO VARCHAR (20) not null,
 COR VARCHAR(30) not null, 
 GENERO VARCHAR (6) not null, 
 PORTE VARCHAR (8) not null, 
-RAÇA VARCHAR (20) not null,
+RAÇA VARCHAR (20) null,
 IDADE VARCHAR (30) not null, 
 HISTÓRICO TEXT null,
-LINK_FOTO TEXT not null,
+LINK_FOTO VARCHAR(60) not null,
 FK_ONG_CNPJ VARCHAR(18) not null,
 
 FOREIGN KEY (FK_ONG_CNPJ) REFERENCES ongs(CNPJ));
