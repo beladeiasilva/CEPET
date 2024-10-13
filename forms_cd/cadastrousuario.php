@@ -174,6 +174,7 @@ function pesquisacep(valor) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta</title>
     <link rel="stylesheet" href="estilocadastro.css"> 
+    <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/padrao.css">
     <link rel="icon" href="img/logos/icon.ico">  
      <script src="jscript/main.js" defer> </script>
 </head>

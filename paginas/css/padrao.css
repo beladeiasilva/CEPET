@@ -26,7 +26,7 @@ header {
 
 .logoimg img {
     position:relative;
-    right: -30px;
+    right: -50px;
     width: 150px;
     margin-left: 100px;
 }
@@ -99,100 +99,87 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-
-
-footer{
-   background-color: #fffbf3;
-   display: block;
-   width: 500px;
-   position: relative;
-   bottom: 100%;
+footer {
+    background-color: #fdfcf9;
+    padding: 20px;
+    margin-top: 20px;
 }
 
-
-/* Carrosel */
-.banner div {
-    background-color: #3d9f9b;
-    margin: 20px;
-    border-radius: 20px;
-    height: 400px;
+.footer-content {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    position: relative; /* Para usar o posicionamento absoluto da imagem */
+    align-items: flex-start;
 }
 
-article {
-    width: 40%;
-    margin-left: 80px;
+.footer-content div {
+    flex: 1;
+    margin-right: 20px;
+    align-items: center;
 }
 
-.article1 h2 {
-    color: #fffbf3;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-size: 50px;
+.footer-content div:last-child {
+    margin-right: 0;
 }
 
-article h2 {
-    color: #fffbf3;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 30px;
-    text-align: center;
+footer h3 {
+    color: #333;
 }
 
-article p {
-    color: #fffbf3;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    text-align: center;
-}
-
-article button {
-    background-color: #fffbf3;
-    color: #3d9f9b;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 12px;
-    border-radius: 30px;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-/* Ajuste da imagem do cachorro */
-.banner div img {
-    width: 400px; /* Ajuste o tamanho conforme necessário */
-    position: absolute; /* Colocando a imagem de forma absoluta */
-    right: 50px; /* Ajuste conforme necessário para posicionar à direita */
-    bottom: 20px; /* Ajuste conforme necessário para mover para baixo */
+footer ul {
+    list-style: none;
     padding: 0;
 }
 
-
-.conhecaongs h3{
-    color: #3d9f9b;
-    font-family: "Poppins", sans-serif;
-    font-weight: 800;
-    font-style:oblique;
+footer ul li {
+    margin: 5px 0;
 }
-.imagem-arredondada {
-    width: 150px;
-    height: auto;
-    border-radius: 100px;
-    margin: 10px;
+
+.suggestion-section {
+    display: flex;
+    flex-direction: column;
+}
+
+footer textarea {
+    width: 400px;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+footer button {
+    background-color: #3d9f9b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 420px;
+}
+
+footer button:hover {
+    background-color: #37928f;
+}
+
+.social-media {
+    display: flex;
     
 }
-.carrosel-ONG{
+
+.social-links {
+    gap: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
-    width: 100%;
+    
 }
 
+.social-links img {
+    width: 24px;
+    height: 24px;
+    
+}
 

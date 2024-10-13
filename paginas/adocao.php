@@ -15,6 +15,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/estiloadocao.css">
+    <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/padrao.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoção</title>
     <link rel="icon" href="img/logos/icon.ico"> 

@@ -231,6 +231,7 @@ function pesquisacep(valor) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Cadastro ONG</title>
     <link rel="stylesheet" href="estilocadastro.css"> 
+    <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/padrao.css">
     <link rel="icon" href="img/logos/icon.ico">  
      <script src="jscript/main.js" defer> </script>
 </head>
