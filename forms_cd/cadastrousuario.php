@@ -193,13 +193,14 @@ function pesquisacep(valor) {
         </div>
         <img class="pessoa" src="img/icones variados/perfil.png">
     </header>
+
     <nav>
-        <ul class="barra-navegacao">
-            <li><a href="#Adocao">Adoção</a></li>
-            <li><a href="#ONGs">ONGs</a></li>
-            <li><a href="#Doações">Doação</a></li>
-            <li><a href="#Noticias">Noticias e dicas</a></li>
-        </ul>
+    <ul class="barra-navegacao">
+        <li><a href="/conexao/paginas/adocao.php">Adoção</a></li>
+        <li><a href="/conexao/paginas/ONGs.php">ONGs</a></li>
+        <li><a href="/conexao/paginas/doacao.php">Doação</a></li>
+        <li><a href="/conexao/paginas/Noticias.php">Notícias e dicas</a></li>
+    </ul>
     </nav>
 
 <?php

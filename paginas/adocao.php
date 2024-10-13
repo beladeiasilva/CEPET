@@ -45,14 +45,14 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     </header>
 
     
+
     <nav>
-        <!--Troca para o nome dos outros htmls para ir para outra página. href="Index.html"-->
-        <ul class="barra-navegacao">
-            <li><a href="adocao.php">Adoção</a></li>
-            <li><a href="#ONGs">ONGs</a></li>
-            <li><a href="doacao.php">Doação</a></li>
-            <li><a href="#Noticias">Noticias e dicas</a></li>
-        </ul>
+    <ul class="barra-navegacao">
+        <li><a href="/conexao/paginas/adocao.php">Adoção</a></li>
+        <li><a href="/conexao/paginas/ONGs.php">ONGs</a></li>
+        <li><a href="/conexao/paginas/doacao.php">Doação</a></li>
+        <li><a href="/conexao/paginas/Noticias.php">Notícias e dicas</a></li>
+    </ul>
     </nav>
 
     <div class="container">

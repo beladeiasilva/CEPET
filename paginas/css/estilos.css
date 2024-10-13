@@ -113,6 +113,7 @@ footer{
 /* Carrosel */
 .banner div {
     background-color: #3d9f9b;
+    width: 90%;
     margin: 20px;
     border-radius: 20px;
     height: 400px;
@@ -180,11 +181,20 @@ article button {
     font-weight: 800;
     font-style:oblique;
 }
+.carroselconhecaongs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+    background-color: aqua;
+}
+
 .imagem-arredondada {
     width: 150px;
     height: auto;
     border-radius: 100px;
-    margin: 10px;
+    margin: 50px;
     
 }
 .carrosel-ONG{

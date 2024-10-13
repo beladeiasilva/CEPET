@@ -52,7 +52,6 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doações para ONGs</title>
     <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/padrao.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="icon" href="img/logos/icon.ico">  
     <link rel="stylesheet" href="css/estilodoacao.css">
@@ -81,13 +80,14 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         <?php endif; ?>
     </header>
 
+
     <nav>
-        <ul class="barra-navegacao">
-            <li><a href="adocao.php">Adoção</a></li>
-            <li><a href="#ONGs">ONGs</a></li>
-            <li><a href="doacao.php">Doação</a></li>
-            <li><a href="#Noticias">Noticias e dicas</a></li>
-        </ul>
+    <ul class="barra-navegacao">
+        <li><a href="/conexao/paginas/adocao.php">Adoção</a></li>
+        <li><a href="/conexao/paginas/ONGs.php">ONGs</a></li>
+        <li><a href="/conexao/paginas/doacao.php">Doação</a></li>
+        <li><a href="/conexao/paginas/Noticias.php">Notícias e dicas</a></li>
+    </ul>
     </nav>
 
     <!--NÃO TERMINADO-->
@@ -156,6 +156,35 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         <div id="paymentResponse"></div>
     </main>
 
+
+    <footer>
+        <div class="footer-content">
+            <div class="faq-section">
+                <h3>Dúvidas ?</h3>
+                <ul>
+                    <li>Como funciona a adoção?</li>
+                    <li>Como doar?</li>
+                    <li>Como cadastrar minha ong?</li>
+                </ul>
+                <br>
+                <h3>Acompanhe a Cepet nas redes</h3>
+                <div class="social-links">
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/twitter.png" alt="Twitter"></a>
+                </div>
+            </div>
+            <div class="suggestion-section">
+                <h3>Sugestões</h3>
+                <p>Nos ajude a melhorar deixando sua sugestão:</p>
+                <textarea placeholder="Digite sua sugestão de melhoria :"></textarea>
+                <button>Enviar</button>
+            </div>
+            
+        </div>
+        <p>© 2024 Cepet - Todos os direitos reservados.</p>
+    </footer>
     <script>
         // Inicializando Mercado Pago com sua credencial pública
         const mp = new MercadoPago('APP_USR-4108972a-d3fa-4e7e-9bc9-2c5d15700dd0', {
