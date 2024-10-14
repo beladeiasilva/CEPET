@@ -35,7 +35,7 @@ if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true))
         <div class="headerlogin">
             <?php if ($logged_in): ?>
                 <h2><?php echo $ong_name; ?></h2>
-                <a href="/conexao/configuracao/sair.php"><button class="link_sair">Sair</button></a>
+                <a href="/conexao/configuracao/sair.php"><button class="link_sairbt">Sair</button></a>
             <?php else: ?>
                 <a href="login.php">Faça o login </a>
                 <p> ou </p>
@@ -97,59 +97,59 @@ if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true))
         <p>As ONGs cadastradas no CEPET terão acesso a materiais educativos e oportunidades de treinamento que podem ajudar na gestão da sua organização. Invista no conhecimento e melhore a eficiência das suas ações!</p>
     </article>
 </div>
+</div>
 
 
-    <div class="conhecaongs">
-    <h1>Conheça as ONGs</h1>
-    
-    <div class="carroselconhecaongs">
-        <a href=""><img src="img/foto ongs/ong-das-patinhas.jpg" class="imagem-arredondada"></a>
-        <a href=""><img src="img/foto ongs/patinhas-que-brilham.png" class="imagem-arredondada"></a>
-        <a href=""><img src="img/foto ongs/sempre-ao-seu-lado.png" class="imagem-arredondada"></a>
-        <a href=""><img src="img/foto ongs/cidadania-animal.png" class="imagem-arredondada"></a>
-        <a href=""><img src="img/foto ongs/gavaa.jpeg" class="imagem-arredondada"></a>
-        <a href=""><img src="img/foto ongs/vira-lata-e-dez.jpeg" class="imagem-arredondada"></a>
-    </div>
-    </div>
-    
-    <section class="amigos-section">
-    <div class="container">
-        <h1>Encontre seu amigo aqui</h1>
-        <div class="amigos-gallery">
-            <div class="amigo-item">
-                <img src="img/cat1.jpg" alt="Gato 1">
-            </div>
-            <div class="amigo-item">
-                <img src="img/cat2.jpg" alt="Gato 2">
-            </div>
-            <div class="amigo-item">
-                <img src="img/cat3.jpg" alt="Gato 3">
-            </div>
-            <div class="amigo-item">
-                <img src="img/dog1.jpg" alt="Cachorro 1">
-            </div>
-            <div class="amigo-item">
-                <img src="img/dog2.jpg" alt="Cachorro 2">
-            </div>
-            <div class="amigo-item">
-                <img src="img/dog3.jpg" alt="Cachorro 3">
-            </div>
-            <div class="amigo-item">
-                <img src="img/cat4.jpg" alt="Gato 4">
-            </div>
-            <div class="amigo-item">
-                <img src="img/dog4.jpg" alt="Cachorro 4">
-            </div>
-            <div class="amigo-item">
-                <img src="img/dog5.jpg" alt="Cachorro 5">
-            </div>
-            <div class="amigo-item">
-                <img src="img/cat5.jpg" alt="Gato 5">
+<div class="conhecaongs">
+        <h1>Conheça as ONGs</h1>
+        
+        <div class="carroselconhecaongs">
+            <a href=""><img src="img/foto ongs/ong-das-patinhas.jpg" class="imagem-arredondada"></a>
+            <a href=""><img src="img/foto ongs/patinhas-que-brilham.png" class="imagem-arredondada"></a>
+            <a href=""><img src="img/foto ongs/sempre-ao-seu-lado.png" class="imagem-arredondada"></a>
+            <a href=""><img src="img/foto ongs/cidadania-animal.png" class="imagem-arredondada"></a>
+            <a href=""><img src="img/foto ongs/gavaa.jpeg" class="imagem-arredondada"></a>
+            <a href=""><img src="img/foto ongs/vira-lata-e-dez.jpeg" class="imagem-arredondada"></a>
+        </div>
+        </div>
+        
+        <section class="amigos-section">
+        <div class="container">
+            <h1>Encontre seu amigo aqui</h1>
+            <div class="amigos-gallery">
+                <div class="amigo-item">
+                    <img src="img/animais/cat (10).jpg" alt="Gato 1">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/cat (9).jpg" alt="Gato 2">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/cat (8).jpg" alt="Gato 3">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/dog (15).jpg" alt="Cachorro 1">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/dog (14).jpg" alt="Cachorro 2">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/dog (13).jpg" alt="Cachorro 3">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/cat (7).jpg" alt="Gato 4">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/dog (11).jpg" alt="Cachorro 4">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/dog (10).jpg" alt="Cachorro 5">
+                </div>
+                <div class="amigo-item">
+                    <img src="img/animais/cat (6).jpg" alt="Gato 5">
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <footer>
     <div class="footer-content">

@@ -73,7 +73,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         <h2>Transforme Vidas: Adote um Amigo!</h2>
         <p>Você sabia que ao adotar um animal, você não está apenas ganhando um novo amigo, mas também salvando uma vida? No CEPET, oferecemos um espaço seguro para que você conheça diversos pets à espera de um lar. Venha fazer a diferença!</p>    
     </article>
-    <img src="img/animais/dog(1).png">  
+    <img src="img/animais/dog (1).png">  
 </div>
 
 <div>
@@ -119,34 +119,34 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
             <h1>Encontre seu amigo aqui</h1>
             <div class="amigos-gallery">
                 <div class="amigo-item">
-                    <img src="img/cat1.jpg" alt="Gato 1">
+                    <img src="img/animais/cat (10).jpg" alt="Gato 1">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/cat2.jpg" alt="Gato 2">
+                    <img src="img/animais/cat (9).jpg" alt="Gato 2">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/cat3.jpg" alt="Gato 3">
+                    <img src="img/animais/cat (8).jpg" alt="Gato 3">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/dog1.jpg" alt="Cachorro 1">
+                    <img src="img/animais/dog (15).jpg" alt="Cachorro 1">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/dog2.jpg" alt="Cachorro 2">
+                    <img src="img/animais/dog (14).jpg" alt="Cachorro 2">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/dog3.jpg" alt="Cachorro 3">
+                    <img src="img/animais/dog (13).jpg" alt="Cachorro 3">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/cat4.jpg" alt="Gato 4">
+                    <img src="img/animais/cat (7).jpg" alt="Gato 4">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/dog4.jpg" alt="Cachorro 4">
+                    <img src="img/animais/dog (11).jpg" alt="Cachorro 4">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/dog5.jpg" alt="Cachorro 5">
+                    <img src="img/animais/dog (10).jpg" alt="Cachorro 5">
                 </div>
                 <div class="amigo-item">
-                    <img src="img/cat5.jpg" alt="Gato 5">
+                    <img src="img/animais/cat (6).jpg" alt="Gato 5">
                 </div>
             </div>
         </div>
