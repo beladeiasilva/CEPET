@@ -11,7 +11,7 @@
  $senhaO = $_POST['ongsenha'];
 
 
-// //Testar se o login está mandando infor mações para as variaveis:
+// //Testar se o login está mandando informações para as variaveis:
 //  print_r('cnpj: ' . $cnpjO);
 //  print_r('senha: ' . $senhaO);
 

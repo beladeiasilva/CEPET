@@ -1,4 +1,34 @@
-<?php include('verifica_login.php'); ?>
+<?php include('verifica_usuario.php'); 
+
+if(isset($_POST['alterar']))
+{
+if(isset($_FILES['foto']))
+{
+ $arquivoF = $_FILES ['foto'];
+
+ if($arquivoF['error'])
+    die("Falha ao enviar arquivo");
+
+ if($arquivoF['size'] > 10485760)
+    die("Arquivo muito grande! Max: 10MB");
+
+    $pasta= "imagens_de_perfil/";
+    $nomeDoArquivo = $arquivoF['name'];
+    $novoNomeDoArquivo = uniqid();
+    $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
+    
+
+    if ($extensao != "jpeg" && $extensao != "png" && $extensao != "jpg")
+        die("Tipo de arquivo inválido");
+
+    $path = $novoNomeDoArquivo .".". $extensao;
+    $deu_certo = move_uploaded_file($arquivoF["tmp_name"], $pasta . $path);
+
+}
+
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,17 +42,15 @@
 </head>
 <body>
 
+
+
 <header>
         <div class="logoimg">
             <a href="/conexao/paginas/inicial.php"><img src="/conexao/paginas/img/logos/cepet-preto.png" alt="Logo Cepet"></a>
         </div>
         <div class="headerlogin">
-            <?php if ($logged_in): ?>
-                <?php if ($user_type == 'ong'): ?>
-                    <h2><?php echo $ong_name; ?></h2>
-                <?php elseif ($user_type == 'usuario'): ?>
-                    <h2><?php echo $user_name; ?></h2>
-                <?php endif; ?>
+            <?php if ($logado): ?>
+                <span class="user-name">Olá, <?php echo $usuario; ?> !</span>
                 <a href="/conexao/configuracao/sair.php"><button class="link_sairbt">Sair</button></a>
             <?php else: ?>
                 <a href="login.php">Faça o login</a>
@@ -30,7 +58,11 @@
                 <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
             <?php endif; ?>
         </div>
-        <img class="pessoa" src="/conexao/paginas/img/icones variados/perfil.png" alt="Ícone de perfil">
+        
+       
+        <img class="pessoa" src=" <?php echo"<img src='imagens_de_perfil/$path'>"; ?>">
+        
+        
     </header>
 
     <nav>
@@ -44,25 +76,41 @@
     
     <main>
         <div class="profile-container">
-            <h1>Perfil de <span id="nome_usuario">NOME_DE_USUARIO</span></h1>
+            <h1><span id="nome_usuario"><?php echo $usuario; ?></span></h1>
             <div class="profile-info">
                 <div class="profile-picture">
-                    <img src="/conexao/paginas/img/animais/gato.jpg" alt="Foto do Usuário">
+                    <!----------------------------------------foto de perfil-------------------------------->
+                    <?php echo"<img src='imagens_de_perfil/$path'>"; ?>
+                           
+                    <!--------------------------------------------------------------------------------------->
+
+
+                    <p>Foto</p>
+              <div>      
+
+            <form action="perfilusuario.php" method="POST" enctype="multipart/form-data">
+             <!---------------------------------Input para trocar a foto--------------------->  
+            <input type="file" name="foto"></input>
+            <button type="submit" name="alterar" id="alterar">Alterar</button>
+            <!---------------------------------Input para trocar a foto--------------------->  
+            </form>
+            <br>
+            </div>  
                 </div>
                 <div class="info-details">
                     <h2>Dados Pessoais</h2>
-                    <p><strong>Nome Completo:</strong> <span id="nome_completo">NOME_COMPLETO</span></p>
-                    <p><strong>Data de Nascimento:</strong> <span id="data_nascimento">DATA_DE_NASCIMENTO</span></p>
-                    <p><strong>Gênero:</strong> <span id="genero">GENÊRO</span></p>
-                    <p><strong>Email:</strong> <span id="email">EMAIL</span></p>
-                    <p><strong>Telefone:</strong> <span id="telefone">TELEFONE</span></p>
+                    <p><strong>Nome Completo:</strong> <span id="nome_completo"><?php echo $nome ?> </span></p>
+                    <p><strong>Data de Nascimento:</strong> <span id="data_nascimento"><?php echo $data_nasc ?> </span></p>
+                    <p><strong>Gênero:</strong> <span id="genero"><?php echo $genero ?> </span></p>
+                    <p><strong>Email:</strong> <span id="email"><?php echo $email ?> </span></p>
+                    <p><strong>Telefone:</strong> <span id="telefone"><?php echo $telefone ?> </span></p>
                 </div>
             </div>
             <div class="address-info">
                 <h2>Endereço</h2>
-                <p><strong>Endereço:</strong> <span id="endereco">ENDERECO</span></p>
-                <p><strong>CEP:</strong> <span id="cep">CEP</span></p>
-                <p><strong>UF:</strong> <span id="uf">UF</span></p>
+                <p><strong>Endereço:</strong> <span id="endereco"><?php echo $endereco ?> </span></p>
+                <p><strong>CEP:</strong> <span id="cep"><?php echo $cep ?> </span></p>
+                <p><strong>UF:</strong> <span id="uf"><?php echo $uf ?> </span></p>
             </div>
         </div>
     </main>
@@ -85,6 +133,9 @@
                     <a href="#"><img src="/conexao/paginas/img/redes sociais/twitter.png" alt="Twitter"></a>
                 </div>
             </div>
+            
+                
+
             <div class="suggestion-section">
                 <h3>Sugestões</h3>
                 <p>Nos ajude a melhorar deixando sua sugestão:</p>

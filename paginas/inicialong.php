@@ -4,13 +4,11 @@ session_start();
 if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true)) {
     unset($_SESSION['cnpj']);
     unset($_SESSION['senha']);
-    unset($_SESSION['ong']);
-    // Usuário não está logado, exibe os links de login e cadastro
-    $logged_in = false;
+    header('location: login.php');
+    
 } else {
-    // Usuário está logado, exibe o nome e o botão de sair
-    $logged_in = true;
-    $ong_name = $_SESSION['ong'];
+    $logado = true;
+    $ong_nome = $_SESSION['ong'];
 }
 ?>    
 <!DOCTYPE html>
@@ -33,8 +31,8 @@ if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true))
             <a href="/conexao/paginas/inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
         </div>
         <div class="headerlogin">
-            <?php if ($logged_in): ?>
-                <h2><?php echo $ong_name; ?></h2>
+            <?php if ($logado): ?>
+                <h2><?php echo $ong_nome; ?></h2>
                 <a href="/conexao/configuracao/sair.php"><button class="link_sair">Sair</button></a>
             <?php else: ?>
                 <a href="login.php">Faça o login </a>
