@@ -95,7 +95,6 @@
         </div>
         <p>© 2024 Cepet - Todos os direitos reservados.</p>
     </footer>
-    <!-- Restante do código -->
     
 </body>
 </html>

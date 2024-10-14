@@ -69,6 +69,34 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
             <p>Estado</p>
             <select name="estado" id="estado">
                 <option value="">Selecione o estado</option>
+                <option value="">Selecione o estado</option>
+            <option value="AC">Acre (AC)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="AP">Amapá (AP)</option>
+            <option value="AM">Amazonas (AM)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+            <option value="ES">Espírito Santo (ES)</option>
+            <option value="GO">Goiás (GO)</option>
+            <option value="MA">Maranhão (MA)</option>
+            <option value="MT">Mato Grosso (MT)</option>
+            <option value="MS">Mato Grosso do Sul (MS)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="PA">Pará (PA)</option>
+            <option value="PB">Paraíba (PB)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="PI">Piauí (PI)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="RN">Rio Grande do Norte (RN)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="RO">Rondônia (RO)</option>
+            <option value="RR">Roraima (RR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="TO">Tocantins (TO)</option>
             </select>
 
             <p>Cidade</p>
@@ -367,6 +395,33 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
             </div>        
         </div>
     </div>
-    
+    <footer>
+        <div class="footer-content">
+            <div class="faq-section">
+                <h3>Dúvidas ?</h3>
+                <ul>
+                    <li>Como funciona a adoção?</li>
+                    <li>Como doar?</li>
+                    <li>Como cadastrar minha ong?</li>
+                </ul>
+                <br>
+                <h3>Acompanhe a Cepet nas redes</h3>
+                <div class="social-links">
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="/conexao/paginas/img/redes sociais/twitter.png" alt="Twitter"></a>
+                </div>
+            </div>
+            <div class="suggestion-section">
+                <h3>Sugestões</h3>
+                <p>Nos ajude a melhorar deixando sua sugestão:</p>
+                <textarea placeholder="Digite sua sugestão de melhoria :"></textarea>
+                <button>Enviar</button>
+            </div>
+            
+        </div>
+        <p>© 2024 Cepet - Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

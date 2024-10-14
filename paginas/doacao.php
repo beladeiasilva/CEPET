@@ -51,8 +51,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doações para ONGs</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/padrao.css">
     <link rel="icon" href="img/logos/icon.ico">  
     <link rel="stylesheet" href="css/estilodoacao.css">
     <script src="https://sdk.mercadopago.com/js/v2"></script>
