@@ -1,32 +1,16 @@
-<?php include('verifica_usuario.php'); 
+<?php 
 
-if(isset($_POST['alterar']))
-{
-if(isset($_FILES['foto']))
-{
- $arquivoF = $_FILES ['foto'];
 
- if($arquivoF['error'])
-    die("Falha ao enviar arquivo");
+include('verifica_usuario.php'); 
+include('conexao.php');
 
- if($arquivoF['size'] > 10485760)
-    die("Arquivo muito grande! Max: 10MB");
+$sql="SELECT ID_USUARIO FROM USUARIOS WHERE NOME_DE_USUARIO = '$usuario'";
+$result = mysqli_query($mysqli, $sql);
 
-    $pasta= "imagens_de_perfil/";
-    $nomeDoArquivo = $arquivoF['name'];
-    $novoNomeDoArquivo = uniqid();
-    $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
-    
+while($id_usuario = mysqli_fetch_assoc($result)) {
+$link_editar= "<a href='editar_perfil.php?id=$id_usuario[ID_USUARIO]'> <button type='btn' name='editar' id='alterar'>Editar</button> </a>";
 
-    if ($extensao != "jpeg" && $extensao != "png" && $extensao != "jpg")
-        die("Tipo de arquivo inválido");
-
-    $path = $novoNomeDoArquivo .".". $extensao;
-    $deu_certo = move_uploaded_file($arquivoF["tmp_name"], $pasta . $path);
-
-}
-
-}
+ } 
 
 ?>
 
@@ -60,7 +44,7 @@ if(isset($_FILES['foto']))
         </div>
         
        
-        <img class="pessoa" src=" <?php echo"<img src='imagens_de_perfil/$path'>"; ?>">
+        <img class="pessoa" src=" <?php echo"<img src='imagens_perfil/$path'>"; ?>">
         
         
     </header>
@@ -80,18 +64,25 @@ if(isset($_FILES['foto']))
             <div class="profile-info">
                 <div class="profile-picture">
                     <!----------------------------------------foto de perfil-------------------------------->
-                    <?php echo"<img src='imagens_de_perfil/$path'>"; ?>
-                           
-                    <!--------------------------------------------------------------------------------------->
+                    <?php
+                        include('conexao.php');
+                        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario' ";
+                        $result2= mysqli_query($mysqli, $sql2);
 
+                        while ($img_perfil = mysqli_fetch_assoc($result2))
+                       
+                        echo"<img src='imagens_perfil/Imagem_perfil_padrao/$img_perfil[IMG_PERFIL]';"
 
+                    ?>
+                        
                     <p>Foto</p>
               <div>      
 
-            <form action="perfilusuario.php" method="POST" enctype="multipart/form-data">
+            <form action="editar_perfil.php" method="POST" enctype="multipart/form-data">
              <!---------------------------------Input para trocar a foto--------------------->  
-            <input type="file" name="foto"></input>
-            <button type="submit" name="alterar" id="alterar">Alterar</button>
+             <?php   
+              echo $link_editar;
+             ?>
             <!---------------------------------Input para trocar a foto--------------------->  
             </form>
             <br>

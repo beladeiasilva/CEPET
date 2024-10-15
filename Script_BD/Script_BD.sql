@@ -18,8 +18,8 @@ UF VARCHAR (2) not null,
 ENDERECO VARCHAR (100) not null,
 CEP VARCHAR (9) not null,
 Termos_Condições BIT not null,
-HASH VARCHAR (100) not null);
-
+HASH VARCHAR (100) not null,
+IMG_PERFIL VARCHAR(50) not null;)
 
 
 

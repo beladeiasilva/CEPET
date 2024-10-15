@@ -33,7 +33,7 @@ $cnpj = $cnpjO['CNPJ'];
  VALUES ('$form_pag','$dinheiro',now(),now(),'$id','$cnpj')");
 //------------------------------------------------------------------------------------------------------------//
 
-header('Location: login.php');
+header('Location: inicial.php');
 }
 
 // Verifica se o usuário está logado

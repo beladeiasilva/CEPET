@@ -9,6 +9,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     $logado = true;
     $usuario = $_SESSION['usuario'];  // Nome do usuário
 
+    $imagem_perfil="imagens_perfil/mascote.jpg";
+
+    $_SESSION['foto'];
+    
     include('conexao.php');
 
     $sql="SELECT NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, ENDERECO, CEP, UF FROM usuarios WHERE NOME_DE_USUARIO = '$usuario'";
