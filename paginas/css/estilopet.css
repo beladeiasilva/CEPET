@@ -1,0 +1,96 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.container {
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../img/icones variados/backgroundpet.png");
+    width: 800px;
+    height: 450px;
+    margin-top: 90px;
+
+}
+.pet-card {
+    margin-top: 230px;
+    width: 600px;
+    height: 500px;
+}
+
+.pet-card *{
+    color:#fffbf3;
+}
+
+.pet-card .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ong-nome {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.estado {
+    font-size: 16px;
+
+}
+
+.pet-info {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.pet-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info{
+    text-align: left;
+    padding-left: 50px;
+}
+
+.info h1 {
+    font-size: 28px;
+    margin: 0
+}
+.info h2 {
+    font-size: 22px;
+
+}
+
+.info ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.info ul li {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.info p {
+    font-size: 16px;
+
+}
+
+.pet-paw {
+    background-image: url('img/icones variados/paw.png');
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+}
