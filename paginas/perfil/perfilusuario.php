@@ -8,7 +8,7 @@ $sql="SELECT ID_USUARIO FROM USUARIOS WHERE NOME_DE_USUARIO = '$usuario'";
 $result = mysqli_query($mysqli, $sql);
 
 while($id_usuario = mysqli_fetch_assoc($result)) {
-$link_editar= "<a href='editar_perfil.php?id=$id_usuario[ID_USUARIO]'> <button type='btn' name='editar' id='alterar'>Editar</button> </a>";
+$link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]'> <button type='btn' name='editar' id='alterar'>Editar</button> </a>";
 
  } 
 
@@ -42,11 +42,17 @@ $link_editar= "<a href='editar_perfil.php?id=$id_usuario[ID_USUARIO]'> <button t
                 <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
             <?php endif; ?>
         </div>
-        
-       
-        <img class="pessoa" src=" <?php echo"<img src='imagens_perfil/$path'>"; ?>">
-        
-        
+        <!--------------------------------FOTO DE PERFIL ICONE------------------------------------------->
+        <?php  
+        include('conexao.php');
+        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario' ";
+        $result2= mysqli_query($mysqli, $sql2);
+        $img_perfil = mysqli_fetch_assoc($result2);
+        $img_perfil['IMG_PERFIL'];
+        echo"<img class='pessoa' src='imagens_perfil/$img_perfil[IMG_PERFIL]'>";
+        ?>
+        <!--------------------------------FOTO DE PERFIL ICONE------------------------------------------->
+
     </header>
 
     <nav>
@@ -69,10 +75,10 @@ $link_editar= "<a href='editar_perfil.php?id=$id_usuario[ID_USUARIO]'> <button t
                         $sql2="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario' ";
                         $result2= mysqli_query($mysqli, $sql2);
 
-                        while ($img_perfil = mysqli_fetch_assoc($result2))
+                       $img_perfil = mysqli_fetch_assoc($result2);
                        
-                        echo"<img src='imagens_perfil/Imagem_perfil_padrao/$img_perfil[IMG_PERFIL]';"
-
+                         echo"<img src='imagens_perfil/$img_perfil[IMG_PERFIL]';";
+                        
                     ?>
                         
                     <p>Foto</p>

@@ -77,6 +77,19 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         </div>
         <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
         <?php endif; ?>
+
+
+         <!---------------------------------FOTO DE PERFIL ICONE-------------------------------------------->
+        <?php
+        if($logado==true){
+        include('conexao.php');
+        $sql="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario' ";
+        $result= mysqli_query($mysqli, $sql);
+        $img_perfil = mysqli_fetch_assoc($result);
+        $img_perfil['IMG_PERFIL'];
+        echo"<a href='perfil/perfilusuario.php'><img class='pessoa' src='perfil/imagens_perfil/$img_perfil[IMG_PERFIL]'>";}
+        ?>
+        <!----------------------------------------------------------------------------------------------------->
     </header>
 
 

@@ -10,11 +10,9 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
 }
 
 // Conexão ao banco de dados
-$conn = new mysqli("localhost", "root", "", "cepet"); // Substitua pelo seu banco de dados
+include('conexao.php');
 
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
+
 
 // Receber o ID do pet via GET
 $id_pet = isset($_GET['id_pet']) ? $_GET['id_pet'] : null;
@@ -25,7 +23,7 @@ if ($id_pet) {
             FROM pets p
             JOIN ongs o ON p.FK_ONG_CNPJ = o.CNPJ
             WHERE p.ID_PET = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $id_pet);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -44,7 +42,7 @@ if ($id_pet) {
     exit;
 }
 
-$conn->close();
+$mysqli->close();
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +58,9 @@ $conn->close();
 <body>
 
 <header>
+<div class="logoimg">
+            <a href="/conexao/paginas/inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
+        </div>
     <div class="logoimg">
     </div>
     <div class="headerlogin">
@@ -75,6 +76,7 @@ $conn->close();
         </div>
         <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
         <?php endif; ?>
+        
 </header>
 
 <nav>
@@ -85,11 +87,11 @@ $conn->close();
         <li><a href="/conexao/paginas/Noticias.php">Notícias e dicas</a></li>
     </ul>
 </nav>
-
 <main>
 <div class="container">
 <div class="pet-card">
     <div class="header">
+        
         <span class="ong-nome"><?php echo $pet['ONG_NOME']; ?></span>
         <span class="estado"><strong><?php echo $pet['ESTADO']; ?></strong></span>
     </div>
@@ -141,5 +143,6 @@ $conn->close();
     </div>
     <p>© 2024 Cepet - Todos os direitos reservados.</p>
 </footer>
+
 </body>
 </html>
