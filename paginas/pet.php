@@ -115,7 +115,7 @@ $mysqli->close();
 
 </main>
 
-<button class="adotar-button">Adotar</button>
+<button class="adotar-button"><strong>Adotar</strong></button>
 <footer>
     <div class="footer-content">
         <div class="faq-section">
