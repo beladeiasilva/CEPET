@@ -1,8 +1,4 @@
 <?php
-//-------------------------------SESSÃO DO USUARIO-----------------//
-
-  
-
 
 
     //Testar se os dados estão sendo inseridos:
@@ -38,7 +34,7 @@
             $_SESSION['usuario'] = $usuario['NOME_DE_USUARIO'];
             $_SESSION['senha'] = password_verify($senhaU, $usuario['SENHA']);
             $_SESSION['email'] = $emailU;
-             
+            
             
             
              header("Location: /conexao/paginas/inicial.php");

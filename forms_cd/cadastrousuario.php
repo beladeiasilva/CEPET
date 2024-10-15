@@ -38,7 +38,7 @@
         $rua = $_POST['usuariorua'];
         $numero = $_POST['usuarionumero'];
         $termosecondicoes = $_POST['termosecondicoes'];
-        
+        $img_perfil = "mascote.jpg";
       
 
         //------------------------------------Verifica se há um email já cadastrado----------------------------------------------
@@ -64,8 +64,8 @@
                 
         //------------------------------------Inserindo ao banco de dados:-------------------------------------------------------//
 
-                $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições, HASH) 
-                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero','$cep', '$termosecondicoes','$hash')");
+                $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições, HASH, IMG_PERFIL) 
+                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero','$cep', '$termosecondicoes','$hash','$img_perfil')");
 
               
                 header('Location: /conexao/paginas/login.php');
