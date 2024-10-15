@@ -13,14 +13,14 @@ main {
     background-position: center;
     background-image: url("../img/icones variados/backgroundpet.png");
     width: 800px;
-    height: 450px;
+    height: 480px;
     margin-top: 90px;
 
 }
 .pet-card {
     margin-top: 230px;
     width: 600px;
-    height: 500px;
+    height: 510px;
 }
 
 .pet-card *{
@@ -64,11 +64,13 @@ main {
 
 .info h1 {
     font-size: 28px;
-    margin: 0
+    margin: 0;
+    padding: 0;
 }
 .info h2 {
     font-size: 22px;
-
+    margin: 1px;
+    padding: 0;
 }
 
 .info ul {
@@ -88,9 +90,29 @@ main {
 }
 
 .pet-paw {
-    background-image: url('img/icones variados/paw.png');
+    background-image: url('/conexao/paginas/img/icones variados/paw.png');
     background-size: contain;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+    transform: rotate(40deg);
     margin-left: auto;
+    position:absolute;
+    bottom: 27px;
+    left: 38%;
+
+
+}
+
+.adotar-button {
+    background-color: transparent;
+    border: #3d9f9b;
+    color: #3d9f9b;
+    border-style: solid;
+    border-radius: 15px;
+    padding: 3px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: 500;
+    
 }

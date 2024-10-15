@@ -176,13 +176,44 @@ if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true))
 <p id="pCachorroRaca">Raça Cachorro</p>
 <select type="text" name ="cachorroraca" id="cachorroRaca">
     <option value="">Selecione a raça do cachorro</option>
-    <!-- opções de raças de cachorro -->
+    <option value="viralata">Vira-Lata</option>
+    <option value="labrador">Labrador Retriever</option>
+    <option value="golden-retriever">Golden Retriever</option>
+    <option value="bulldog-ingles">Bulldog Inglês</option>
+    <option value="poodle">Poodle</option>
+    <option value="pastor-alemao">Pastor Alemão</option>
+    <option value="beagle">Beagle</option>
+    <option value="rottweiler">Rottweiler</option>
+    <option value="chihuahua">Chihuahua</option>
+    <option value="dachshund">Dachshund</option>
+    <option value="shihtzu">Shih Tzu</option>
+    <option value="boxer">Boxer</option>
+    <option value="pug">Pug</option>
+    <option value="husky-siberiano">Husky Siberiano</option>
+    <option value="border-collie">Border Collie</option>
+    <option value="yorkshire">Yorkshire Terrier</option>
+    <option value="pitbull">Pit Bull</option>
+    <option value="weimaraner">Weimaraner</option>
+    <option value="outro">Outro</option>
 </select>
 
 <p id="pGatoRaca">Raça Gato</p>
 <select type="text" name="gatoraca" id="gatoRaca">
     <option value="">Selecione a raça do gato</option>
-    <!-- opções de raças de gato -->
+    <option value="persa">Persa</option>
+    <option value="siames">Siamês</option>
+    <option value="maine-coon">Maine Coon</option>
+    <option value="bengal">Bengal</option>
+    <option value="sphynx">Sphynx</option>
+    <option value="british-shorthair">British Shorthair</option>
+    <option value="ragdoll">Ragdoll</option>
+    <option value="angora">Angorá</option>
+    <option value="scottish-fold">Scottish Fold</option>
+    <option value="burmes">Burmês</option>
+    <option value="chartreux">Chartreux</option>
+    <option value="exotic-shorthair">Exotic Shorthair</option>
+    <option value="russian-blue">Russian Blue</option>
+    <option value="outro">Outro</option>
 </select>
 
 <p>Porte</p>
@@ -196,13 +227,28 @@ if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true))
 <p id="pCachorroCor">Cor Cachorro</p>
 <select type="text" name="cachorrocor" id="cachorrocor">
     <option value="">Selecione a cor do cachorro</option>
-    <!-- opções de cores de cachorro -->
+    <option value="preto">Preto</option>
+    <option value="branco">Branco</option>
+    <option value="marrom">Marrom</option>
+    <option value="dourado">Dourado</option>
+    <option value="tigrado">Tigrado</option>
+    <option value="cinza">Cinza</option>
+    <option value="creme">Creme</option>
+    <option value="tricolor">Tricolor</option>
 </select>
 
 <p id="pGatoCor">Cor Gato</p>
 <select type="text" name="gatocor" id="gatocor">
     <option value="">Selecione a cor do gato</option>
-    <!-- opções de cores de gato -->
+    <option value="preto">Preto</option>
+    <option value="branco">Branco</option>
+    <option value="cinza">Cinza</option>
+    <option value="tigrado">Tigrado</option>
+    <option value="tricolor">Tricolor</option>
+    <option value="siames">Siamês</option>
+    <option value="laranja">Laranja</option>
+    <option value="creme">Creme</option>
+    <option value="chocolate">Chocolate</option>
 </select>
 
 

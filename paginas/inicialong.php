@@ -33,7 +33,7 @@ if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true))
         <div class="headerlogin">
             <?php if ($logado): ?>
                 <h2><?php echo $ong_nome; ?></h2>
-                <a href="/conexao/configuracao/sair.php"><button class="link_sair">Sair</button></a>
+                <a href="/conexao/configuracao/sair.php"><button class="link_sairbt">Sair</button></a>
             <?php else: ?>
                 <a href="login.php">Faça o login </a>
                 <p> ou </p>
