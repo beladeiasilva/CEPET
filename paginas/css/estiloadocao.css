@@ -1,4 +1,9 @@
-
+.banneradocao{
+    background-image: src("/conexao/paginas/img/banner-adocao.jpg");
+    background-size:cover;
+    width: 90%;
+    height: 200px;
+}
 .container * {
     margin: 0;
     padding: 0;

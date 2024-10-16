@@ -74,6 +74,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         <li><a href="/conexao/paginas/Noticias.php">Notícias e dicas</a></li>
     </ul>
     </nav>
+    <div class="banneradocao"></div>
 
     <div class="container">
         <!-- Sidebar de Filtros -->
