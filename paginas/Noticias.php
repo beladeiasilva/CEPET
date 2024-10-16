@@ -6,7 +6,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     $logado = false;
 } else {
     $logado = true;
-    $usuario = $_SESSION['usuario'];  // Nome do usuário
+    $id = $_SESSION['id'];  // Nome do usuário
 }
 ?>
 
@@ -28,8 +28,16 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         </div>
         <div class="headerlogin">
             <?php if ($logado): ?>
-                <span class="user-name">Olá, <?php echo $usuario; ?> !</span>
-                
+
+                <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
+                <span class="user-name">Olá, <?php 
+                include('conexao.php');  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
+                $result = mysqli_query($mysqli, $sql);
+                $nome = mysqli_fetch_assoc($result);
+                $nome['NOME_DE_USUARIO'];
+                echo $nome['NOME_DE_USUARIO']; ?> !</span>
+                 <!------------------------------------------------------------------------------------------------------->
+
                     <a class="link_sair" href="/conexao/configuracao/sair.php">
                         <button class="link_sairbt">Sair</button>
                     </a>
@@ -47,7 +55,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         <?php
         if($logado==true){
         include('conexao.php');
-        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario' ";
+        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE ID_USUARIO = '$id' ";
         $result2= mysqli_query($mysqli, $sql2);
         $img_perfil = mysqli_fetch_assoc($result2);
         $img_perfil['IMG_PERFIL'];

@@ -1,61 +1,49 @@
 <?php
+session_start();
 
-    if(isset($_GET['cadastrar']))
-    {
-     
+// Verifica se o usuário está logado
+if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+    $logado = false;
+    header('Location: /conexao/paginas/sair.php');
+} else {
+    $logado = true;
+    $id = $_SESSION['id'];  // Nome do usuário
+}   
 
-        include_once('conexao.php');
+    if(!empty($_GET['ID_USUARIO'])){
+   
+        
+    include_once('conexao.php');        
 
-        //--------------------------------------------Declarando váriaveis---------------------------------------------->
-        $nomelogin = $_POST['usuariologin'];
-        $senhaU = password_hash($_POST['usuariosenha'], PASSWORD_DEFAULT);
-        $cpf = $_POST['usuariocpf'];
-        $nome = $_POST['usuarionome'];
-        $nascimento = $_POST['usuarionascimento'];
-        $genero = $_POST['usuariogenero'];
-        $emailU = $_POST['usuarioemail'];
-        $telefone = $_POST['usuariotelefone'];
-        $uf = $_POST['usuarioestado'];
-        $cidade = $_POST['usuariocidade'];
-        $bairro = $_POST['usuariobairro'];
-        $cep = $_POST['usuariocep'];
-        $rua = $_POST['usuariorua'];
-        $numero = $_POST['usuarionumero'];
-        $termosecondicoes = $_POST['termosecondicoes'];
-        $img_perfil = "mascote.jpg";
-      
+    $idU = $_GET['ID_USUARIO'];
+    $sql = "SELECT * FROM usuarios WHERE ID_USUARIO='$idU'";
+    $result = mysqli_query($mysqli, $sql);   
 
-        //------------------------------------Verifica se há um email já cadastrado----------------------------------------------
-        $sqlVCD="SELECT EMAIL FROM usuarios where EMAIL= '$emailU'";
+    if($result->num_rows >0){
 
-        if($rvc=mysqli_query($mysqli,$sqlVCD))
-        {
-            $qtdLinhas = mysqli_num_rows($rvc);
+    while($id_usuario = mysqli_fetch_assoc($result)){
 
-            if($qtdLinhas>0)
-            {
-               
-              
-             echo "
-             <div class='alert alert-danger' role='alert'>
-                Este Email já está cadastrado!
-                </div>";
-
-            }
-            else
-            {
-                $hash =sprintf('%07X', mt_rand(0,0xFFFFFFF));
-                
-        //------------------------------------Inserindo ao banco de dados:-------------------------------------------------------//
-
-                $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições, HASH, IMG_PERFIL) 
-                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero','$cep', '$termosecondicoes','$hash','$img_perfil')");
-
-              
-                header('Location: /conexao/paginas/login.php');
-            }
-        }       
-    }
+    $nomelogin = $id_usuario['NOME_DE_USUARIO'];
+    $cpf =$id_usuario['CPF'];
+    $nome = $id_usuario['NOME_COMPLETO'];
+    $nascimento = $id_usuario['DATA_DE_NASCIMENTO'];
+    $genero = $id_usuario['GENÊRO'];
+    $email = $id_usuario['EMAIL'];
+    $telefone = $id_usuario['TELEFONE'];
+    $uf = $id_usuario['UF'];
+    $cidade = $id_usuario['CIDADE'];
+    $bairro = $id_usuario['BAIRRO'];
+    $cep = $id_usuario['CEP'];
+    $rua = $id_usuario['RUA'];
+    $numero = $id_usuario['NUM_CASA'];
+    $img_perfil = $id_usuario['IMG_PERFIL'];       
+    }          
+   
+}           
+    else{
+    header('location: /conexao/paginas/login.php');
+    }                    
+}
 
 ?>
 <!-----------------------------------------------------SCRIPT DO CEP (INICIO)------------------------------------------->
@@ -156,9 +144,11 @@ function pesquisacep(valor) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta</title>
+    <title>Editar Conta</title>
+    
     <link rel="stylesheet" href="/conexao/forms_cd/estilocadastro.css"> 
     <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/padrao.css">
+    <link rel="stylesheet" type="text/css" href="estilo_editar_perfil.css"> 
     <link rel="icon" href="img/logos/icon.ico">  
      <script src="jscript/main.js" defer> </script>
 </head>
@@ -169,13 +159,42 @@ function pesquisacep(valor) {
             <img src="/conexao/paginas/img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
         </div>
         <div class="headerlogin">
-            <a href="login.php">
-                Faça o login </a>
-                <p> ou </p>
-            <a href="/conexao/forms_cd/cadastrousuario.php">
-                Cadastre-se!</a>
-        </div>
-        <img class="pessoa" src="/conexao/paginas/img/animais/gato.jpg">
+        <?php if ($logado): ?>
+                
+                 <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
+                <span class="user-name">Olá,<?php 
+                include('conexao.php');  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
+                $result = mysqli_query($mysqli, $sql);
+                $nomeU = mysqli_fetch_assoc($result);
+                $nomeU['NOME_DE_USUARIO'];
+                echo $nomeU['NOME_DE_USUARIO']; ?> !</span>
+                <!------------------------------------------------------------------------------------------------------->
+
+                    <a class="link_sair" href="/conexao/configuracao/sair.php">
+                        <button class="link_sairbt">Sair</button>
+                    </a>
+                
+                    <?php else: ?>
+                    <a href="login.php">Faça o login </a>
+                    <p> / </p>
+                    <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
+            
+                    </div>
+                    <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
+                    <?php endif; ?>
+                    </div>
+
+        <!---------------------------------FOTO DE PERFIL ICONE-------------------------------------------->               
+        <?php
+        if($logado==true){
+        include('conexao.php');
+        $sql3="SELECT IMG_PERFIL FROM usuarios WHERE ID_USUARIO ='$id'";
+        $result3= mysqli_query($mysqli, $sql3);
+        $img_perfil = mysqli_fetch_assoc($result3);
+        $img_perfil['IMG_PERFIL'];
+        echo"<a href='perfil/perfilusuario.php'><img class='pessoa' src='perfil/imagens_perfil/$img_perfil[IMG_PERFIL]'>";}
+        ?>
+        <!------------------------------------------------------------------------------------------------------->
     </header>
 
     <nav>
@@ -187,31 +206,49 @@ function pesquisacep(valor) {
     </ul>
     </nav>
 
-<?php
 
- ?>    
 
 <!--Método "POST" Essencial para a conexão dos dados.----------------------------------->    
-<form action="cadastrousuario.php" method="POST">
+<form action="salvar_editar_perfil.php" method="POST" enctype="multipart/form-data">
 <!-------------------------------------------------------------------------------------->    
 
 
     <h1>Cadastro de Usuário</h1>
 
  <!-- Não apagar "name" nos campos de input ou select. PHP precisa dos names para puxar as informações para as variaveis-->
+ <main>
+    <div class="profile-container">
+        <div class="profile-info">
+            <div class="profile-picture">
 
+        <!--------------------------------------------IMAGEM EM DESTAQUE DO USUARIO-------------------------------------------------->        
+             <?php
+             include('conexao.php');                        
+            $sql2="SELECT IMG_PERFIL FROM usuarios WHERE ID_USUARIO ='$id'";
+            $result2= mysqli_query($mysqli, $sql2);
+            $img_perfil = mysqli_fetch_assoc($result2);
+            echo"<img src='imagens_perfil/$img_perfil[IMG_PERFIL]';";
+            ?>                                 
+         <!--------------------------------------------------------------------------------------------------------------------------->        
+    
+            </div>
+        </div>
+    </div>
+
+     <input  type="file" name="foto" value="<?php echo $img_perfil; ?>">
+    
+    </main>
+    
     <!-- Informações de Login -->
         <p>Nome de Usuário</p>
-        <input type="text" name="usuariologin" id="usuariologin" maxlength="20" placeholder="Digite um nome de usuário" required>
+        <input type="text" name="usuariologin" id="usuariologin" maxlength="20" placeholder="Digite um nome de usuário" value="<?php echo $nomelogin; ?>" required>
             
-        <p>Senha</p>
-        <input type="password" name="usuariosenha" id="usuariosenha" maxlength="30" placeholder="Digite uma senha" required>
         <!-- Informações Pessoais -->
         <p>Nome Completo</p>
-        <input type="text" name="usuarionome" id="usuarionome" maxlength="50"  placeholder="Digite seu nome completo" required>
+        <input type="text" name="usuarionome" id="usuarionome" maxlength="50"  placeholder="Digite seu nome completo" value="<?php echo $nome; ?>" required>
 
         <p>Gênero</p>
-        <select name="usuariogenero" id="usuariogenero" required>
+        <select name="usuariogenero" id="usuariogenero" value="<?php echo $genero; ?>" required>
             <option value="">Selecione o gênero</option>
             <option value="feminino">Feminino</option>
             <option value="masculino">Masculino</option>
@@ -225,16 +262,16 @@ function pesquisacep(valor) {
 
        
         <p>CPF</p>
-        <input oninput="mascara(this)" type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" max length="11" required>
+        <input oninput="mascara(this)" type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" max length="11" value="<?php echo $cpf; ?>" required>
         
         <p>Data de Nascimento</p>
-        <input type="date" name="usuarionascimento" id="usuarionascimento" required>
+        <input type="date" name="usuarionascimento" id="usuarionascimento" value="<?php echo $nascimento; ?>" required>
     
         <p>E-mail</p>
-        <input type="email" name="usuarioemail" id="usuarioemail" maxlength="30" placeholder="Digite seu e-mail" required>
+        <input type="email" name="usuarioemail" id="usuarioemail" maxlength="30" placeholder="Digite seu e-mail" value="<?php echo $email; ?>" required>
     
         <p>Telefone</p>
-        <input type="tel" onkeyup="formatartelefone(this)" name="usuariotelefone" maxlength="11" id="usuariotelefone" placeholder="(XX) XXXX-XXXX" required>
+        <input type="tel" onkeyup="formatartelefone(this)" name="usuariotelefone" maxlength="11" id="usuariotelefone" placeholder="(XX) XXXX-XXXX" value="<?php echo $telefone; ?>"required>
 
         <!-----------------------------------------------SCRIPT DO TELEFONE "MASCARA" (INICIO)-------------------------------------------------------->
         <script>
@@ -256,7 +293,7 @@ function pesquisacep(valor) {
     
         <!-- Informações de Endereço -->
         <p>CEP</p>
-        <input type="text" name="usuariocep" id="usuariocep" onkeyup="cep(event)" maxlength="9" placeholder="Digite o CEP" required onblur="pesquisacep(this.value);">
+        <input type="text" name="usuariocep" id="usuariocep" onkeyup="cep(event)" maxlength="9" placeholder="Digite o CEP"value="<?php echo $cep; ?>" required onblur="pesquisacep(this.value);">
         
         <!-----------------------------------------------SCRIPT DO CEP "MASCARA" (INCIO)--------------------------------------------------------------->
         <script>
@@ -276,10 +313,10 @@ function pesquisacep(valor) {
         <!-----------------------------------------------SCRIPT DO CEP "MASCARA" (FIM)---------------------------------------------------------------->
 
         <p>Estado</p>
-        <select name="usuarioestado" id="usuarioestado" required>
-            <option value="">Selecione o estado</option>
-            <option value="AC">Acre (AC)</option>
+        <select name="usuarioestado" id="usuarioestado" value=" <?php print_r($uf); ?>"  required>
+            <option value="<?php print_r($uf); ?>">Selecione o estado</option>
             <option value="AL">Alagoas (AL)</option>
+            <option value="AC">Acre (AC)</option>
             <option value="AP">Amapá (AP)</option>
             <option value="AM">Amazonas (AM)</option>
             <option value="BA">Bahia (BA)</option>
@@ -308,23 +345,23 @@ function pesquisacep(valor) {
         </select>
 
         <p>Cidade</p>
-        <input type="text" name="usuariocidade" id="usuariocidade" placeholder="Digite sua cidade" required>
+        <input type="text" name="usuariocidade" id="usuariocidade" placeholder="Digite sua cidade" value="<?php echo $cidade; ?>" required>
     
         <p>Rua</p>
-        <input type="text" name="usuariorua" id="usuariorua" placeholder="Digite sua rua" required>
+        <input type="text" name="usuariorua" id="usuariorua" placeholder="Digite sua rua"value="<?php echo $rua; ?>" required>
     
         <p>Número</p>
-        <input type="number" name="usuarionumero" id="usuarionumero" placeholder="Número da residência" required>
+        <input type="number" name="usuarionumero" id="usuarionumero" placeholder="Número da residência"value="<?php echo $numero; ?>" required>
     
         <p>Bairro</p>
-        <input type="text" name="usuariobairro" id="usuariobairro" placeholder="Digite seu bairro" required>
+        <input type="text" name="usuariobairro" id="usuariobairro" placeholder="Digite seu bairro" value="<?php echo $bairro; ?>" required>
+
+        <input type="hidden" name="id" value="<?php echo $idU ?>">
     
         <br>
-        <p class="termos1">
-            <input class="termos2" name="termosecondicoes" type="radio" required>
-        Aceito os Termos e Condições</p>
+
         <br>
-        <button type="submit" name="cadastrar" id="usuariocadastrar">Cadastrar</button>
+        <button type="submit" name="update" id="update">Cadastrar</button>
 
         <div class='alert alert-danger' role='alert'>
              

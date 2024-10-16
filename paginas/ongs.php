@@ -5,7 +5,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     $logado = false;
 } else {
     $logado = true;
-    $usuario = $_SESSION['usuario'];  // Nome do usuário
+    $id = $_SESSION['id'];  // Nome do usuário
 }
 ?>
 
@@ -26,17 +26,37 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         <a href="/conexao/paginas/inicial.php"><img src="/conexao/paginas/img/logos/cepet-preto.png" alt="Logo Cepet"></a>
     </div>
     <div class="headerlogin">
-        
-            <a href="login.php">Faça o login</a>
-            <p> ou </p>
-            <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
+    <?php if ($logado): ?>
+                
+                <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
+                <span class="user-name">Olá,<?php 
+                include('conexao.php');  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
+                $result = mysqli_query($mysqli, $sql);
+                $nome = mysqli_fetch_assoc($result);
+                $nome['NOME_DE_USUARIO'];
+                echo $nome['NOME_DE_USUARIO']; ?> !</span>
+                <!------------------------------------------------------------------------------------------------------->
+
+                <a class="link_sair" href="/conexao/configuracao/sair.php">
+                    <button class="link_sairbt">Sair</button>
+                </a>
+                
+            <?php else: ?>
+                <a href="login.php">Faça o login </a>
+                <p> / </p>
+                <a href="/conexao/forms_cd/cadastrousuario.php">Cadastre-se!</a>
+            
+                </div>
+                <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
+                <?php endif; ?>
+
         
     </div>
      <!---------------------------------FOTO DE PERFIL ICONE-------------------------------------------->
     <?php
         if($logado==true){
         include('conexao.php');
-        $sql="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario'";
+        $sql="SELECT IMG_PERFIL FROM usuarios WHERE ID_USUARIO = '$id'";
         $result= mysqli_query($mysqli, $sql);
         $img_perfil = mysqli_fetch_assoc($result);
         $img_perfil['IMG_PERFIL'];

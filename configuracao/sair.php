@@ -7,7 +7,7 @@ unset($_SESSION['senha']);
 unset($_SESSION['cnpj']);
 unset($_SESSION['senha']);
 
-header("Location: /conexao/paginas/login.php");
+header("Location: /conexao/paginas/inicial.php");
 
 
 // session_start();

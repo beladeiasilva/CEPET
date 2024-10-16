@@ -1,17 +1,42 @@
 <?php 
+session_start();
 
+// Verifica se o usuário está logado
+if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+    $logado = false;
+    header('Location: /conexao/paginas/sair.php');
+} else {
+    $logado = true;
+    $id = $_SESSION['id'];  // Nome do usuário
+}   
 
-include('verifica_usuario.php'); 
 include('conexao.php');
 
-$sql="SELECT ID_USUARIO FROM USUARIOS WHERE NOME_DE_USUARIO = '$usuario'";
+$sql="SELECT ID_USUARIO FROM USUARIOS WHERE ID_USUARIO = '$id'";
 $result = mysqli_query($mysqli, $sql);
 
 while($id_usuario = mysqli_fetch_assoc($result)) {
-$link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]'> <button type='btn' name='editar' id='alterar'>Editar</button> </a>";
+$link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]' <button type='btn' name='editar' id='alterar'>Editar</button> </a>";
 
  } 
 
+ //-------------------------------------------TRAZENDO OS DADOS DO BD-----------------------------------------------------------------//
+ $sql="SELECT NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, CIDADE, BAIRRO, RUA, NUM_CASA, CEP, UF FROM usuarios WHERE ID_USUARIO = '$id'";
+
+ $result=mysqli_query($mysqli, $sql);
+ $dados = mysqli_fetch_assoc($result);
+ $nome= $dados['NOME_COMPLETO'];
+ $data_nasc= $dados['DATA_DE_NASCIMENTO'];
+ $genero= $dados['GENÊRO'];
+ $email= $dados['EMAIL'];
+ $telefone= $dados['TELEFONE'];
+ $cidade= $dados['CIDADE'];
+ $bairro= $dados['BAIRRO'];
+ $rua= $dados['RUA'];
+ $numero= $dados['NUM_CASA'];
+ $cep= $dados['CEP'];
+ $uf= $dados['UF'];
+ //------------------------------------------------------------------------------------------------------------------------------------//
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +59,16 @@ $link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]'> <
         </div>
         <div class="headerlogin">
             <?php if ($logado): ?>
-                <span class="user-name">Olá, <?php echo $usuario; ?> !</span>
+
+                <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
+                <span class="user-name">Olá, <?php 
+                include('conexao.php');  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
+                $result = mysqli_query($mysqli, $sql);
+                $nomeU = mysqli_fetch_assoc($result);
+                $nomeU['NOME_DE_USUARIO'];
+                echo $nomeU['NOME_DE_USUARIO']; ?> !</span>
+                <!------------------------------------------------------------------------------------------------------->
+
                 <a href="/conexao/configuracao/sair.php"><button class="link_sairbt">Sair</button></a>
             <?php else: ?>
                 <a href="login.php">Faça o login</a>
@@ -45,13 +79,13 @@ $link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]'> <
         <!--------------------------------FOTO DE PERFIL ICONE------------------------------------------->
         <?php  
         include('conexao.php');
-        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario' ";
+        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE ID_USUARIO = '$id' ";
         $result2= mysqli_query($mysqli, $sql2);
         $img_perfil = mysqli_fetch_assoc($result2);
         $img_perfil['IMG_PERFIL'];
         echo"<img class='pessoa' src='imagens_perfil/$img_perfil[IMG_PERFIL]'>";
         ?>
-        <!--------------------------------FOTO DE PERFIL ICONE------------------------------------------->
+        <!----------------------------------------------------------------------------------------------->
 
     </header>
 
@@ -66,13 +100,13 @@ $link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]'> <
     
     <main>
         <div class="profile-container">
-            <h1><span id="nome_usuario"><?php echo $usuario; ?></span></h1>
+            <h1><span id="nome_usuario"><?php echo $nomeU['NOME_DE_USUARIO']; ?></span></h1>
             <div class="profile-info">
                 <div class="profile-picture">
                     <!----------------------------------------foto de perfil-------------------------------->
                     <?php
                         include('conexao.php');
-                        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE NOME_DE_USUARIO = '$usuario' ";
+                        $sql2="SELECT IMG_PERFIL FROM usuarios WHERE ID_USUARIO = '$id'";
                         $result2= mysqli_query($mysqli, $sql2);
 
                        $img_perfil = mysqli_fetch_assoc($result2);
@@ -105,7 +139,7 @@ $link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]'> <
             </div>
             <div class="address-info">
                 <h2>Endereço</h2>
-                <p><strong>Endereço:</strong> <span id="endereco"><?php echo $endereco ?> </span></p>
+                <p><strong>Endereço:</strong> <span id="endereco"><?php echo $cidade ,"/", $bairro,"/", $rua,"/", $numero; ?> </span></p>
                 <p><strong>CEP:</strong> <span id="cep"><?php echo $cep ?> </span></p>
                 <p><strong>UF:</strong> <span id="uf"><?php echo $uf ?> </span></p>
             </div>

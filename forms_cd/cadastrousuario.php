@@ -64,8 +64,8 @@
                 
         //------------------------------------Inserindo ao banco de dados:-------------------------------------------------------//
 
-                $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, ENDERECO, CEP, Termos_Condições, HASH, IMG_PERFIL) 
-                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade / $bairro / $rua / $numero','$cep', '$termosecondicoes','$hash','$img_perfil')");
+                $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, CIDADE, BAIRRO, CEP, RUA, NUM_CASA, Termos_Condições, HASH, IMG_PERFIL) 
+                VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade','$bairro','$cep','$rua','$numero','$termosecondicoes','$hash','$img_perfil')");
 
               
                 header('Location: /conexao/paginas/login.php');

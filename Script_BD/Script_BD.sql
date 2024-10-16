@@ -14,12 +14,15 @@ DATA_DE_NASCIMENTO DATE not null,
 GENÊRO VARCHAR(15) null,
 EMAIL VARCHAR(60) not null,
 TELEFONE VARCHAR(14) not null,
-UF VARCHAR (2) not null, 
-ENDERECO VARCHAR (100) not null,
+UF VARCHAR (2) not null,
+CIDADE VARCHAR (20) not null,
+BAIRRO VARCHAR (20) not null,
 CEP VARCHAR (9) not null,
+RUA VARCHAR (50) not null, 
+NUM_CASA VARCHAR(8) not null,
 Termos_Condições BIT not null,
 HASH VARCHAR (100) not null,
-IMG_PERFIL VARCHAR(50) not null;)
+IMG_PERFIL VARCHAR(50) not null);
 
 
 

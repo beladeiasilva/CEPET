@@ -34,7 +34,7 @@
             $_SESSION['usuario'] = $usuario['NOME_DE_USUARIO'];
             $_SESSION['senha'] = password_verify($senhaU, $usuario['SENHA']);
             $_SESSION['email'] = $emailU;
-            
+            $_SESSION['id'] = $usuario['ID_USUARIO'];
             
             
              header("Location: /conexao/paginas/inicial.php");
