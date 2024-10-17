@@ -68,6 +68,8 @@ header {
 
 .pessoa {
     width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 /* Barra de navegação */

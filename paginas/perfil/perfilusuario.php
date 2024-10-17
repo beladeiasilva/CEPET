@@ -146,6 +146,8 @@ $link_editar= "<a href='editar_perfil.php?ID_USUARIO=$id_usuario[ID_USUARIO]' <b
         </div>
     </main>
 
+    <button id="excluircontausuario"> Deletar Conta</button>
+
     <footer>
         <div class="footer-content">
             <div class="faq-section">
