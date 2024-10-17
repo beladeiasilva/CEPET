@@ -29,7 +29,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     <?php if ($logado): ?>
                 
                 <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
-                <span class="user-name">Olá,<?php 
+                <span class="user-name">Olá, <?php 
                 include('conexao.php');  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
                 $result = mysqli_query($mysqli, $sql);
                 $nome = mysqli_fetch_assoc($result);

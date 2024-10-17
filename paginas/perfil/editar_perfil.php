@@ -162,7 +162,7 @@ function pesquisacep(valor) {
         <?php if ($logado): ?>
                 
                  <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
-                <span class="user-name">Olá,<?php 
+                <span class="user-name">Olá, <?php 
                 include('conexao.php');  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
                 $result = mysqli_query($mysqli, $sql);
                 $nomeU = mysqli_fetch_assoc($result);
