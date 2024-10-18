@@ -5,7 +5,6 @@ include_once('conexao.php');
 if (isset($_POST['update'])){
     $id = $_POST['id'];
     $nomelogin = $_POST['usuariologin'];
-    $cpf = $_POST['usuariocpf'];
     $nome = $_POST['usuarionome'];
     $nascimento = $_POST['usuarionascimento'];
     $genero = $_POST['usuariogenero'];
@@ -22,9 +21,7 @@ if (isset($_POST['update'])){
 
         $arquivoF = $_FILES ['foto'];
 
-        if($arquivoF['error'])
-            die("Falha ao enviar arquivo");
-
+    
         if($arquivoF['size'] > 10485760)
             die("Arquivo muito grande! Max: 10MB");
 
@@ -32,30 +29,49 @@ if (isset($_POST['update'])){
         $nomeDoArquivo = $arquivoF['name'];
         $novoNomeDoArquivo = uniqid();
         $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
+       
+        
         
 
-        if ($extensao != "jpeg" && $extensao != "png" && $extensao != "jpg")
+        if ($extensao != "jpeg" && $extensao != "png" && $extensao != "jpg" && $extensao !="")
             die("Tipo de arquivo inválido");
+
+            if($extensao ==""){
+            $sql="SELECT IMG_PERFIL FROM USUARIOS WHERE ID_USUARIO = '$id'";
+            $result=mysqli_query($mysqli, $sql);
+            $img_atual=mysqli_fetch_assoc($result);
+            $img_atual['IMG_PERFIL'];
+
+            
+            
+            $result= mysqli_query($mysqli, "UPDATE usuarios SET IMG_PERFIL='$img_atual[IMG_PERFIL]' WHERE ID_USUARIO ='$id'");
+            }
+            else{
+                
+            include('deletar_imagens');
+            $result= mysqli_query($mysqli, "UPDATE usuarios SET IMG_PERFIL='$novoNomeDoArquivo.$extensao' WHERE ID_USUARIO ='$id'");
+
+
+            }
+
 
         $path = $pasta . $novoNomeDoArquivo .".". $extensao;
         $deu_certo = move_uploaded_file($arquivoF["tmp_name"], $path);
-    }
     
     
-    $result = mysqli_query($mysqli, "UPDATE usuarios SET NOME_DE_USUARIO='$nomelogin', CPF='$cpf', NOME_COMPLETO='$nome', DATA_DE_NASCIMENTO='$nascimento', GENÊRO='$genero', EMAIL='$email', TELEFONE='$telefone', UF='$uf', CIDADE='$cidade', BAIRRO='$bairro', RUA='$rua', NUM_CASA='$numero', CEP='$cep', IMG_PERFIL='$novoNomeDoArquivo.$extensao' WHERE ID_USUARIO ='$id'");
+    
+    $inserindo = mysqli_query($mysqli, "UPDATE usuarios SET NOME_DE_USUARIO='$nomelogin', NOME_COMPLETO='$nome', DATA_DE_NASCIMENTO='$nascimento', GENÊRO='$genero', EMAIL='$email', TELEFONE='$telefone', UF='$uf', CIDADE='$cidade', BAIRRO='$bairro', RUA='$rua', NUM_CASA='$numero', CEP='$cep' WHERE ID_USUARIO ='$id'");
+
+  
 
     header('Location: perfilusuario.php');
 
    
     }
-   
+}
+   ?>
     
   
 
 
 
-
-
-        //------------------------------------Verifica se há um email já cadastrado----------------------------------------------
-
-   

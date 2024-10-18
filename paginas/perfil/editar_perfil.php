@@ -24,7 +24,6 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
     while($id_usuario = mysqli_fetch_assoc($result)){
 
     $nomelogin = $id_usuario['NOME_DE_USUARIO'];
-    $cpf =$id_usuario['CPF'];
     $nome = $id_usuario['NOME_COMPLETO'];
     $nascimento = $id_usuario['DATA_DE_NASCIMENTO'];
     $genero = $id_usuario['GENÊRO'];
@@ -145,7 +144,7 @@ function pesquisacep(valor) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Conta</title>
-    
+    <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/estilos.css">
     <link rel="stylesheet" href="/conexao/forms_cd/estilocadastro.css"> 
     <link rel="stylesheet" type="text/css" href="/conexao/paginas/css/padrao.css">
     <link rel="stylesheet" type="text/css" href="estilo_editar_perfil.css"> 
@@ -192,7 +191,7 @@ function pesquisacep(valor) {
         $result3= mysqli_query($mysqli, $sql3);
         $img_perfil = mysqli_fetch_assoc($result3);
         $img_perfil['IMG_PERFIL'];
-        echo"<a href='perfil/perfilusuario.php'><img class='pessoa' src='perfil/imagens_perfil/$img_perfil[IMG_PERFIL]'>";}
+        echo"<a href='perfilusuario.php'><img class='pessoa' src='imagens_perfil/$img_perfil[IMG_PERFIL]'>";}
         ?>
         <!------------------------------------------------------------------------------------------------------->
     </header>
@@ -213,7 +212,7 @@ function pesquisacep(valor) {
 <!-------------------------------------------------------------------------------------->    
 
 
-    <h1>Cadastro de Usuário</h1>
+    <h1>Alteração de perfil</h1>
 
  <!-- Não apagar "name" nos campos de input ou select. PHP precisa dos names para puxar as informações para as variaveis-->
  <main>
@@ -261,8 +260,7 @@ function pesquisacep(valor) {
         </select>
 
        
-        <p>CPF</p>
-        <input oninput="mascara(this)" type="text" name="usuariocpf" id="usuariocpf" placeholder="Digite seu CPF" max length="11" value="<?php echo $cpf; ?>" required>
+        
         
         <p>Data de Nascimento</p>
         <input type="date" name="usuarionascimento" id="usuarionascimento" value="<?php echo $nascimento; ?>" required>

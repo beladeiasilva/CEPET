@@ -11,6 +11,7 @@ body {
 }
 
 header {
+    
     background-color: #fffbf3;
     display: flex;
     justify-content: space-between;
@@ -25,6 +26,7 @@ header {
 }
 
 .logoimg img {
+    
     position:relative;
     right: -50px;
     width: 150px;
