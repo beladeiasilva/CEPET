@@ -15,9 +15,9 @@ include('conexao.php');
 
 
 // Receber o ID do pet via GET
-$id_pet = isset($_GET['id_pet']) ? $_GET['id_pet'] : null;
+if(!empty($_GET['ID_PET'])){
 
-if ($id_pet) {
+$id_pet = $_GET['ID_PET'];
     // Buscar as informações do pet no banco de dados
     $sql = "SELECT p.NOME, p.RAÇA, p.IDADE, p.GENERO, p.PORTE, p.COR, p.HISTÓRICO, p.LINK_FOTO, o.NOME AS ONG_NOME, o.ESTADO 
             FROM pets p
@@ -123,10 +123,10 @@ $mysqli->close();
 </div></div>
 
 </main>
-
-<a href="/conexao/paginas/informativos/adotar.php">
-    <button class="adotar-button"><strong>Adotar</strong></button>
-</a>
+<?php $_GET['ID_PET'];
+echo"<a href='/conexao/paginas/informativos/adotar.php?ID_PET=$_GET[ID_PET]'>
+    <button class='adotar-button'><strong>Adotar</strong></button>
+</a>";?>
 <footer>
     <div class="footer-content">
         <div class="faq-section">

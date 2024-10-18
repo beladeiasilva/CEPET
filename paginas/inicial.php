@@ -61,7 +61,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         $result2= mysqli_query($mysqli, $sql2);
         $img_perfil = mysqli_fetch_assoc($result2);
         $img_perfil['IMG_PERFIL'];
-        echo"<a href='perfil/perfilusuario.php'><img class='pessoa' src='perfil/imagens_perfil/$img_perfil[IMG_PERFIL]'>";}
+        echo"<img class='pessoa' src='perfil/imagens_perfil/$img_perfil[IMG_PERFIL]'/>";}
         ?>
          <!----------------------------------------------------------------------------------------------------->
     </header>

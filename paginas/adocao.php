@@ -241,7 +241,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $foto = mysqli_fetch_assoc($result1);
                     if(isset($foto['LINK_FOTO'])) {
                     $foto['LINK_FOTO'];            
-                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    echo" <a href='pet.php?ID_PET=1'><img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' > </a>";}
                     else{echo" Não há nenhum pet cadastrado.";}
                         
                     ?>
@@ -280,7 +280,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $foto = mysqli_fetch_assoc($result2);
                     if(isset($foto['LINK_FOTO'])) {
                     $foto['LINK_FOTO'];            
-                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    echo" <a href='pet.php?ID_PET=2'><img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' > </a>";}
                     else{echo" Não há nenhum pet cadastrado.";}
                     
                         
@@ -327,7 +327,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $foto = mysqli_fetch_assoc($result2);
                     if(isset($foto['LINK_FOTO'])) {
                     $foto['LINK_FOTO'];            
-                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    echo" <a href='pet.php?ID_PET=3'><img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' > </a>";}
                     else{echo" Não há nenhum pet cadastrado.";}
                         
                     
@@ -368,7 +368,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $foto = mysqli_fetch_assoc($result2);
                     if(isset($foto['LINK_FOTO'])) {
                     $foto['LINK_FOTO'];            
-                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    echo" <a href='pet.php?ID_PET=4'><img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' > </a>";}
                     else{echo" Não há nenhum pet cadastrado.";}
                     ?>
       
@@ -407,7 +407,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
                     $foto = mysqli_fetch_assoc($result2);
                     if(isset($foto['LINK_FOTO'])) {
                     $foto['LINK_FOTO'];            
-                    echo" <img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' >";}
+                    echo" <a href='pet.php?ID_PET=5'><img src='/conexao/forms_cd/imagens_pets_cadastrados/$foto[LINK_FOTO]' alt='' > </a>";}
                     else{echo" Não há nenhum pet cadastrado.";}
                     ?>
                

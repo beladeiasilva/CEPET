@@ -7,7 +7,27 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
 } else {
     $logado = true;
     $id = $_SESSION['id'];  // Nome do usuário
+    
 }
+
+if(isset($_POST['continuar'])){
+
+include('conexao.php');
+$id_pet = $_GET['ID_PET'];
+$sql="SELECT FK_ONG_CNPJ FROM pets WHERE ID_PET = '$id_pet'";
+$result=mysqli_query($mysqli, $sql);
+$cnpj=mysqli_fetch_assoc($result);
+$cnpj['FK_ONG_CNPJ'];
+
+$result=mysqli_query($mysqli, "INSERT INTO ADOCAO(DATA_ADO, HORA_ADO, FK_PET_ID, FK_USUARIO_ID, FK_ONG_CNPJ) VALUES (now(), now(),'$id_pet','$id',$cnpj'");
+
+}
+
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,13 +77,13 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
         $result= mysqli_query($mysqli, $sql);
         $img_perfil = mysqli_fetch_assoc($result);
         $img_perfil['IMG_PERFIL'];
-        echo"<a href='perfil/perfilusuario.php'><img class='pessoa' src='perfil/imagens_perfil/$img_perfil[IMG_PERFIL]'>";}
+        echo"<a href='perfil/perfilusuario.php'><img class='pessoa' src='/conexao/paginas/perfil/imagens_perfil/$img_perfil[IMG_PERFIL]'>";}
         ?>
         <!----------------------------------------------------------------------------------------------------->
 
     </header>
 
-    
+   
 
     <nav>
     <ul class="barra-navegacao">
@@ -92,18 +112,21 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
             Declaro que sou maior de 18 anos, li e estou ciente das informações fornecidas, e concordo em compartilhar meus dados pessoais com a ONG/protetor parceiro do programa CEPET para fins de contato referente ao processo de adoção. Entendo que o envio dos meus dados demonstra o meu interesse em ser contactado pela ONG/protetor para dar continuidade ao processo, incluindo entrevistas e etapas posteriores.
             </label>
         </div>
-        
-        <button class="btn" id="btnContinuar1" disabled>Continuar</button>
+      
+        <button class="btn" name="continuar" id="btnContinuar1" disabled>Continuar</button>
+       
     </section>
 
 
     <section id="bloco2" class="hidden">
         <h2>Deixe uma Mensagem para ONG (opcional):</h2>
         <textarea placeholder="Escreva aqui uma mensagem para ONG..."></textarea>
+        
 
+        <form action="adotar.php" method="POST">
         <!-- Botão para colocar fução que vai mandar dados para ong -->
         <button class="btn" onclick="mostrarBloco(3)">Continuar</button>
-
+        </form>
 
     </section>
 
