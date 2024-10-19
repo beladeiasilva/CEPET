@@ -359,7 +359,7 @@ function pesquisacep(valor) {
         <br>
 
         <br>
-        <button type="submit" name="update" id="update">Cadastrar</button>
+        <button type="submit" name="update" id="update">Alterar</button>
 
         <div class='alert alert-danger' role='alert'>
              
