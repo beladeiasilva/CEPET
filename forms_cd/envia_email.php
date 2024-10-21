@@ -1,51 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>valida_email</title>
+</head>
+<body>
+   
+</body>
+
+
 <?php 
 
-require("PHPMailerAutoload.php");
+use PHPMailer\PHPMailer\PHPMailer;
+require 'vendor/autoload.php';
 
-$mail = new PHPMailer;
+//Domínio de envio;
+
+$mail = new PHPMailer();
 $mail->isSMTP();
-$mail->CharSet= "UTF-8";
+$mail->Host = 'sandbox.smtp.mailtrap.io';
+$mail->SMTPAuth = true;
+$mail->Port = 2525;
+$mail->Username = '054bb168b75c88';
+$mail->Password = '8aebff6a0711b2';
+//Indicando os cabeçalhos(Remetente, Destinatário e Assunto);
 
-$mail->Host = "smtp.gmail.com";
-$mail->Port ="587";
-$mail->SMTPSecure = "tls";
-$mail->SMTPAuth ="true";
-$mail->Username ="seuemail@gmail.com";
-$mail->Password ="suasenha";
+$mail->setFrom(address:'CEPET@gmail.com', name:'CEPET');
+$mail->addAddress(address: $emailU, name: $nomelogin ); // Aqui é obrigatoriamente colocar um endereço "@dev.com"
+$mail->Subject = 'Confirme o seu email';
 
-$mail->setFrom($email->Username, 'CEPET'); //REMETENTE
-$mail->addAddress($email); //DESTINATÁRIO
-$mail->Subject = $nome . ", Ative seu Cadastro Aqui!"; //Assunto do e-mail
 
-$conteudo_email ="
-<style>
-font-family = Calibri;
-</style> 
+$mail->isHTML(isHtml: TRUE);
+$mail->Body = "<html>Olá $nomelogin!, Obrigado por se cadastrar na CEPET! Por favor, click no link abaixo para confirmar seu email de cadastro: <br> <br> <a href='http://localhost/conexao/forms_cd/valida_email.php' </a> </hmtl>";
 
-<body>
-Confirme esse e-mail para ativar seu cadastro em nosso site.<br>
-Você só precisa clicar no botão abaixo: <br><br>
 
-<a href= 'http://localhost/conexao/configuracao/ativacao.php?hash' 
-style='background-color: #007bff;
-border: none;
-color: white;
-padding:10 px 30 px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size:16px;'
->Confirmar E-mail</a>
-</body>";
 
-$mail->IsHTML(true);
-$mail->Body = $conteudo_email;
 
-if($mail->send()){
 
-   echo "<div class='alert alert-danger' role='alert'> O link de ativação de cadastro foi enviado para seu email, Favor verificar sua caixa de entrada.";
+
+
+if (!$mail->send()) {
+   echo 'A mensagem não pôde ser enviada.';
+   echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+   echo 'A mensagem foi enviada.';
 }
-   else{
-
-     echo "<div class='alert alert-danger' role='alert'> Falha ao Enviar o link de Ativação!";
-   }
+?>
+</html>

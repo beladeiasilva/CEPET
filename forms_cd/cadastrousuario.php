@@ -2,24 +2,7 @@
 
     if(isset($_POST['cadastrar']))
     {
-        //teste para verificar informações que irão para o banco de dados:
-
-        //print_r($_POST['usuariologin']);
-        //print_r($_POST['usuariosenha']);
-        //print_r($_POST['usuarionome']);
-        //print_r($_POST['usuariogenero']);
-        //print_r($_POST['usuariocpf']);
-        //print_r($_POST['usuarionascimento']);
-        //print_r($_POST['usuarioemail']);
-        //print_r($_POST['usuariotelefone']);
-        //print_r($_POST['usuariocep']);
-        //print_r($_POST['usuarioestado']);
-        //print_r($_POST['usuariocidade']);
-        //print_r($_POST['usuariorua']);
-        //print_r($_POST['usuarionumero']);
-        //print_r($_POST['usuariobairro']);
-        //print_r($_POST['termosecondicoes']);
-
+  
         include_once('conexao.php');
 
         //--------------------------------------------Declarando váriaveis---------------------------------------------->
@@ -39,7 +22,8 @@
         $numero = $_POST['usuarionumero'];
         $termosecondicoes = $_POST['termosecondicoes'];
         $img_perfil = "mascote.jpg";
-      
+        
+       
 
         //------------------------------------Verifica se há um email já cadastrado----------------------------------------------
         $sqlVCD="SELECT EMAIL FROM usuarios where EMAIL= '$emailU'";
@@ -67,7 +51,9 @@
                 $result = mysqli_query($mysqli, "INSERT INTO usuarios (NOME_DE_USUARIO, SENHA, CPF, NOME_COMPLETO, DATA_DE_NASCIMENTO, GENÊRO, EMAIL, TELEFONE, UF, CIDADE, BAIRRO, CEP, RUA, NUM_CASA, Termos_Condições, HASH, IMG_PERFIL) 
                 VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade','$bairro','$cep','$rua','$numero','$termosecondicoes','$hash','$img_perfil')");
 
-              
+
+                require 'envia_email.php';
+            
                 header('Location: /conexao/paginas/login.php');
             }
         }       
