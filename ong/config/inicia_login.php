@@ -7,47 +7,47 @@
  {
 // //Acessa
  include('conexao.php');
- $cnpjO = $_POST['ongcnpj'];
- $senhaO = $_POST['ongsenha'];
+ $cnpj = $_POST['ongcnpj'];
+ $senha_verdadeira = $_POST['ongsenha'];
+
+ print_r($cnpj);
+
+$sql1 ="SELECT * FROM ongs WHERE CNPJ='$cnpj'";
+$result = $mysqli->query($sql1);
+
+$senha_cript = $result->fetch_assoc();
+$senha_cript['SENHA'];
 
 
-// //Testar se o login está mandando informações para as variaveis:
-//  print_r('cnpj: ' . $cnpjO);
-//  print_r('senha: ' . $senhaO);
-
-$sql ="SELECT * FROM ongs WHERE CNPJ='$cnpjO'";
-$result = $mysqli->query($sql);
-
-$ong = $result->fetch_assoc();
-
-
-if (password_verify($senhaO, $ong['SENHA']) ==true)
+if (password_verify($senha_verdadeira, $senha_cript['SENHA']) ==true)
 {
-    
+    print_r(password_verify($senha_verdadeira, $senha_cript['SENHA']));
     session_start();
     
-    $sql ="SELECT * FROM ongs WHERE CNPJ='$cnpjO'";
+    $sql ="SELECT * FROM ongs WHERE CNPJ='$cnpj'";
     $result = $mysqli->query($sql);
     $ong = $result->fetch_assoc();
 
     $_SESSION['ong'] = $ong['NOME'];
-    $_SESSION['senha'] = password_verify($senhaO, $ong['SENHA']);
-    $_SESSION['cnpj'] = $cnpjO;
+    $_SESSION['senha'] = password_verify($senha_verdadeira, $senha_cript['SENHA']);
+   
+
+    $_SESSION['cnpj'] = $cnpj;
     
-    header("Location: /conexao/paginas/inicialong.php"); 
+    //header("Location: /cepet/ong/inicial.php"); 
  }
  else
 {
     unset($_SESSION['cnpj']);
     unset($_SESSION['senha']);
 
-    header('Location: /conexao/paginas/login.php');
+    header('Location: /cepet/ambos/login.php');
     }
 
  }
 else
 {
-header("Location: /conexao/paginas/login.php");
+header("Location: /cepet/ambos/login.php");
 }   
 
 

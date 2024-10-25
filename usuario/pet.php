@@ -1,16 +1,20 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado
-include("config/logado.php");
+if(isset($_POST['adotar'])){
 
-// Conexão ao banco de dados
-include("config/conexao.php");
-
-
+    //verifica se usuário esta logado//
+    include("config/logado.php");
+    
+    if($logado==false){
+    header('Location: /cepet/ambos/login.php');
+    }
+    }
 
 // Receber o ID do pet via GET
 if(!empty($_GET['ID_PET'])){
+
+include("config/conexao.php");
 
 $id_pet = $_GET['ID_PET'];
     // Buscar as informações do pet no banco de dados
@@ -59,28 +63,10 @@ $mysqli->close();
     <div class="logoimg">
     </div>
     <div class="headerlogin">
-        <?php if ($logado): ?>
             
-                 <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
-                <span class="user-name">Olá, <?php 
-                include("config/conexao.php");  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
-                $result = mysqli_query($mysqli, $sql);
-                $nome = mysqli_fetch_assoc($result);
-                $nome['NOME_DE_USUARIO'];
-                echo $nome['NOME_DE_USUARIO']; ?>!</span>
+                 
                 <!------------------------------------------------------------------------------------------------------->
 
-            <a class="link_sair" href="config/sair.php">
-                <button class="link_sairbt">Sair</button>
-            </a>
-        <?php else: ?>
-            <a href="/cepet/ambos/login.php">Faça o login </a>
-            <p> / </p>
-            <a href="/cepet/cadastro/cadastrousuario.php">Cadastre-se!</a>
-        </div>
-        <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
-        <?php endif; ?>
-        
 </header>
 
 <nav>
@@ -117,11 +103,14 @@ $mysqli->close();
     </div>
 </div></div>
 
+<form action="pet.php" method="POST">
 </main>
 <?php $_GET['ID_PET'];
-echo"<a href='adotar.php?ID_PET=$_GET[ID_PET]'>
-    <button class='adotar-button'><strong>Adotar</strong></button>
+echo"<a name='adotar' href='adotar.php?ID_PET=$_GET[ID_PET]'>
+    <button class='adotar-button' name='adotar'><strong>Adotar</strong></button>
 </a>";?>
+</form>
+
 <footer>
     <div class="footer-content">
         <div class="faq-section">

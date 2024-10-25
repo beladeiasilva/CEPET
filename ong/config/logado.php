@@ -1,10 +1,14 @@
 <?php
-if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true)) {
+ 
+
+if((!isset($_SESSION['cnpj'])) || (!isset($_SESSION['senha']))) {
    
-    header('location: /cepet/usuario/inicial.php');
+ //header("location: /cepet/ambos/login.php");
     
 } else {
+    
     $logado = true;
-    $ong_nome = $_SESSION['ong'];
+    $cnpj = $_SESSION['cnpj'];
 }
+
 ?>

@@ -207,7 +207,7 @@ function pesquisacep(valor) {
 <!-------------------------------------------------------------------------------------->    
 
 
-    <h1>Alteração de perfil</h1>
+    <h1>Alteração de cadastro</h1>
 
  <!-- Não apagar "name" nos campos de input ou select. PHP precisa dos names para puxar as informações para as variaveis-->
  <main>

@@ -42,8 +42,8 @@ include("config/doando.php");
                     </a>
                 
             <?php else: ?>
-                <a href="login.php">Faça o login </a>
-                <p> ou </p>
+                <a href="/cepet/ambos/login.php">Faça o login </a>
+                <p>/</p>
                 <a href="/cepet/cadastro/cadastrousuario.php">Cadastre-se!</a>
             
         </div>

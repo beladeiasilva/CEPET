@@ -1,19 +1,7 @@
 <?php
 SESSION_START();
 
-
-//==========Puxando CNPJ para inserir na chave estrangeira-----//
-if((isset($_SESSION['cnpj']) == true)and(isset($_SESSION['senha'])==true))
-{
- $ongcnpj = $_SESSION['cnpj'];
-}
-else
-//==========Impedindo o usuário acessar este FORM ou qualquer ONG não cadastrada!====//
-{
-        header('Location: /cepet/usuario/login.php');
-} 
-//===================================================================================//
-
+ require 'C:/xampp/htdocs/cepet/ong/config/logado.php';
 
 ?>
 
@@ -35,9 +23,16 @@ else
             <a href="/cepet/usuario/inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
         </div>
         <div class="headerlogin">
-            <?php if ($logged_in): ?>
-                <h2><?php echo $ong_name; ?></h2>
-                <a href="/cepet/configuracao/sair.php"><button class="link_sair">Sair</button></a>
+            <?php if ($logado == true): ?>
+
+                <h2><span class="user-name"><?php 
+                include("config/conexao.php");  $sql ="SELECT NOME FROM ongs WHERE cnpj = '$_SESSION[cnpj]'";
+                $result = mysqli_query($mysqli, $sql);
+                $nome = mysqli_fetch_assoc($result);
+                $nome['NOME'];
+                echo $nome['NOME']; ?></span></h2>
+
+                <a href="config/sair.php"><button class="link_sair">Sair</button></a>
             <?php else: ?>
                 <a href="login.php">Faça o login </a>
                 <p> ou </p>

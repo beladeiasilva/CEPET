@@ -1,6 +1,7 @@
 <?php
-session_start();
 
+
+include("config/logado.php");
 
 ?>    
 <!DOCTYPE html>
@@ -24,10 +25,18 @@ session_start();
         </div>
         <div class="headerlogin">
             <?php if ($logado): ?>
-                <h2><?php echo $ong_nome; ?></h2>
+
+                <h2><span class="user-name"><?php 
+                include("config/conexao.php");  $sql ="SELECT NOME FROM ongs WHERE cnpj = '$_SESSION[cnpj]'";
+                $result = mysqli_query($mysqli, $sql);
+                $nome = mysqli_fetch_assoc($result);
+                $nome['NOME'];
+                echo $nome['NOME']; ?></span></h2>
+
+
                 <a href="config/sair.php"><button class="link_sairbt">Sair</button></a>
             <?php else: ?>
-                <a href="login.php">Faça o login </a>
+                <a href="/cepet/ambos/login.php">Faça o login </a>
                 <p> ou </p>
                 <a href="/cepet/cadastro/cadastrousuario.php">Cadastre-se!</a>
             

@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // Verifica se o usuário está logado
 include("config/logado.php");
@@ -27,7 +26,7 @@ include("config/logado.php");
             <?php if ($logado): ?>
                 
                 <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
-                <span class="user-name">Olá,<?php 
+                <span class="user-name">Olá, <?php 
                 include("config/conexao.php");  $sql ="SELECT NOME_DE_USUARIO FROM usuarios WHERE ID_USUARIO = '$id'";
                 $result = mysqli_query($mysqli, $sql);
                 $nome = mysqli_fetch_assoc($result);

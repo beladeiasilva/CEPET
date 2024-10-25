@@ -24,6 +24,7 @@
 
         if (password_verify($senhaU, $usuario['SENHA']) ==true)
          {
+            print_r(password_verify($senhaU, $usuario['SENHA']));
             session_start();
             
             $sql ="SELECT * FROM usuarios WHERE EMAIL='$emailU'";

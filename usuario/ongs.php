@@ -33,7 +33,7 @@ include("config/logado.php");
                 echo $nome['NOME_DE_USUARIO']; ?> !</span>
                 <!------------------------------------------------------------------------------------------------------->
 
-                <a class="link_sair" href="/cepet/configuracao/sair.php">
+                <a class="link_sair" href="config/sair.php">
                     <button class="link_sairbt">Sair</button>
                 </a>
                 

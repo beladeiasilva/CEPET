@@ -1,4 +1,5 @@
 <?php
- unset($_SESSION['cnpj']);
- unset($_SESSION['senha']);
+session_destroy();
+
+ header("location: /cepet/ambos/login.php");
  ?>

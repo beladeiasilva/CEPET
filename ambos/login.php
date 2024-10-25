@@ -29,10 +29,10 @@ include("config/logado.php");
 
     <nav>
     <ul class="barra-navegacao">
-        <li><a href="adocao.php">Adoção</a></li>
-        <li><a href="ONGs.php">ONGs</a></li>
-        <li><a href="doacao.php">Doação</a></li>
-        <li><a href="Noticias.php">Notícias e dicas</a></li>
+        <li><a href="/cepet/usuario/adocao.php">Adoção</a></li>
+        <li><a href="/cepet/usuario/ONGs.php">ONGs</a></li>
+        <li><a href="/cepet/usuario/doacao.php">Doação</a></li>
+        <li><a href="/cepet/usuario/Noticias.php">Notícias e dicas</a></li>
     </ul>
     </nav>
 
@@ -61,8 +61,16 @@ include("config/logado.php");
 
         <h1>Login ONG</h1>
         <input type="text" name="ongcnpj" id="ongcnpj" placeholder="Cnpj">
+        <br> 
+        <input type="password" name="ongsenha" id="ongsenha" placeholder="Senha">
+        <br>
+        <input type="submit" name="ongentrar" id="entrar" value="Entrar">
+        
+        <div class ="d-flex">
+            <a href="/cepet/cadastro/cadastroong.php" type="button" class="btn"> Cadastro de ONG Aqui!</a>
 
-        <script>
+         </form> 
+            <script>
         document.getElementById('ongcnpj').addEventListener('input', function (e) {
         var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
         e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
@@ -70,16 +78,9 @@ include("config/logado.php");
         </script>
 
 
-        <br> 
-        <input type="password" name="ongsenha" id="ongsenha" placeholder="Senha">
-        <br>
-        <input type="submit" name="ongentrar" id="entrar" value="Entrar">
-        
-        <div class ="d-flex">
-            <a href="/cepet/cadastro/cadastroong.php" type="button" class="btn"> Cadastre de ONG Aqui!</a>
         </div>
 
-        </form> 
+        
     </div>
 
     <footer>

@@ -19,7 +19,7 @@ include("config/logado.php");
 <body>
     <header>
         <div class="logoimg">
-            <a href="/cepet/usuario/inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
+            <a href="inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
         </div>
         <div class="headerlogin">
             <?php if ($logado): ?>
@@ -38,12 +38,12 @@ include("config/logado.php");
                     </a>
                 
             <?php else: ?>
-                <a href="login.php">Faça o login </a>
-                <p> ou </p>
-                <a href="/cepet/cadastro/img/cadastrousuario.php">Cadastre-se!</a>
+                <a href="/cepet/ambos/login.php">Faça o login </a>
+                <p>/</p>
+                <a href="/cepet/cadastro/cadastrousuario.php">Cadastre-se!</a>
             
         </div>
-       
+        <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
         <?php endif; ?>
         <!---------------------------------FOTO DE PERFIL ICONE-------------------------------------------->
         <?php
