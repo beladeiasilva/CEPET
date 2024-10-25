@@ -2,7 +2,7 @@
 if(isset($_POST['enviar']))
 {       
 
-        include_once("config/conexao.php");
+        include_once("conexao.php");
 
         
 
@@ -30,14 +30,14 @@ if(isset($_POST['enviar']))
             if($qtdLinhas>0)
             {
                
-            
+                echo "
+                <div class='alert alert-danger' role='alert'>
+                   Este CNPJ já está cadastrado!
+                   </div>";
 
             }
-            else
-            {
-                header('Location: /cepet/usuario/login.php');
-            }
-        }
+            
+    
 //--------------------------------------------SINTEGRA----------------------------------//
 if(isset($_FILES['sintegra']))
 {
@@ -49,7 +49,7 @@ if(isset($_FILES['sintegra']))
  if($arquivoS['size'] > 2097152)
     die("Arquivo muito grande! Max: 2MB");
 
-    $pasta= "documentos_cadastrados/sintegra/";
+    $pasta= "C:/xampp/htdocs/cepet/cadastro/documentos_cadastrados/sintegra/";
     $nomeDoArquivo = $arquivoS['name'];
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -75,7 +75,7 @@ if(isset($_FILES['sintegra']))
   if($arquivoC['size'] > 2097152)
      die("Arquivo muito grande! Max: 2MB");
  
-     $pasta= "documentos_cadastrados/ccs/";
+     $pasta= "C:/xampp/htdocs/cepet/cadastro/documentos_cadastrados/ccs/";
      $nomeDoArquivo = $arquivoC['name'];
      $novoNomeDoArquivo = uniqid();
      $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -99,7 +99,7 @@ if(isset($_FILES['bacen']))
  if($arquivoB['size'] > 2097152)
     die("Arquivo muito grande! Max: 2MB");
 
-    $pasta= "documentos_cadastrados/bacen/";
+    $pasta= "C:/xampp/htdocs/cepet/cadastro/documentos_cadastrados/bacen/";
     $nomeDoArquivo = $arquivoB['name'];
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -115,8 +115,9 @@ if(isset($_FILES['bacen']))
         $result = mysqli_query($mysqli, "INSERT INTO ongs(CNPJ, NOME, SENHA, EMAIL, TELEFONE, CEP, ESTADO, ENDERECO, REDES_SOCIAIS, SITE, DOCUMENTOS_ONGS) 
         VALUES ('$cnpj','$nome','$senha','$email','$telefone','$cep','$estado','$cidade / $bairro / $rua / $numero','$redes','$site', '$path1 / $path2 / $path3')");
 
-       header("Location: /cepet/usuario/login.php");
+       header("Location: /cepet/ambos/login.php");
 
          
     }
+}
 }

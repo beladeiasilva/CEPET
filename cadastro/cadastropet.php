@@ -24,7 +24,7 @@ require 'C:/xampp/htdocs/cepet/ong/config/logado.php';
             <?php if ($logado == true): ?>
 
                 <h2><span class="user-name"><?php 
-                include("config/conexao.php");  $sql ="SELECT NOME FROM ongs WHERE cnpj = '$_SESSION[cnpj]'";
+                include("config/conexao.php");  $sql ="SELECT NOME FROM ongs WHERE cnpj = '$cnpj'";
                 $result = mysqli_query($mysqli, $sql);
                 $nome = mysqli_fetch_assoc($result);
                 $nome['NOME'];

@@ -2,7 +2,7 @@
 if(isset($_POST['cadastrar']))
     {
   
-        include_once("config/conexao.php");
+        include_once("conexao.php");
 
         //--------------------------------------------Declarando váriaveis---------------------------------------------->
         $nomelogin = $_POST['usuariologin'];
@@ -51,7 +51,7 @@ if(isset($_POST['cadastrar']))
                 VALUES ('$nomelogin','$senhaU','$cpf','$nome','$nascimento','$genero','$emailU','$telefone','$uf','$cidade','$bairro','$cep','$rua','$numero','$termosecondicoes','$hash','$img_perfil')");
 
 
-                require 'envia_email.php';
+                //require 'envia_email.php';
             
                 header('Location: /cepet/usuario/login.php');
             }

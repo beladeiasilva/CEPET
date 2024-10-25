@@ -1,8 +1,11 @@
 <?php
+require 'C:/xampp/htdocs/cepet/ong/config/logado.php';
+
+
 if(isset($_POST['enviarpet']))
 {
 
-include("config/conexao.php");
+include("conexao.php");
 
 //------------------------Declaração das váriaveis------------------//
 
@@ -31,7 +34,7 @@ if(isset($_FILES['foto']))
  if($arquivoF['size'] > 10485760)
     die("Arquivo muito grande! Max: 10MB");
 
-    $pasta= "img/imagens_pets_cadastrados/";
+    $pasta= "C:/xampp/htdocs/cepet/cadastro/img/imagens_pets_cadastrados/";
     $nomeDoArquivo = $arquivoF['name'];
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
@@ -53,21 +56,10 @@ VALUES ('$nome','$tipoanimal','$cachorrocor $gatocor','$generoanimal','$porte','
 
 
 
- header('Location: /cepet/usuario/login.php');
+ header('Location: /cepet/ambos/login.php');
 
  
 
 }
-}
-if((!isset($_SESSION['cnpj']) == true) and (!isset($_SESSION['senha']) == true)) {
-    unset($_SESSION['cnpj']);
-    unset($_SESSION['senha']);
-    unset($_SESSION['ong']);
-    // Usuário não está logado, exibe os links de login e cadastro
-    $logged_in = false;
-} else {
-    // Usuário está logado, exibe o nome e o botão de sair
-    $logged_in = true;
-    $ong_name = $_SESSION['ong'];
 }
 ?>
