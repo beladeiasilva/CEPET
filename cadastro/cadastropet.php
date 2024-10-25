@@ -1,7 +1,5 @@
 <?php
-SESSION_START();
-
- require 'C:/xampp/htdocs/cepet/ong/config/logado.php';
+require 'C:/xampp/htdocs/cepet/ong/config/logado.php';
 
 ?>
 
@@ -32,7 +30,7 @@ SESSION_START();
                 $nome['NOME'];
                 echo $nome['NOME']; ?></span></h2>
 
-                <a href="config/sair.php"><button class="link_sair">Sair</button></a>
+                <a href="/cepet/ong/config/sair.php"><button class="link_sair">Sair</button></a>
             <?php else: ?>
                 <a href="login.php">Faça o login </a>
                 <p> ou </p>
