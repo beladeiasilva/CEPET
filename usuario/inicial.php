@@ -2,6 +2,7 @@
 
 // Verifica se o usuário está logado
 include("config/logado.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ include("config/logado.php");
             <a href="inicial.php"><img src="img/logos/cepet-preto.png" alt="Logo Cepet"></a>
         </div>
         <div class="headerlogin">
-            <?php if ($logado): ?>
+            <?php if ($logado == true): ?>
                 
                 <!-----------------------------------NOME DO USUARIO PELO ID------------------------------------------>
                 <span class="user-name">Olá, <?php 
