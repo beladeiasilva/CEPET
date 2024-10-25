@@ -1,9 +1,10 @@
 <?php
- 
+ session_start();
 
 if((!isset($_SESSION['cnpj'])) || (!isset($_SESSION['senha']))) {
-   
- //header("location: /cepet/ambos/login.php");
+    unset($_SESSION['cnpj']);
+    unset($_SESSION['senha']);
+    header("location: /cepet/ambos/login.php");
     
 } else {
     

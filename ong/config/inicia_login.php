@@ -10,7 +10,7 @@
  $cnpj = $_POST['ongcnpj'];
  $senha_verdadeira = $_POST['ongsenha'];
 
- print_r($cnpj);
+
 
 $sql1 ="SELECT * FROM ongs WHERE CNPJ='$cnpj'";
 $result = $mysqli->query($sql1);
@@ -21,7 +21,6 @@ $senha_cript['SENHA'];
 
 if (password_verify($senha_verdadeira, $senha_cript['SENHA']) ==true)
 {
-    print_r(password_verify($senha_verdadeira, $senha_cript['SENHA']));
     session_start();
     
     $sql ="SELECT * FROM ongs WHERE CNPJ='$cnpj'";
@@ -34,7 +33,7 @@ if (password_verify($senha_verdadeira, $senha_cript['SENHA']) ==true)
 
     $_SESSION['cnpj'] = $cnpj;
     
-    //header("Location: /cepet/ong/inicial.php"); 
+    header("Location: /cepet/ong/inicial.php"); 
  }
  else
 {
