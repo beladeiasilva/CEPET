@@ -48,10 +48,10 @@ include("config/logado.php");
 
     <nav>
     <ul class="barra-navegacao">
-        <li><a href="/cepet/usuario/adocao.php">Pets</a></li>
-        <li><a href="/cepet/usuario/ONGs.php">ONGs</a></li>
-        <li><a href="/cepet/usuario/doacao.php">Doação</a></li>
-        <li><a href="/cepet/usuario/Noticias.php">Notícias e dicas</a></li>
+        <li>Pets</a></li>
+        <li>ONGs</a></li>
+        <li>Doação</a></li>
+        <li>Notícias e dicas</a></li>
     </ul>
     </nav>
     
