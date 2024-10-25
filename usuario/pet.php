@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_POST['adotar'])){
 
     //verifica se usuário esta logado//
@@ -10,12 +9,15 @@ if(isset($_POST['adotar'])){
     }
     }
 
+
+include("config/conexao.php");
 // Receber o ID do pet via GET
 if(!empty($_GET['ID_PET'])){
 
-include("config/conexao.php");
 
 $id_pet = $_GET['ID_PET'];
+
+
     // Buscar as informações do pet no banco de dados
     $sql = "SELECT p.NOME, p.RAÇA, p.IDADE, p.GENERO, p.PORTE, p.COR, p.HISTÓRICO, p.LINK_FOTO, o.NOME AS ONG_NOME, o.ESTADO 
             FROM pets p
