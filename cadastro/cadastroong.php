@@ -98,11 +98,10 @@ function pesquisacep(valor) {
             <img src="img/logos/cepet-preto.png" width="20%" alt="Logo Cepet">
         </div>
         <div class="headerlogin">
-            <a href="login.php">
-                Faça o login </a>
-                <p> ou </p>
-            <a href="/cepet/cadastro/cadastrousuario.php">
-                Cadastre-se!</a>
+            <a href="/cepet/ambos/login.php">
+                Faça o login ! </a>
+    
+        
         </div>
         <img class="pessoa" src="img/icones variados/perfil.png">
     </header>

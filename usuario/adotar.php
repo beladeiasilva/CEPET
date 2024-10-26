@@ -4,35 +4,6 @@
 include("config/logado.php");
 
 
-if(!empty($_GET['ID_PET']) && isset($_POST['continuar'])){
-
-$id_pet = $_GET['ID_PET'];
-include('conexao.php');
-$sql1="SELECT * FROM pets WHERE ID_PET = '$id_pet'";
-$sql2="SELECT * FROM adocao WHERE FK_PET_ID='$id_pet'";
-$result1=mysqli_query($mysqli, $sql1);
-$result2=mysqli_query($mysqli, $sql2);
-
-$cnpj=mysqli_fetch_assoc($result1);
-$cnpj['FK_ONG_CNPJ'];
-
-
-if($result2->num_rows > 0){
-die("<h1> Você ja adotou esse pet POHA, KARAI <h1>");
-}
-else{
-$result= mysqli_query($mysqli, "INSERT INTO ADOCAO (DATA_ADO, HORA_ADO, FK_PET_ID, FK_USUARIO_ID, FK_ONG_CNPJ) VALUES (now(), now(),'$id_pet','$id','$cnpj[FK_ONG_CNPJ]')");
-}
-
-
-}
-
-
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -68,11 +39,11 @@ $result= mysqli_query($mysqli, "INSERT INTO ADOCAO (DATA_ADO, HORA_ADO, FK_PET_I
                 
             <?php else: ?>
                 <a href="/cepet/ambos/login.php">Faça o login </a>
-                <p> ou </p>
+                <p>/</p>
                 <a href="/cepet/cadastro/cadastrousuario.php">Cadastre-se!</a>
             
         </div>
-       
+        <img class="pessoa" src="img/icones variados/perfil.png" alt="Ícone de perfil">
         <?php endif; ?>
         <!---------------------------------FOTO DE PERFIL ICONE-------------------------------------------->
         <?php
@@ -128,10 +99,10 @@ $result= mysqli_query($mysqli, "INSERT INTO ADOCAO (DATA_ADO, HORA_ADO, FK_PET_I
         <textarea placeholder="Escreva aqui uma mensagem para ONG..."></textarea>
         
 
-        <form action="<?php echo"adotar.php?ID_PET=$_GET[ID_PET]"; ?>"method="POST">
+        
         <!-- Botão para colocar função que vai mandar dados para ong -->
-        <button class="btn" name="continuar" onclick="mostrarBloco(3)">Continuar</button>
-        </form>
+        <button class="btn" onclick="mostrarBloco(3)">Continuar</button>
+     
 
     </section>
 
@@ -142,7 +113,7 @@ $result= mysqli_query($mysqli, "INSERT INTO ADOCAO (DATA_ADO, HORA_ADO, FK_PET_I
     </section>
 
 
-
+    
 
     <footer>
         <div class="footer-content">
@@ -166,13 +137,15 @@ $result= mysqli_query($mysqli, "INSERT INTO ADOCAO (DATA_ADO, HORA_ADO, FK_PET_I
                 <h3>Sugestões</h3>
                 <p>Nos ajude a melhorar deixando sua sugestão:</p>
                 <textarea placeholder="Digite sua sugestão de melhoria :"></textarea>
-                <button>Enviar</button>
+                <form action="config/adotando.php" method="POST">
+                <button name="continuar">Enviar</button>
+                </form>
             </div>
             
         </div>
         <p>© 2024 Cepet - Todos os direitos reservados.</p>
     </footer>
-
+    
 
     <script>
     // Função para mostrar o próximo bloco

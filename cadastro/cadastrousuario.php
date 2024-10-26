@@ -102,7 +102,7 @@ function pesquisacep(valor) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta</title>
-    <link rel="stylesheet" href="estilocadastro.css"> 
+    <link rel="stylesheet" href="css/estilocadastro.css"> 
     <link rel="stylesheet" type="text/css" href="/cepet/usuario/css/padrao.css">
     <link rel="icon" href="img/logos/icon.ico">  
      <script src="jscript/main.js" defer> </script>
@@ -274,7 +274,7 @@ function pesquisacep(valor) {
                 </div>
 
 
-        <div>
+        
 
     </form>
     <footer>

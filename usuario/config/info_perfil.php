@@ -1,5 +1,5 @@
 <?php
-include("config/conexao.php");
+include("conexao.php");
 
 $sql="SELECT ID_USUARIO FROM USUARIOS WHERE ID_USUARIO = '$id'";
 $result = mysqli_query($mysqli, $sql);
@@ -26,4 +26,6 @@ $link_editar= "<a href='/cepet/usuario/editcadastro.php?ID_USUARIO=$id_usuario[I
  $numero= $dados['NUM_CASA'];
  $cep= $dados['CEP'];
  $uf= $dados['UF'];
+
+ header("Location: /cepet/usuario/perfilusuario.php");
  ?>

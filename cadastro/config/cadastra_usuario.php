@@ -53,7 +53,7 @@ if(isset($_POST['cadastrar']))
 
                 //require 'envia_email.php';
             
-                header('Location: /cepet/usuario/login.php');
+                header("Location: /cepet/ambos/login.php");
             }
         }       
     }

@@ -1,21 +1,11 @@
 <?php
-if(isset($_POST['adotar'])){
-
-    //verifica se usuário esta logado//
-    include("config/logado.php");
-    
-    if($logado==false){
-    header('Location: /cepet/ambos/login.php');
-    }
-    }
 
 
 include("config/conexao.php");
 // Receber o ID do pet via GET
 if(!empty($_GET['ID_PET'])){
 
-
-$id_pet = $_GET['ID_PET'];
+include("config/conexao.php");
 
 
     // Buscar as informações do pet no banco de dados
@@ -24,7 +14,7 @@ $id_pet = $_GET['ID_PET'];
             JOIN ongs o ON p.FK_ONG_CNPJ = o.CNPJ
             WHERE p.ID_PET = ?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $id_pet);
+    $stmt->bind_param("i", $_GET['ID_PET']);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -104,9 +94,10 @@ $mysqli->close();
     </div>
 </div></div>
 
-<form action="pet.php" method="POST">
+
 </main>
-<?php $_GET['ID_PET'];
+
+<?php 
 echo"<a name='adotar' href='adotar.php?ID_PET=$_GET[ID_PET]'>
     <button class='adotar-button' name='adotar'><strong>Adotar</strong></button>
 </a>";?>
