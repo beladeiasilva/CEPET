@@ -1,0 +1,93 @@
+main {
+    padding: 20px;
+}
+
+.profile-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.profile-picture {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.profile-container h1 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.info-details p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.info-details a {
+    color: #44a8a1;
+    text-decoration: none;
+}
+
+.info-details a:hover {
+    text-decoration: underline;
+}
+
+.biography {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.biography h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilos do grid de animais */
+
+.animal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.animal-card {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.animal-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.animal-card img:hover {
+    transform: scale(1.05);
+}
