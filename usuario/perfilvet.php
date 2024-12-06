@@ -17,15 +17,15 @@ include("config/logado.php");
 
 
     <main>
-        
+        <?php include("config/perfilvet/info_vet.php"); ?>
 
     <h1>Perfil do Veterinário</h1>
         <section class="perfil-container">
             <div class="foto-veterinario">
-                <img src="veterinario.jpg" alt="Foto do Veterinário">
+            <?php echo"<img src='/cepet/veterinario/img/img_perfil/$dados[IMG_PERFIL]'>";?>
             </div>
             <div class="info-veterinario">
-                <h2>Dr. João Silva</h2>
+                <h2><?php echo $dados["NOME_COMPLETO"];?></h2>
                 <p><strong>Especialidade:</strong> Clínica Geral e Cirurgia</p>
                 <p><strong>Localização:</strong> São Paulo, SP</p>
                 <p><strong>Telefone:</strong> (11) 98765-4321</p>

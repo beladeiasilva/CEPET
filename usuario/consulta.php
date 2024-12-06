@@ -40,7 +40,7 @@ include("config/logado.php");
             </form>
         </section>
 
-    <form action="/cepet/usuario/config/perfilvet/info_vet.php" method="GET">
+    <!--<form action="/cepet/usuario/config/perfilvet/info_vet.php" method="GET"-->
         
         <section class="veterinarios-container">
             <h2>Veterinários Disponíveis</h2>

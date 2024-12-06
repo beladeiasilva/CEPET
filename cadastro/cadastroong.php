@@ -256,7 +256,12 @@ input.value = telefone;
 
         <p>Redes Sociais</p>
         <input type="url" name="ongredessociais" id="ongredessociais" placeholder="URL das redes sociais da ONG (opcional)">
-        <br>
+        
+
+        <p>Informe seu PIX</p>
+        <input type="text" name="pix" id="pix" placeholder="PIX">
+
+
         <p class="termos1"><input class="termos2" type="radio" required>Aceito os Termos e Condições</p>
         <br>
         
