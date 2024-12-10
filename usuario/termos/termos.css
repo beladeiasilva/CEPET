@@ -1,0 +1,59 @@
+
+/* Títulos principais */
+h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #37928f;
+}
+
+/* Títulos de seções */
+h2 {
+    font-size: 1.5em;
+    color: #3d9f9b;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3d9f9b;
+    padding-bottom: 5px;
+}
+
+/* Texto dos parágrafos */
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Lista de itens */
+ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+/* Estilo das seções */
+.section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 70px;
+
+}
+
+/* Links */
+a {
+    color: #37928f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
