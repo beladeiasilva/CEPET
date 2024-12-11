@@ -1,0 +1,23 @@
+.profile-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0px;
+    max-width: 600px;
+    margin: auto;
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.profile-picture {
+    flex: 1;
+    text-align: center;
+}
+.profile-picture img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}

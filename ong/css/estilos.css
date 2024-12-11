@@ -1,0 +1,142 @@
+
+
+/* Carrosel */
+.banner div {
+    background-color: #3d9f9b;
+    margin: 20px;
+    border-radius: 20px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; /* Para usar o posicionamento absoluto da imagem */
+}
+
+article {
+    width: 40%;
+    margin-left: 80px;
+}
+
+.article1 h2 {
+    color: #fffbf3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+
+article h2 {
+    color: #fffbf3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+}
+
+article p {
+    color: #fffbf3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+
+article button {
+    background-color: #fffbf3;
+    color: #3d9f9b;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.banner div img {
+    width: 450px; 
+    position: absolute; 
+    right: 50px; 
+    bottom: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+
+.conhecaongs{
+    margin-top: 80px;
+}
+.conhecaongs h1{
+    color: #3d9f9b;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style:oblique;
+    margin: 20px;
+}
+.carroselconhecaongs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 100%;
+
+}
+
+.imagem-arredondada {
+    width: 150px;
+    height: auto;
+    border-radius: 100px;
+    margin: 20px;
+    
+}
+
+
+
+
+.amigos-section {
+    background-image: url("../img/icones variados/background.png");
+    background-color: #3d9f9b;
+    padding: 50px 0;
+    position: relative; 
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+}
+
+.amigos-section .container {
+    margin-top: 150px;
+}
+.amigos-section h1 {
+    color: #fffbf3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style:oblique;
+    margin: 20px;
+    margin-top: 50px;
+}
+.amigos-gallery {
+    margin-top: 150px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15%;
+    padding: 20px;
+    width: 60%;
+
+}
+.amigo-item {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.amigo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+

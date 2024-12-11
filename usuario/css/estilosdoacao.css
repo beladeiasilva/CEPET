@@ -1,0 +1,84 @@
+.form{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 50px;
+}
+main h1{
+    font-size: 30px;
+    color:#44a8a1;
+}
+main{
+    background-color: #e0e0e0;
+    padding: 40px;
+    width: 30%;
+    height: 500px auto;
+    border-radius: 15px;
+}
+h3{
+    font-size: medium;
+    color: #3d9f9b;
+    margin: 10px;
+    margin-top: 40px;
+}
+
+#donationAmount{         
+    width: 200px;
+    height: 35px;
+    display: flexbox;
+    margin-top: 15px;
+    border-color:#3d9f9b;
+    border-style: solid;
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#suggestedValues button{
+    width: 60px;
+    height: 25px;
+    display: flexbox;
+    margin-top: 15px;
+    border-color: #3d9f9b;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 15px;
+    color: #3d9f9b;
+    background-color:#e0e0e0;
+
+}
+
+.ong{         
+    width: 200px;
+    height: 35px;
+    display: flexbox;
+    margin-top: 15px;
+    border-color: #3d9f9b;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 15px;
+    
+}
+
+.botãopay{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#payButton{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    display: block;
+    width: 80%;
+    font-size: 16px;
+    color: #fff;
+    background-color: #44a8a1;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}

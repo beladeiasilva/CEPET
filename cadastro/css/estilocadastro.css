@@ -1,0 +1,79 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+form h1{
+    color: #14948e;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 25px;
+    text-align: center;
+}
+form p{
+    color: #14948e;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+form input{         
+    width: 300px;
+    height: 35px;
+    display: flexbox;
+    
+    border-color: #14948e;
+    border-style: solid;
+    border-radius: 10px;
+
+}
+#enviarcadastropet, #enviarcadastroong ,#usuariocadastrar{
+    background-color: #14948e;
+    color:#fffbf3 ;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 12px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+    margin: 30px;
+}
+.termos1{
+    size: 15px;
+}
+.termos2{
+    accent-color: #14948e;
+    color: #14948e;
+    width: 15px;
+    align-items: center;
+    align-content: center;
+}
+form select{
+    width: 300px;
+    height: 35px;
+    display: flex;
+    border-width: 2px;
+    border-color: #14948e;
+    border-style: solid;
+    border-radius: 10px;
+}
+form p.flex, form select.flex {
+    display: flexbox; /* Exibidos com flex quando necessário */
+    justify-content: space-between; /* Organiza o conteúdo */
+    width: 100%;
+}
+

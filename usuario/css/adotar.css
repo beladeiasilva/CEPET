@@ -1,0 +1,83 @@
+
+h2 {
+    color: #444;
+    text-align: center;
+    font-size: 24px;
+}
+
+section textarea {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px;
+    width: 80%;
+    height: 100px;
+    border: 1px solid #44a8a1;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #66c2bc;
+    color: white;
+    font-size: 16px;
+    text-align: left;
+}
+
+textarea::placeholder {
+    color: #f0f0f0;
+    text-align: left;
+}
+
+button.btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #3d9f9b;
+    color:#fffbf3 ;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+button.btn:disabled {
+    background-color: #a8d5d2;
+    cursor: not-allowed;
+}
+
+button.btn:hover:enabled {
+    background-color: #399289;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Centraliza a div horizontalmente */
+    border: none;
+    background-color: #66c2bc;
+    color: #f0f0f0;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 8px;
+    width: 90%; /* Controla a largura da div */
+    max-width: 800px; /* Limita a largura máxima */
+}
+
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Estilo de exibição dos blocos */
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
