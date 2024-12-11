@@ -48,7 +48,7 @@
         <input type="submit" id="entrar" name="usuarioentrar" value="Entrar"><br>
         <style> a:link{text-decoration: none;}</style>
         <a href="/cepet/cadastro/cadastrousuario.php"><p>Não tem cadastro? Crie sua conta Aqui! </p></a><br>
-        <a href="/cepet/usuario/esquecersenha.php">Esqueceu sua senha?</p>
+        <a href="/cepet/usuario/esquecersenha.php">Esqueceu sua senha?</p></a>
 
 </form>
 <form action="/cepet/ong/config/inicia_login.php" method="POST">

@@ -130,9 +130,6 @@ function pesquisacep(valor) {
         <input type="password" name="usuariosenha" id="usuariosenha" maxlength="30" placeholder="Digite uma senha" required>
         <!-- Informações Pessoais -->
         
-       
-        
-       
     
         <p>E-mail</p>
         <input type="email" name="usuarioemail" id="usuarioemail" maxlength="30" placeholder="Digite seu e-mail" required>
