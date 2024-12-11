@@ -262,8 +262,7 @@ function pesquisacep(valor) {
     
         <br>
         <p class="termos1">
-            <input class="termos2" name="termosecondicoes" type="radio" required>
-        Aceito os Termos e Condições</p>
+            <input class="termos2" name="termosecondicoes" type="radio" required>Aceito os <a href="/cepet/usuario/termos/termosUsuario.php">Termos e Condições</a></p>
         
              
                 </div>

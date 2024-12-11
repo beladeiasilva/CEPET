@@ -138,6 +138,9 @@ function pesquisacep(valor) {
         <input type="email" name="usuarioemail" id="usuarioemail" maxlength="30" placeholder="Digite seu e-mail" required>
 
         <br>
+        <p class="termos1">
+            <input class="termos2" name="termosecondicoes" type="radio" required>Aceito os <a href="/cepet/usuario/termos/termosUsuario.php">Termos e Condições</a></p>
+        <br>
         <button type="submit" name="cadastrar" id="usuariocadastrar">Cadastrar</button>
 
         <div class='alert alert-danger' role='alert'>

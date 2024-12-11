@@ -262,7 +262,7 @@ input.value = telefone;
         <input type="text" name="pix" id="pix" placeholder="PIX">
 
 
-        <p class="termos1"><input class="termos2" type="radio" required>Aceito os Termos e Condições</p>
+        <p class="termos1"><input class="termos2" type="radio" required>Aceito os <a href="/cepet/usuario/termos/termosONG.php">Termos e Condições</a></p>
         <br>
         
         <button type="submit" name="enviar" id="enviarcadastroong">Enviar</button>
